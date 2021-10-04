@@ -4,7 +4,7 @@ import {RECEIVE_USERS} from "../actions/users"
 import {SET_SIGNED_IN_USER} from "../actions/signedInUser"
 
 
-let LOGGED_ID =  null
+let SIGNED_ID =  null
 
 export function handleInitialData () {
     return (dispatch) => {
@@ -13,7 +13,7 @@ export function handleInitialData () {
             questions}) => {
             dispatch(receiveUsers(users))
             dispatch(receiveQuestions(questions))
-            dispatch(setSignedInUser(LOGGED_ID))
+            dispatch(setSignedInUser(SIGNED_ID))
         })
     }
 }
