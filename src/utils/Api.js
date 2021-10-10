@@ -8,7 +8,7 @@ import {
 export function getInitialData () {
     return Promise.all([
         _getUsers,
-        getQuestions,
+        _getQuestions,
     ]).then(([users, questions]) => ({
         users,
         questions
@@ -17,7 +17,7 @@ export function getInitialData () {
 
 }
 
-export function _saveQuestion (info) {
+export function saveQuestion (info) {
     return _saveQuestion(info)
 
 
@@ -25,7 +25,7 @@ export function _saveQuestion (info) {
 }
 
 
-export function _saveQuestionAnswer (info) {
+export function saveQuestionAnswer (info) {
 return _saveQuestionAnswer(info)
 }
 

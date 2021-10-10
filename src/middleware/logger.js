@@ -8,4 +8,4 @@ const logger  = (store) => (next) => (action) => {
 
 }
 
-export default Logger
+export default logger
