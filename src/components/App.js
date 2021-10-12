@@ -21,28 +21,37 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <Switch>
-
-
       <div className='container'>
-        <SignIn/>
         <LoadingBar/>
         <Nav/>
-        {this.props.loading === true ? null :
-        <div> 
-          <Route path='/' exact component={Dashboard}/>
+      
+        {this.props.loading === true ? (
+
+          <div>
+
+          <Switch>
+            <Route path='/signin' component={SignIn}/>         
+             </Switch>
+             </div>
+        ) : (
+
+          
+          <div>
+          
+          <Switch>
+          <Route exact path='/'  component={Dashboard}/>
           <Route path='/question/:id'  component={Question}/>
           <Route path='/add'  component={AddQ}/>
           <Route path='/leaderboard'  component={Leaderboard}/>
           <Route component={NotFound}/>
             
           
-       
-        </div>
-        }
+        </Switch>
+       </div>
+        
+           )}
 
       </div>
-        </Switch>
         </Fragment>
       </Router>
     )

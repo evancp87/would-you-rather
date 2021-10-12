@@ -48,7 +48,6 @@ submittedQuestion: false,
         const {addQuestion} = this.props
       
 
-        // TODO: redirect to home view if submitted
         return (
             <div>
                 <h2>Add New Question</h2>
@@ -68,7 +67,7 @@ submittedQuestion: false,
     }
 }
 
-function mapStateToProps (signedInUser) {
+function mapStateToProps ({signedInUser}) {
 return {signedInUser}
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setSignedInUser } from "../actions/signedInUser";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { SpinnerCircular } from "spinners-react";
 
 class SignIn extends Component {

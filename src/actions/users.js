@@ -9,12 +9,12 @@ export function receiveUsers (users) {
     }
 }
 
-export function saveUserQuestion (question, qid, signedInUser) {
+export function saveUserQuestion (question, qid, authedUser) {
     return {
         type: SAVE_USER_QUESTION,
         question,
         qid,
-        signedInUser,
+        authedUser,
     }
 }
 
