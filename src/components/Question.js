@@ -8,16 +8,17 @@ import AnswerQ from "./AnswerQ";
 import QuestionResult from "./QuestionResult";
 
 class Question extends Component {
+  
   render() {
-    const { question, user } = this.props;
+    const { question, questionState, user } = this.props;
 
     if (question === null || undefined) {
       return <p>This question does not exist</p>;
     }
 
-    if (question === "answered") {
+    if (questionState === "answered") {
       <QuestionResult />;
-    } else if (question === "unanswered") {
+    } else if (questionState === "unanswered") {
       <AnswerQ />;
     }
 

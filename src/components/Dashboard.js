@@ -49,6 +49,7 @@ export class Dashboard extends Component {
                     id={id}
                     userAvatar={this.props.user.AvatarURL}
                     userName={this.props.user.name}
+                    questionState='unanswered'
                     userQuestion={this.props.questions[optionOne.text]}
                   />
                   <p>or...</p>
@@ -75,6 +76,7 @@ export class Dashboard extends Component {
                     id={id}
                     userAvatar={this.props.users.AvatarURL}
                     userName={this.props.users.name}
+                    questionState='answered'
                     userQuestion={this.props.questions[optionOne]}
                   />
                   <Link

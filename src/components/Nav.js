@@ -40,6 +40,8 @@ class Nav extends Component {
               {this.props.signedInUser !== null ? (
                 <div>
                   <img src={user.avatarURL} alt={user.name} />
+                 
+              
                   <div>Hello, {user.name}</div>
 
                   <NavLink to="/login" exact className="">
