@@ -43,8 +43,8 @@ class Nav extends Component {
                   <div>Hello, {user.name}</div>
 
                   <NavLink to="/login" exact className="">
-                <button onClick={this.handleLogOut}>Sign Out</button>
-              </NavLink>
+                    <button onClick={this.handleLogOut}>Sign Out</button>
+                  </NavLink>
                 </div>
               ) : null}
             </li>
@@ -58,7 +58,7 @@ class Nav extends Component {
 function mapStateToProps({ signedInUser, users }) {
   return {
     signedInUser,
-    avatar: signedInUser ? users(signedInUser).avatarURL: null,
+    avatar: signedInUser ? users(signedInUser).avatarURL : null,
     name: signedInUser ? users(signedInUser).name : null,
   };
 }

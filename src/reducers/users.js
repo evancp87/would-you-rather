@@ -10,14 +10,30 @@ export default function users (state={}, action) {
             }
             case SAVE_USER_ANSWER : return {
                 ...state,
+               [action.authedUser] : {
+                   ...state[action.authedUser],
+                   answers : {
+                       ...state[action.authedUser].answers,
+                       [action.authedUser] : {
+                           [action.qid]: action.answer,
+                       }
+                   }
+                   
+               }
             //    TODO: finish object
             }
 
             case SAVE_USER_QUESTION : return {
                 ...state,
-                 //    TODO: finish object
+                [action.question.author] : {
+                    ...state[action.question.author],
+                    question: state[action.question.author].concat(action.question.id)
+                }
+
             }
             default : return state
     }
 
 }
+
+// TODO: use destructuring so lines are defined

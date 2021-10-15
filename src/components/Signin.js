@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setSignedInUser } from "../actions/signedInUser";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { SpinnerCircular } from "spinners-react";
+import { Redirect } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
@@ -12,9 +11,7 @@ class SignIn extends Component {
   };
 
   handleChange = (e) => {
-    const { dispatch } = this.props;
     const signedInUser = e.target.value;
-    dispatch(setSignedInUser(signedInUser));
 
     this.setState(() => ({
       signedInUser: signedInUser,
@@ -35,17 +32,15 @@ class SignIn extends Component {
       return <Redirect to="/" />;
     }
 
-    
-    this.setState(() => ({
-        signedInUser: signedInUser,
-        toHome: true,
-        loading: true,
-    }));
-
     dispatch(setSignedInUser(signedInUser));
+
+    this.setState(() => ({
+      signedInUser: signedInUser,
+      toHome: signedInUser ? false : true,
+      loading: true,
+    }));
   };
   render() {
-    const { signedInUser, toHome } = this.state;
     const { users } = Object.values(this.props.users);
     if (this.state.toHome === true) {
       <Redirect path="/" />;
@@ -65,7 +60,11 @@ class SignIn extends Component {
                 </option>;
               })}
             </select>
-            <button type='submit' disabled={!users.name} onSubmit={this.handleSubmit}>
+            <button
+              type="submit"
+              disabled={!users.name}
+              onSubmit={this.handleSubmit}
+            >
               Sign in
             </button>
           </form>
@@ -81,6 +80,7 @@ function mapStateToProps({ questions, users, signedInUser }) {
       return { id: users[id]["id"], name: users[id]["name"] };
     }),
     signedInUser,
+    questions,
   };
 }
 

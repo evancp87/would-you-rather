@@ -9,10 +9,10 @@ export function setSignedInUser (id) {
     }
 }
 
-export function signOutUser (id) {
+export function signOutUser () {
 
     return { 
         type: SIGN_OUT_USER,
-        id,
+       
     }
 }

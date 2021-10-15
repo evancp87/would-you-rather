@@ -22,13 +22,31 @@ export function handleInitialData () {
     }
 }
 
-// TODO: asynchronous handles
-export function handleSaveQuestionAnswer (answer, qid, signedInUser) {
-    // TODO: finish this -  return (dispatch)=> {
-    //     dispatch(showLoading)
-    //     .then()
-    // }
+
+export function handleSaveQuestionAnswer (answer, qid, authedUser) {
+    return (dispatch) => {
+        dispatch(showLoading())
+        return saveQuestionAnswer(answer, qid, authedUser)
+        .then(() => {
+            dispatch(saveQuestionAnswer(answer, qid, authedUser))
+                dispatch(saveUserAnswer(qid, authedUser, answer))
+                dispatch(hideLoading()) 
+        })
+
+    }
 }
 
 
-export function handleNewQuestion (optionOneText, optionTwoText) {}
+export function handleNewQuestion (optionOneText, optionTwoText) {
+    return (dispatch, getState) => {
+        const {signedInUser} = getState()
+        dispatch(showLoading())
+        return addQuestion(signedInUser,optionOneText, optionTwoText)
+        .then(question => {
+            dispatch(addQuestion(question))
+                dispatch(saveUserQuestion(question))
+                dispatch(hideLoading()) 
+        })
+
+    }
+}

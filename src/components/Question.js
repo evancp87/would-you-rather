@@ -4,38 +4,25 @@ import { formatQuestion } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { saveUserQuestion } from "../actions/users";
+import AnswerQ from "./AnswerQ";
+import QuestionResult from "./QuestionResult";
 
-export class Question extends Component {
-  state = {
-    option: "",
-    answeredQuestion: false,
-  };
-
-  handleChange(e) {
-    this.setState(() => ({
-      option: e.target.id,
-    }));
-  }
-
-  handleVote = (e) => {
-    e.preventDefault();
-    const { optionOne, optionTwo } = this.state;
-    const { dispatch, authedUser } = this.props;
-
-    dispatch(handleSaveQuestionAnswer(authedUser));
-    this.props.history.push(`/question_result/${id}`);
-    this.setState(() => ({
-      option: option,
-      answered: true,
-    }));
-  };
-
+class Question extends Component {
   render() {
     const { question, user } = this.props;
     const { optionOne, optionTwo } = question;
 
     const { name, id, avatar, text, author } = this.props;
+
+    if (question === null || undefined) {
+      return <p>This question does not exist</p>;
+    }
+
+    if (question === "answered") {
+      <QuestionResult />;
+    } else if (question === "unanswered") {
+      <AnswerQ />;
+    }
 
     // TODO: add redirect/error handling here
 
@@ -52,28 +39,14 @@ export class Question extends Component {
               alt={`Avatar of ${user.name}`}
               className="avatar"
             />
-            <Card.Text>Complete the question:</Card.Text>
             <Card.Title>...Would you rather...</Card.Title>
-            <form onSubmit={this.handleSubmit}>
-              <input
-                id="optionOneText"
-                value={this.optionOne.text}
-                type="radio"
-                name='option'
-                onChange={this.handleOptionOne}
-              />
-              <div>Or</div>
-              <input
-                id="optionTwoText"
-                type="radio"
-                value={this.optionTwo.text}
-                name='option'
-                onChange={this.handleOptionTwo}
-              />
-              <Link to="/">
-                <button type="submit">Back</button>
-              </Link>
-            </form>
+            <Card.Text>{this.optionOne.text}</Card.Text>
+
+            <Card.Text>Or...</Card.Text>
+
+            <Link to="/">
+              <Button type="submit">Back</Button>
+            </Link>
           </Card.Body>
         </Card>
       </div>
