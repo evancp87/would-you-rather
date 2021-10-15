@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleAddQuestion } from "../actions/questions";
-import { Link } from "react-router-dom";
+import { handleNewQuestion } from "../actions/shared";
 import { withRouter } from "react-router-dom";
 
 export class AddQ extends Component {
@@ -33,7 +32,7 @@ export class AddQ extends Component {
     const { optionOne, optionTwo } = this.state;
     const { dispatch, signedInUser } = this.props;
 
-    dispatch(handleAddQuestion(optionOne, optionTwo, signedInUser));
+    dispatch(handleNewQuestion(optionOne, optionTwo, signedInUser));
     this.props.history.push("/");
 
     this.setState(() => ({
@@ -44,7 +43,6 @@ export class AddQ extends Component {
   };
   render() {
     const { optionOne, optionTwo } = this.state;
-    const { addQuestion } = this.props;
 
     return (
       <div>

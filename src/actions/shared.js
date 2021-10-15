@@ -17,6 +17,7 @@ export function handleInitialData () {
             dispatch(receiveUsers(users))
             dispatch(receiveQuestions(questions))
             dispatch(setSignedInUser(SIGNED_ID))
+            dispatch(signOutUser(null))
             dispatch(hideLoading())
         })
     }
@@ -41,7 +42,7 @@ export function handleNewQuestion (optionOneText, optionTwoText) {
     return (dispatch, getState) => {
         const {signedInUser} = getState()
         dispatch(showLoading())
-        return addQuestion(signedInUser,optionOneText, optionTwoText)
+        return _saveQuestion(signedInUser,optionOneText, optionTwoText)
         .then(question => {
             dispatch(addQuestion(question))
                 dispatch(saveUserQuestion(question))
