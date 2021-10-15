@@ -28,7 +28,7 @@ export class Dashboard extends Component {
     const unansweredQs = Object.keys(users[signedInUser].answers)
       .filter((qid) => !answeredQs(qid))
       .includes(questions);
-    answeredQs.sort(
+    unansweredQs.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     );
 

@@ -54,11 +54,11 @@ class SignIn extends Component {
           </div>
           <form>
             <select onChange={this.handleChange}>
-              {users.id.map((user) => {
+              {users.id.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.name}
-                </option>;
-              })}
+                </option>
+    ))}
             </select>
             <button
               type="submit"

@@ -10,9 +10,6 @@ import QuestionResult from "./QuestionResult";
 class Question extends Component {
   render() {
     const { question, user } = this.props;
-    const { optionOne, optionTwo } = question;
-
-    const { name, id, avatar, text, author } = this.props;
 
     if (question === null || undefined) {
       return <p>This question does not exist</p>;

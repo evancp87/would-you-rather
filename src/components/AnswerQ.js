@@ -4,7 +4,6 @@ import { formatQuestion } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { saveUserQuestion } from "../actions/users";
 import { handleSaveQuestionAnswer } from "../actions/shared";
 
 class AnswerQ extends Component {
@@ -26,7 +25,7 @@ class AnswerQ extends Component {
 
     dispatch(
       handleSaveQuestionAnswer({
-        qid: question.id,
+        qid: qid,
         answer: this.state.answer,
         signedInUser,
       })
@@ -74,7 +73,7 @@ const {user} = this.props
                 onChange={this.handleChange}
               />
               <Link to="/">
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
               </Link>
             </form>
           </Card.Body>
