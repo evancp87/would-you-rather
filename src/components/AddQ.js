@@ -2,8 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleNewQuestion } from "../actions/shared";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export class AddQ extends Component {
+  static propTypes = {
+    signedInUser: PropTypes.string.isRequired,
+    question: PropTypes.object.isRequired,
+    handleNewQuestion: PropTypes.func.isRequired,
+    handleOptionOne: PropTypes.func.isRequired,
+    handleOptionTwo: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     optionOne: "",
     optionTwo: "",

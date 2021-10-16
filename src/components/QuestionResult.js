@@ -2,9 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "react-bootstrap/Card";
 import { ProgressBar } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PropTypes from 'prop-types'
 
 class QuestionResults extends Component {
+  static propTypes = {
+    users: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired,
+    signedInUser: PropTypes.array.isRequired,
+  }
   render() {
     const { optionOne, optionTwo, question, user } = this.props;
     const optionOneVotes = question.optionOne.votes.length;
@@ -62,10 +68,10 @@ class QuestionResults extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser, questions}) {
+function mapStateToProps({ users, signedInUser, questions}) {
   return {
     users,
-    authedUser,
+    signedInUser,
     questions,
 
   }

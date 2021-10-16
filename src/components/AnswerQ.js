@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Link } from "react-router-dom";
+import {withRouter} from 'react-router-dom'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { handleSaveQuestionAnswer } from "../actions/shared";
+import PropTypes from 'prop-types'
 
 class AnswerQ extends Component {
+  static propTypes = {
+    handleSaveQuestionAnswer: PropTypes.func.isRequired,
+    signedInUser: PropTypes.string.isRequired,
+    question: PropTypes.object.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleVote: PropTypes.func.isRequired,
+  }
   state = {
     option: "",
     answered: false,
@@ -15,6 +23,7 @@ class AnswerQ extends Component {
   handleChange = (e) => {
     this.setState(() => ({
       option: e.target.id,
+      answered: false,
     }));
   };
 
@@ -37,10 +46,7 @@ class AnswerQ extends Component {
   render() {
 
 const {user} = this.props
-    // const {optionOne, optionTwo} = this.state
-    // const {addQuestion} = this.props
-
-    // TODO: redirect to home view if submitted- look at radio buttons
+    
     return (
       <div>
         <Card style={{ width: "18rem" }}>
@@ -72,9 +78,9 @@ const {user} = this.props
                 name="option"
                 onChange={this.handleChange}
               />
-              <Link to="/">
+             
                 <Button type="submit">Submit</Button>
-              </Link>
+           
             </form>
           </Card.Body>
         </Card>
@@ -93,4 +99,4 @@ function mapStateToProps({ signedInUser, users, questions }, { id }) {
   };
 }
 
-export default connect(mapStateToProps)(AnswerQ);
+export default withRouter(connect(mapStateToProps)(AnswerQ));

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types'
 
 export class Leaderboard extends Component {
+  static propTypes = {
+    users: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired,
+    answer: PropTypes.array.isRequired,
+    
+  }
   render() {
     const { name, avatar, answers, author, users, questions } = this.props;
     const answeredQs = Object.keys(users[answers]).length;

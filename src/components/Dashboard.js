@@ -3,23 +3,29 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export class Dashboard extends Component {
+  static propTypes = {
+    unanswered: PropTypes.bool.isRequired,
+    answered: PropTypes.bool.isRequired,
+    // showUnansweredQs: PropTypes.bool.isRequired,
+    // showAnsweredQs: PropTypes.bool.isRequired,
+    users: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired,
+  };
   state = {
+    unanswered: true,
     answered: false,
+    // showUnansweredQs: true,
+    // showAnsweredQs: false,
   };
 
   render() {
+    const { users, questions, signedInUser, optionOne } = this.props;
+    // const {showUnansweredQs, showAnsweredQs} = this.state
 
-    const {users, questions, signedInUser, optionOne} = this.props;
-    // add redirect if user is not logged in
-    // if (this.props.signedInUser === null) {
-
-    //   return {
-    //     <Redirect to='/signn'>
-    //   }
-    // }
     const answeredQs = Object.keys(users[signedInUser].answers).map((qid) =>
       questions(qid)
     );
@@ -49,7 +55,7 @@ export class Dashboard extends Component {
                     id={id}
                     userAvatar={this.props.user.AvatarURL}
                     userName={this.props.user.name}
-                    questionState='unanswered'
+                    questionState="unanswered"
                     userQuestion={this.props.questions[optionOne.text]}
                   />
                   <p>or...</p>
@@ -71,12 +77,12 @@ export class Dashboard extends Component {
             {answeredQs.map((id) => (
               <li key={id}>
                 <div>
-                  <p>{this.props.users.name} asks...</p>
+                  <p>{this.props.user.name} asks...</p>
                   <Question
                     id={id}
-                    userAvatar={this.props.users.AvatarURL}
-                    userName={this.props.users.name}
-                    questionState='answered'
+                    userAvatar={this.props.user.AvatarURL}
+                    userName={this.props.user.name}
+                    questionState="answered"
                     userQuestion={this.props.questions[optionOne]}
                   />
                   <Link

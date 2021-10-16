@@ -1,29 +1,51 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import AnswerQ from "./AnswerQ";
 import QuestionResult from "./QuestionResult";
+import {withRouter} from 'react-router-dom'
+import NotFound from "./NotFound";
+// import PropTypes from 'prop-types'
 
 class Question extends Component {
+  // static propTypes = {
+  //   }
+
+
   
+  // handleClick = (e) => {
+  //   e.preventDefault();
+
+   
+  //   this.props.history.push("/");
+
+  //   this.setState(() => ({
+  //     optionOne: "",
+  //     optionTwo: "",
+  //     submittedQuestion: true,
+  //   }))
+  // }
   render() {
     const { question, questionState, user } = this.props;
 
     if (question === null || undefined) {
-      return <p>This question does not exist</p>;
-    }
-
-    if (questionState === "answered") {
-      <QuestionResult />;
+      return <NotFound/>
     } else if (questionState === "unanswered") {
-      <AnswerQ />;
+      return <AnswerQ 
+      avatar={this.props.avatarURL}
+      userName={this.props.user.name}
+      onSubmit={this.handleVote}
+      onChange={this.handleChange}
+      
+      />;
     }
+     else if (questionState === "answered") {
+      return <QuestionResult  />;
 
-    // TODO: add redirect/error handling here
-
+     }
     return (
       <div>
         <Card style={{ width: "18rem" }}>
@@ -42,9 +64,9 @@ class Question extends Component {
 
             <Card.Text>Or...</Card.Text>
 
-            <Link to="/">
-              <Button type="submit">Back</Button>
-            </Link>
+            {/* <Link to="/question/:question_id/">
+              <Button type="submit">{this.state.questionState}</Button>
+            </Link> */}
           </Card.Body>
         </Card>
       </div>
@@ -61,4 +83,4 @@ function mapStateToProps({ signedInUser, users, questions }, { id }) {
     question: formatQuestion(question, users[question.author]),
   };
 }
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));
