@@ -11,7 +11,7 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { users, questions, question, signedInUser, optionOne, user} = this.props;
+    const { users, questions, qid, signedInUser, optionOne, user} = this.props;
 
     // const {showUnansweredQs, showAnsweredQs} = this.state
 
@@ -19,8 +19,9 @@ export class Dashboard extends Component {
     answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
     const unansweredQs = Object.keys(questions)
-      .filter((questions) => !answeredQs(question))
-      .includes(question).sort(
+      .filter((question) => !answeredQs(question))
+      .includes(qid)
+      unansweredQs.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     );
 
@@ -55,8 +56,8 @@ export class Dashboard extends Component {
                   </Link>
                 </div>
               </li>
-            ))}
-          </ul>
+            ))} 
+          </ul> 
         </TabPanel>
         <TabPanel>
           <ul>

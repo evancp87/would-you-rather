@@ -20,7 +20,7 @@ export default function users (state={}, action) {
                    }
                    
                }
-            //    TODO: finish object
+          
             }
 
             case SAVE_USER_QUESTION : return {
@@ -36,4 +36,3 @@ export default function users (state={}, action) {
 
 }
 
-// TODO: use destructuring so lines are defined
