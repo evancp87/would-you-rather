@@ -17,7 +17,7 @@ class Nav extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { avatarURL, name } = this.props;
     return (
       <div>
         <nav>
@@ -40,10 +40,10 @@ class Nav extends Component {
             <li className="loguser">
               {this.props.signedInUser !== null ? (
                 <div>
-                  <img src={user.avatarURL} alt={user.name} />
+                  <img src={avatarURL} alt={name} />
                  
               
-                  <div>Hello, {user.name}</div>
+                  <div>Hello, {name}</div>
 
                   <NavLink to="/login" exact className="">
                     <button onClick={this.handleLogOut}>Sign Out</button>

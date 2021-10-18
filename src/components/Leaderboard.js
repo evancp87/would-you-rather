@@ -19,7 +19,7 @@ export class Leaderboard extends Component {
       // map over list of users
       <div>
         <ul>
-          {users.map((id) => (
+          {Object.keys(users).map((id) => (
             <li key={id}>
               <div>
                 <div>
@@ -40,7 +40,6 @@ export class Leaderboard extends Component {
                   </div>
                 </div>
               </div>
-              {/* // TODO: logic with leaderboard place trophy icon */}
             </li>
           ))}
         </ul>

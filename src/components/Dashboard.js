@@ -23,18 +23,16 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { users, questions, signedInUser, optionOne } = this.props;
+    const { users, questions, question, signedInUser, optionOne, user} = this.props;
+
     // const {showUnansweredQs, showAnsweredQs} = this.state
 
-    const answeredQs = Object.keys(users[signedInUser].answers).map((qid) =>
-      questions(qid)
-    );
+    const answeredQs = Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
     answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
-    const unansweredQs = Object.keys(users[signedInUser].answers)
-      .filter((qid) => !answeredQs(qid))
-      .includes(questions);
-    unansweredQs.sort(
+    const unansweredQs = Object.keys(questions)
+      .filter((questions) => !answeredQs(question))
+      .includes(question).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     );
 
@@ -50,13 +48,13 @@ export class Dashboard extends Component {
             {unansweredQs.map((id) => (
               <li key={id}>
                 <div>
-                  <p>{this.props.user.name} wants to know...</p>
+                  <p>{user.name} wants to know...</p>
                   <Question
                     id={id}
-                    userAvatar={this.props.user.AvatarURL}
-                    userName={this.props.user.name}
+                    userAvatar={user.AvatarURL}
+                    userName={user.name}
                     questionState="unanswered"
-                    userQuestion={this.props.questions[optionOne.text]}
+                    userQuestion={questions[optionOne.text]}
                   />
                   <p>or...</p>
                   <Link
@@ -77,13 +75,13 @@ export class Dashboard extends Component {
             {answeredQs.map((id) => (
               <li key={id}>
                 <div>
-                  <p>{this.props.user.name} asks...</p>
+                  <p>{user.name} asks...</p>
                   <Question
                     id={id}
-                    userAvatar={this.props.user.AvatarURL}
-                    userName={this.props.user.name}
+                    userAvatar={user.AvatarURL}
+                    userName={user.name}
                     questionState="answered"
-                    userQuestion={this.props.questions[optionOne]}
+                    userQuestion={questions[optionOne.text]}
                   />
                   <Link
                     to={{
@@ -103,7 +101,7 @@ export class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users, signedInUser }) {
   return {
     qid: Object.keys(questions).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp

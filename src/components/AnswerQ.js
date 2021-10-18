@@ -46,7 +46,7 @@ class AnswerQ extends Component {
   render() {
 
 const {user} = this.props
-    
+     // TODO: add logic to prevent user from voting twice
     return (
       <div>
         <Card style={{ width: "18rem" }}>

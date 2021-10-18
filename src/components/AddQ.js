@@ -52,6 +52,7 @@ export class AddQ extends Component {
     }));
   };
   render() {
+   
     const { optionOne, optionTwo } = this.state;
 
     return (
