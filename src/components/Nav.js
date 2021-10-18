@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { signOutUser } from "../actions/signedInUser";
 
-
 class Nav extends Component {
   handleLogOut = (e) => {
     e.preventDefault();

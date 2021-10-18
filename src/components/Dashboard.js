@@ -3,23 +3,11 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import {Link} from 'react-router-dom'
 
 export class Dashboard extends Component {
-  static propTypes = {
-    unanswered: PropTypes.bool.isRequired,
-    answered: PropTypes.bool.isRequired,
-    // showUnansweredQs: PropTypes.bool.isRequired,
-    // showAnsweredQs: PropTypes.bool.isRequired,
-    users: PropTypes.array.isRequired,
-    questions: PropTypes.array.isRequired,
-  };
   state = {
-    unanswered: true,
     answered: false,
-    // showUnansweredQs: true,
-    // showAnsweredQs: false,
   };
 
   render() {
@@ -101,7 +89,7 @@ export class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, signedInUser }) {
+function mapStateToProps({ questions }) {
   return {
     qid: Object.keys(questions).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp

@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import {withRouter} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { handleSaveQuestionAnswer } from "../actions/shared";
-import PropTypes from 'prop-types'
 
 class AnswerQ extends Component {
-  static propTypes = {
-    handleSaveQuestionAnswer: PropTypes.func.isRequired,
-    signedInUser: PropTypes.string.isRequired,
-    question: PropTypes.object.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    handleVote: PropTypes.func.isRequired,
-  }
   state = {
     option: "",
     answered: false,
@@ -23,7 +15,6 @@ class AnswerQ extends Component {
   handleChange = (e) => {
     this.setState(() => ({
       option: e.target.id,
-      answered: false,
     }));
   };
 
@@ -78,9 +69,9 @@ const {user} = this.props
                 name="option"
                 onChange={this.handleChange}
               />
-             
+              <Link to="/">
                 <Button type="submit">Submit</Button>
-           
+              </Link>
             </form>
           </Card.Body>
         </Card>
@@ -99,4 +90,4 @@ function mapStateToProps({ signedInUser, users, questions }, { id }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(AnswerQ));
+export default connect(mapStateToProps)(AnswerQ);

@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setSignedInUser } from "../actions/signedInUser";
 import { Redirect } from "react-router-dom";
-import PropTypes from 'prop-types'
 
 class SignIn extends Component {
-  static propTypes = {
-    loading: PropTypes.bool.isRequired,
-    toHome: PropTypes.bool.isRequired,
-    signedInUser: PropTypes.object.isRequired,
-  }
   state = {
     signedInUser: "",
     toHome: false,
