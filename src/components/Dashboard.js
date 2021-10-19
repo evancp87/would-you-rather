@@ -11,11 +11,12 @@ export class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.props.questions)
     const { users, questions, qid, signedInUser, optionOne, user} = this.props;
     // const {showUnansweredQs, showAnsweredQs} = this.state
-
+console.log(questions)
     const answeredQs = Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
-    
+   
     answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
  
     const unansweredQs = Object.keys(questions)
@@ -34,7 +35,7 @@ export class Dashboard extends Component {
 
         <TabPanel>
           <ul>
-            {unansweredQs.map((qid) => (
+            {unansweredQs.map(qid => (
               <li key={qid}>
                 <div>
                   <p>{user.name} wants to know...</p>
@@ -45,6 +46,7 @@ export class Dashboard extends Component {
                     questionState="unanswered"
                     userQuestion={questions[optionOne.text]}
                   />
+                
                   <p>or...</p>
                   <Link
                     to={{
@@ -61,12 +63,12 @@ export class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <ul>
-            {answeredQs.map((id) => (
-              <li key={id}>
+            {answeredQs.map(qid => (
+              <li key={qid}>
                 <div>
                   <p>{user.name} asks...</p>
                   <Question
-                    id={id}
+                    id={qid}
                     userAvatar={user.AvatarURL}
                     userName={user.name}
                     questionState="answered"
@@ -90,13 +92,11 @@ export class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ users, signedInUser, questions  }) {
+function mapStateToProps(state) {
   return {
-    users,
-    signedInUser,
-    qid: Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    ),
+    users: state.users,
+    signedInUser: state.signedInUser,
+    questions: state.questions,
   };
 }
 
