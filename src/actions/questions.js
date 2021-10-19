@@ -17,7 +17,6 @@ export function saveQuestionAnswer (authedUser, qid, answer) {
         answer,
         qid,
     }
-
 }
 
 
