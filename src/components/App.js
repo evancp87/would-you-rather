@@ -15,25 +15,27 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
+
   render() {
+    const {signedInUser} = this.props;
    
     return (
       <Router>
         <Fragment>
           <div className="container">
             <LoadingBar />
-            <Nav />
-
+            <Nav signedInUser={signedInUser}/>
+{/* !signedInUser ? */}
             {this.props.loading === true ? (
               <div>
                 <Switch>
-                  <Route path="/signin" component={SignIn} />
+                  <Route component={SignIn} />
                 </Switch>
               </div>
             ) : (
               <div>
                 <Switch>
-                  <Route exact path="/" component={Dashboard} />
+                  <Route exact path="/" component={Dashboard} signedInUser={signedInUser}/>
                   <Route path="/question/incorrect_id" component={NotFound} />
                   <Route path="/question/:id" component={Question} />
                   <Route path="/add" component={AddQ} />
@@ -49,7 +51,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(users, signedInUser) {
+function mapStateToProps({users, signedInUser}) {
   return {
     loading: users === null,
     signedInUser,

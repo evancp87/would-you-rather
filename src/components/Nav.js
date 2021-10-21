@@ -18,7 +18,7 @@ class Nav extends Component {
   render() {
     const { avatarURL, name } = this.props;
     return (
-      <div>
+      <div className='navbar'>
         <nav>
           <ul>
             <li>

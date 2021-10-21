@@ -27,7 +27,7 @@ export default function users (state={}, action) {
                 ...state,
                 [action.question.author] : {
                     ...state[action.question.author],
-                    question: state[action.question.author].concat(action.question.id)
+                    questions: state[action.question.author].concat(action.question.id)
                 }
 
             }

@@ -11,10 +11,9 @@ export class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.props.questions)
     const { users, questions, qid, signedInUser, optionOne, user} = this.props;
     // const {showUnansweredQs, showAnsweredQs} = this.state
-console.log(questions)
+console.log(optionOne)
     const answeredQs = Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
    
     answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
@@ -27,7 +26,7 @@ console.log(questions)
     );
    
     return (
-      <Tabs>
+      <Tabs className='question-dashboard'>
         <TabList>
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
@@ -35,12 +34,12 @@ console.log(questions)
 
         <TabPanel>
           <ul>
-            {unansweredQs.map(qid => (
-              <li key={qid}>
+            {unansweredQs.map(id => (
+              <li key={id}>
                 <div>
                   <p>{user.name} wants to know...</p>
                   <Question
-                    id={qid}
+                    id={id}
                     userAvatar={user.AvatarURL}
                     userName={user.name}
                     questionState="unanswered"

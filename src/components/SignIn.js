@@ -45,7 +45,7 @@ class SignIn extends Component {
     if (this.state.toHome === true) {
       <Redirect path="/" />;
     }
-
+const {signedInUser} = this.state
     return (
       <div>
         <div>
@@ -54,15 +54,17 @@ class SignIn extends Component {
           </div>
           <form>
             <select onChange={this.handleChange}>
+              <option value=''>Select user</option>
               {users.id.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.name}
                 </option>
     ))}
+    console.log(users)
             </select>
             <button
               type="submit"
-              disabled={!users.name}
+              disabled={!signedInUser.name}
               onSubmit={this.handleSubmit}
             >
               Sign in
@@ -74,13 +76,14 @@ class SignIn extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, signedInUser }) {
+function mapStateToProps({ questions, users, signedInUser, answers }) {
   return {
     users: Object.keys(users).map((id) => {
       return { id: users[id]["id"], name: users[id]["name"] };
     }),
     signedInUser,
     questions,
+    answers,
    
   };
 }

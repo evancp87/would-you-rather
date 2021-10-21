@@ -53,21 +53,21 @@ export class AddQ extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            placeholder="Enter an option"
+            placeholder="Enter option one"
             value={optionOne}
             onChange={this.handleOptionOne}
           />
           <p>Or</p>
           <input
             type="text"
-            placeholder="Enter an option"
+            placeholder="Enter option two"
             value={optionTwo}
             onChange={this.handleOptionTwo}
           />
           <button
             onSubmit={this.handleSubmit}
-            disabled={optionOne === "" && optionTwo === ""}
-          ></button>
+            disabled={optionOne === "" || optionTwo === "" || optionOne === optionTwo}
+          >Submit</button>
         </form>
       </div>
     );
