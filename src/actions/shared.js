@@ -1,5 +1,6 @@
 import {getInitialData} from "../utils/Api"
-import {_saveQuestion} from '../utils/_DATA'
+import {saveQuestion} from '../utils/Api'
+// import {_saveQuestion} from '../utils/_DATA'
 import {receiveQuestions, addQuestion, saveQuestionAnswer} from "../actions/questions"
 import {receiveUsers, saveUserQuestion, saveUserAnswer} from "../actions/users"
 import {setSignedInUser, signOutUser} from "../actions/signedInUser"
@@ -42,7 +43,7 @@ export function handleNewQuestion (optionOneText, optionTwoText) {
     return (dispatch, getState) => {
         const {signedInUser} = getState()
         dispatch(showLoading())
-        return _saveQuestion(signedInUser,optionOneText, optionTwoText)
+        return saveQuestion(signedInUser,optionOneText, optionTwoText)
         .then(question => {
             dispatch(addQuestion(question))
                 dispatch(saveUserQuestion(question))

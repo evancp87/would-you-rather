@@ -4,15 +4,15 @@ import { connect } from "react-redux";
 export class Leaderboard extends Component {
   render() {
     const { name, avatar, answers, author, users, questions } = this.props;
-    const answeredQs = Object.keys(users[answers]).length;
-    const questionsCreated = Object.keys(users[questions]).length;
+    const answeredQs = users[answers] && Object.values(users[answers]).length;
+    const questionsCreated = users[questions] && Object.values(users[questions]).length;
     const score = answeredQs + questionsCreated;
 
     return (
       // map over list of users
       <div>
         <ul>
-          {Object.keys(users).map((id) => (
+          {users && Object.keys(users).map((id) => (
             <li key={id}>
               <div>
                 <div>
@@ -24,8 +24,8 @@ export class Leaderboard extends Component {
                 </div>
                 <div className="question-info">
                   <h2>{author.name} </h2>
-                  <p>Answered Questions: {answeredQs}</p>
-                  <p>Created questions: {questionsCreated}</p>
+                  <p>Answered Questions: {answeredQs && answeredQs}</p>
+                  <p>Created questions: {questionsCreated && questionsCreated}</p>
                   <div>
                     <p>Score</p>
 

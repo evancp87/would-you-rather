@@ -14,17 +14,16 @@ export class Dashboard extends Component {
     const { users, questions, qid, signedInUser, optionOne, user} = this.props;
     // const {showUnansweredQs, showAnsweredQs} = this.state
 console.log(optionOne)
-    const answeredQs = Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
+    const answeredQs = users[signedInUser] && Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
    
-    answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+    answeredQs && answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
  
-    const unansweredQs = Object.keys(questions)
+    const unansweredQs = questions && Object.keys(questions)
       .filter((question) => !answeredQs(question))
       .includes(qid)
-      unansweredQs.sort(
+      unansweredQs && unansweredQs.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
-    );
-   
+    )
     return (
       <Tabs className='question-dashboard'>
         <TabList>
@@ -34,7 +33,7 @@ console.log(optionOne)
 
         <TabPanel>
           <ul>
-            {unansweredQs.map(id => (
+            {unansweredQs && unansweredQs.map(id => (
               <li key={id}>
                 <div>
                   <p>{user.name} wants to know...</p>
@@ -62,7 +61,7 @@ console.log(optionOne)
         </TabPanel>
         <TabPanel>
           <ul>
-            {answeredQs.map(qid => (
+            {answeredQs && answeredQs.map(qid => (
               <li key={qid}>
                 <div>
                   <p>{user.name} asks...</p>
@@ -92,11 +91,13 @@ console.log(optionOne)
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
     users: state.users,
     signedInUser: state.signedInUser,
     questions: state.questions,
   };
 }
+
 
 export default connect(mapStateToProps)(Dashboard);

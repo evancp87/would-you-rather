@@ -41,25 +41,33 @@ class SignIn extends Component {
     }));
   };
   render() {
-    const { users } = Object.values(this.props.users);
+    // const { users } = Object.values(this.props.users);
     if (this.state.toHome === true) {
       <Redirect path="/" />;
     }
 const {signedInUser} = this.state
     return (
-      <div>
+      <div className="signIn">
         <div>
           <div>
             <p>Welcome! Please sign in to your account.</p>
           </div>
           <form>
             <select onChange={this.handleChange}>
-              <option value=''>Select user</option>
-              {users.id.map((user) => (
-                <option key={user.id} value={user.id}>
+              <option value=''>Select User</option>
+              {(this.props.users || []).map((user) => {
+                return (
+
+                  <option key={user.id} value={user.id}>
                   {user.name}
-                </option>
-    ))}
+                </option> ) })}
+                  
+              {/* {Object.values(this.props.users).map((user) => (
+                <option value={user.name}>
+                  {user.name}
+                </option> */}
+
+    {/* ))} */}
     console.log(users)
             </select>
             <button
