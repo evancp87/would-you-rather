@@ -41,11 +41,14 @@ class SignIn extends Component {
     }));
   };
   render() {
-    // const { users } = Object.values(this.props.users);
+    console.log(this.props)
+    // const {showUsers} = this.props 
+    const {users} = this.props;
+    let userData = Object.values(users);
     if (this.state.toHome === true) {
       <Redirect path="/" />;
     }
-const {signedInUser} = this.state
+    const { signedInUser } = this.state;
     return (
       <div className="signIn">
         <div>
@@ -54,21 +57,21 @@ const {signedInUser} = this.state
           </div>
           <form>
             <select onChange={this.handleChange}>
-              <option value=''>Select User</option>
-              {(this.props.users || []).map((user) => {
+              <option value="">Select User</option>
+              {/* {(showUsers || []).map((user) => { */}
+              {userData.map((user) => {
                 return (
-
                   <option key={user.id} value={user.id}>
-                  {user.name}
-                </option> ) })}
-                  
+                    {user.name}
+                  </option>
+                );
+              })}
               {/* {Object.values(this.props.users).map((user) => (
                 <option value={user.name}>
                   {user.name}
                 </option> */}
-
-    {/* ))} */}
-    console.log(users)
+              {/* ))} */}
+              console.log(users)
             </select>
             <button
               type="submit"
@@ -85,14 +88,15 @@ const {signedInUser} = this.state
 }
 
 function mapStateToProps({ questions, users, signedInUser, answers }) {
+  
   return {
+   
     users: Object.keys(users).map((id) => {
       return { id: users[id]["id"], name: users[id]["name"] };
     }),
     signedInUser,
     questions,
     answers,
-   
   };
 }
 
