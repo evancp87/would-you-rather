@@ -26,7 +26,7 @@ class App extends Component {
             <LoadingBar />
             <Nav signedInUser={signedInUser}/>
 {/* !signedInUser ? */}
-            {this.props.loading === true ? (
+            {!signedInUser ? (
               <div>
                 <Switch>
                   <Route component={SignIn} />
