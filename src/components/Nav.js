@@ -60,8 +60,9 @@ class Nav extends Component {
 function mapStateToProps({ signedInUser, users }) {
   return {
     signedInUser,
-    avatar: signedInUser ? users(signedInUser).avatarURL : null,
-    name: signedInUser ? users(signedInUser).name : null,
+    users,
+    // avatar: signedInUser ? users(signedInUser).avatarURL : null,
+    // name: signedInUser ? users(signedInUser).name : null,
   };
 }
 

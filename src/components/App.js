@@ -26,7 +26,8 @@ class App extends Component {
             <LoadingBar />
             <Nav signedInUser={signedInUser}/>
 {/* !signedInUser ? */}
-            {!signedInUser ? (
+{/* this.props.loading === true ? */}
+            {!signedInUser ?  (
               <div>
                 <Switch>
                   <Route component={SignIn} />
@@ -54,6 +55,7 @@ class App extends Component {
 function mapStateToProps({users, signedInUser}) {
   return {
     loading: users === null,
+    users,
     signedInUser,
   };
 }

@@ -42,6 +42,7 @@ export class Dashboard extends Component {
                     <Question
                       qid={id}
                       userAvatar={user.AvatarURL}
+                      author={this.props.user[this.props.questions[id].author.name]}
                       userName={user.name}
                       question={question}
                       questionState="unanswered"
@@ -108,22 +109,23 @@ function mapStateToProps({ users, signedInUser, questions }, { qid }) {
   // const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
   // const {showUnansweredQs, showAnsweredQs} = this.state
 
-  const answeredQs =
-    users[signedInUser] &&
-    Object.keys(users[signedInUser].answers).map((qid) => questions[qid]);
+  const answeredQs = () =>
+    users[signedInUser] && Object.keys(users[signedInUser].answers);
+  // .map((qid) => questions[qid]);
 
-  answeredQs &&
-    answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+  // answeredQs &&
+  //   answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
-  const unansweredQs =
+  const unansweredQs = () =>
     questions &&
-    Object.keys(questions)
+    Object.values(questions)
       .filter((question) => !answeredQs(question))
       .includes(qid);
-  unansweredQs &&
-    unansweredQs.sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    );
+      
+  // unansweredQs &&
+  //   unansweredQs.sort(
+  //     (a, b) => questions[b].timestamp - questions[a].timestamp
+  //   );
   const question = questions[qid];
   const user = users[questions.author];
   return {

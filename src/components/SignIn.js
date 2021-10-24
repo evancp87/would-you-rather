@@ -5,50 +5,48 @@ import { Redirect } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
-    signedInUser: "",
+    signedInUser: null,
     toHome: false,
     loading: false,
   };
 
   handleChange = (e) => {
-    const signedInUser = e.target.value;
+    const id = e.target.value;
 
     this.setState(() => ({
-      signedInUser: signedInUser,
+      signedInUser: id,
       toHome: false,
       loading: false,
     }));
+    // console.log(signedInUser);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    let { signedInUser } = this.state;
+    // let { signedInUser } = this.state;
     const { dispatch } = this.props;
 
-    if (!signedInUser) {
-      alert("Please sign in");
-    } else if (signedInUser) {
-      return <Redirect to="/" />;
-    }
-
-    dispatch(setSignedInUser(signedInUser));
+    dispatch(setSignedInUser(this.state.signedInUser));
+    // this.props.history.push("/")
 
     this.setState(() => ({
-      signedInUser: signedInUser,
-      toHome: signedInUser ? false : true,
+      signedInUser: '',
+      toHome: true,
       loading: true,
     }));
+
+   
   };
   render() {
-    console.log(this.props)
-    // const {showUsers} = this.props 
-    const {users} = this.props;
+    console.log(this.props);
+    // const {showUsers} = this.props
+    const { users } = this.props;
     let userData = Object.values(users);
     if (this.state.toHome === true) {
-      <Redirect path="/" />;
+      <Redirect path="/home" />;
     }
-    const { signedInUser } = this.state;
+    // let { signedInUser } = this.state;
     return (
       <div className="signIn">
         <div>
@@ -58,25 +56,18 @@ class SignIn extends Component {
           <form>
             <select onChange={this.handleChange}>
               <option value="">Select User</option>
-              {/* {(showUsers || []).map((user) => { */}
-              {userData.map((user) => {
+              {(userData || []).map((user) => {
                 return (
                   <option key={user.id} value={user.id}>
                     {user.name}
                   </option>
                 );
               })}
-              {/* {Object.values(this.props.users).map((user) => (
-                <option value={user.name}>
-                  {user.name}
-                </option> */}
-              {/* ))} */}
-              console.log(users)
             </select>
             <button
               type="submit"
-              disabled={!signedInUser.name}
-              onSubmit={this.handleSubmit}
+              disabled={!this.state.signedInUser}
+              onClick={this.handleSubmit}
             >
               Sign in
             </button>
@@ -88,9 +79,7 @@ class SignIn extends Component {
 }
 
 function mapStateToProps({ questions, users, signedInUser, answers }) {
-  
   return {
-   
     users: Object.keys(users).map((id) => {
       return { id: users[id]["id"], name: users[id]["name"] };
     }),
