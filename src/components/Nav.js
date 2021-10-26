@@ -8,15 +8,15 @@ class Nav extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
 
+    dispatch(signOutUser());
     this.setState(() => ({
       signedInUser: null,
     }));
 
-    dispatch(signOutUser());
   };
 
   render() {
-    const { avatarURL, name } = this.props;
+    const { avatarURL, name, signedInUser } = this.props;
     return (
       <div className='navbar'>
         <nav>
@@ -37,18 +37,18 @@ class Nav extends Component {
               </NavLink>
             </li>
             <li className="loguser">
-              {this.props.signedInUser !== null ? (
+              {this.props.signedInUser !== null && (
                 <div>
                   <img src={avatarURL} alt={name} />
                  
               
-                  <div>Hello, {name}</div>
+                  <div>{`Hello, ${signedInUser.name}`}</div>
 
                   <NavLink to="/login" exact className="">
                     <button onClick={this.handleLogOut}>Sign Out</button>
                   </NavLink>
                 </div>
-              ) : null}
+              )}
             </li>
           </ul>
         </nav>

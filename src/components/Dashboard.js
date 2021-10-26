@@ -11,7 +11,7 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { answeredQs, unansweredQs, user, id } = this.props;
+    const { answeredQs, unansweredQs, user, id, userInfo } = this.props;
     //     const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
     //     // const {showUnansweredQs, showAnsweredQs} = this.state
     // console.log(users)
@@ -34,8 +34,8 @@ export class Dashboard extends Component {
 
         <TabPanel>
           <ul>
-            {unansweredQs &&
-              unansweredQs.map((question) => (
+            {userInfo &&
+              userInfo.map((question) => (
                 <li key={question.id}>
                   <div>
                     <p>{user.name} wants to know...</p>
@@ -65,8 +65,8 @@ export class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <ul>
-            {answeredQs &&
-              answeredQs.map((question) => (
+            {userInfo &&
+              userInfo.map((question) => (
                 <li key={question.id}>
                   <div>
                     <p>{user.name} asks...</p>
@@ -105,36 +105,40 @@ export class Dashboard extends Component {
 //   };
 // }
 
-function mapStateToProps({ users, signedInUser, questions }, { qid }) {
+function mapStateToProps({ users, signedInUser, questions }) {
   // const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
   // const {showUnansweredQs, showAnsweredQs} = this.state
 
-  const answeredQs = () =>
-    users[signedInUser] && Object.keys(users[signedInUser].answers);
+
+  // const answeredQs = () =>
+  //   users[signedInUser] && Object.keys(users[signedInUser].answers);
+  // // .map((qid) => questions[qid]);
+  // const question = questions[question.id];
+  // const user = users[questions.author];
+
+  const answeredIds = Object.keys(users[signedInUser].answers);
+ 
+
+
+  const answeredQs = Object.values(questions).filter(question => !answeredIds.includes(question.id).sort((a, b) => questions[b].timestamp - questions[a].timestamp))
   // .map((qid) => questions[qid]);
+
+  
 
   // answeredQs &&
   //   answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
-  const unansweredQs = () =>
-    questions &&
-    Object.values(questions)
-      .filter((question) => !answeredQs(question))
-      .includes(qid);
-      
-  // unansweredQs &&
-  //   unansweredQs.sort(
-  //     (a, b) => questions[b].timestamp - questions[a].timestamp
-  //   );
-  const question = questions[qid];
-  const user = users[questions.author];
+  const unansweredQs = Object.values(questions)
+      .filter((question) => answeredIds.includes(question.id)).sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    );
+  // const question = questions[question.id];
+  // const user = users[questions.author];
   return {
-    users,
-    user,
-    signedInUser,
-    questions,
-    question,
-    qid,
+    userInfo : { 
+      answeredQs,
+    unansweredQs,}
+    
   };
 }
 

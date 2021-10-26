@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleNewQuestion } from "../actions/shared";
-import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export class AddQ extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
-    submittedQuestion: false,
+    // submittedQuestion: false,
+    toHome: false,
   };
 
   handleOptionOne = (e) => {
@@ -29,21 +30,23 @@ export class AddQ extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { optionOne, optionTwo } = this.state;
+    const { optionOne, optionTwo} = this.state;
     const { dispatch, signedInUser } = this.props;
 
-    dispatch(handleNewQuestion(optionOne, optionTwo, signedInUser));
-    this.props.history.push("/");
-
-    this.setState(() => ({
-      optionOne: "",
-      optionTwo: "",
-      submittedQuestion: true,
-    }));
+    dispatch(handleNewQuestion(optionOne, optionTwo, signedInUser)).then(() =>
+      this.setState(() => ({
+        optionOne: "",
+        optionTwo: "",
+        // submittedQuestion: true,
+        toHome: true,
+      }))
+    );
   };
   render() {
-   
     const { optionOne, optionTwo } = this.state;
+    if (this.state.toHome === true) {
+      <Redirect path="/home" />;
+    }
 
     return (
       <div>
@@ -65,9 +68,13 @@ export class AddQ extends Component {
             onChange={this.handleOptionTwo}
           />
           <button
-            onSubmit={this.handleSubmit}
-            disabled={optionOne === "" || optionTwo === "" || optionOne === optionTwo}
-          >Submit</button>
+            onClick={this.handleSubmit}
+            disabled={
+              optionOne === "" || optionTwo === "" || optionOne === optionTwo
+            }
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
@@ -78,4 +85,4 @@ function mapStateToProps({ signedInUser }) {
   return { signedInUser };
 }
 
-export default withRouter(connect(mapStateToProps)(AddQ));
+export default connect(mapStateToProps)(AddQ);

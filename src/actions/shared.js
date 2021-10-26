@@ -39,11 +39,16 @@ export function handleSaveQuestionAnswer (answer, qid, authedUser) {
 }
 
 
-export function handleNewQuestion (optionOneText, optionTwoText) {
-    return (dispatch, getState) => {
-        const {signedInUser} = getState()
+export function handleNewQuestion (signedInUser, optionOneText, optionTwoText) {
+    return (dispatch) => {
+        const qData = {
+            author: signedInUser,
+            optionOneText, 
+            optionTwoText,
+        }
+        // const {signedInUser} = getState()
         dispatch(showLoading())
-        return saveQuestion(signedInUser,optionOneText, optionTwoText)
+        return saveQuestion(qData)
         .then(question => {
             dispatch(addQuestion(question))
                 dispatch(saveUserQuestion(question))
