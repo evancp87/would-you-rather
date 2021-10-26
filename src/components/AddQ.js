@@ -30,23 +30,20 @@ export class AddQ extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { optionOne, optionTwo} = this.state;
+    const { optionOne, optionTwo } = this.state;
     const { dispatch, signedInUser } = this.props;
 
-    dispatch(handleNewQuestion(optionOne, optionTwo, signedInUser)).then(() =>
+    dispatch(handleNewQuestion(signedInUser, optionOne, optionTwo)).then(() =>
       this.setState(() => ({
         optionOne: "",
         optionTwo: "",
-        // submittedQuestion: true,
         toHome: true,
       }))
     );
   };
   render() {
     const { optionOne, optionTwo } = this.state;
-    if (this.state.toHome === true) {
-      <Redirect path="/home" />;
-    }
+    if (this.state.toHome === true) return <Redirect to="/" />;
 
     return (
       <div>
