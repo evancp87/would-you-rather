@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 export class Dashboard extends Component {
   state = {
     answered: false,
+    // questionState: "unanswered",
   };
 
   render() {
-    const { answeredQs, unansweredQs, user, id, userInfo } = this.props;
+    const { answeredArr, unansweredQs, user, id, userInfo } = this.props;
     //     const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
     //     // const {showUnansweredQs, showAnsweredQs} = this.state
     // console.log(users)
@@ -34,28 +35,29 @@ export class Dashboard extends Component {
 
         <TabPanel>
           <ul>
-            {userInfo &&
-              userInfo.map((question) => (
+            { unansweredQs && unansweredQs.map((question) => (
                 <li key={question.id}>
                   <div>
                     <p>{user.name} wants to know...</p>
                     <Question
                       qid={id}
                       userAvatar={user.AvatarURL}
-                      author={this.props.user[this.props.questions[id].author.name]}
+                      author={
+                        this.props.user[this.props.questions[id].author.name]
+                      }
                       userName={user.name}
                       question={question}
                       questionState="unanswered"
                       // userQuestion={questions[optionOne.text]}
                     />
 
-                    <p>or...</p>
+<p>or...</p>
                     <Link
                       to={{
                         pathname: "questions/:question_id",
                         state: { answered: false },
                       }}
-                    >
+                      >
                       <button>Answer Question</button>
                     </Link>
                   </div>
@@ -65,8 +67,7 @@ export class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <ul>
-            {userInfo &&
-              userInfo.map((question) => (
+            {answeredArr && answeredArr.map((question) => (
                 <li key={question.id}>
                   <div>
                     <p>{user.name} asks...</p>
@@ -78,6 +79,7 @@ export class Dashboard extends Component {
                       questionState="answered"
                       // userQuestion={questions[optionOne.text]}
                     />
+                    <p>or...</p>
                     <Link
                       to={{
                         pathname: "questions/:question_id",
@@ -105,10 +107,9 @@ export class Dashboard extends Component {
 //   };
 // }
 
-function mapStateToProps({ users, signedInUser, questions }) {
+function mapStateToProps({users, signedInUser, questions}) {
   // const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
   // const {showUnansweredQs, showAnsweredQs} = this.state
-
 
   // const answeredQs = () =>
   //   users[signedInUser] && Object.keys(users[signedInUser].answers);
@@ -116,29 +117,38 @@ function mapStateToProps({ users, signedInUser, questions }) {
   // const question = questions[question.id];
   // const user = users[questions.author];
 
-  const answeredIds = Object.keys(users[signedInUser].answers);
- 
+  const answeredArr = Object.keys(users[signedInUser].answers);
 
+  answeredArr.sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 
-  const answeredQs = Object.values(questions).filter(question => !answeredIds.includes(question.id).sort((a, b) => questions[b].timestamp - questions[a].timestamp))
-  // .map((qid) => questions[qid]);
-
+  const unansweredQs = Object.keys(questions)
+  .filter((question) => !answeredArr.includes(question.id))
   
+  unansweredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+
+
+  // const answeredQs = Object.values(questions)
+  //   .filter((question) => !answeredArr.includes(question.id))
+  //   .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+
+  // .map((qid) => questions[qid]);
 
   // answeredQs &&
   //   answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
-  const unansweredQs = Object.values(questions)
-      .filter((question) => answeredIds.includes(question.id)).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    );
+  // const unansweredQs = Object.values(questions)
+  //   .filter((question) => answeredArr.includes(question.id))
+  //   .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
   // const question = questions[question.id];
   // const user = users[questions.author];
   return {
-    userInfo : { 
-      answeredQs,
-    unansweredQs,}
-    
+    users,
+    questions,
+    signedInUser,
+    // userInfo: {
+    //   answeredQs,
+    //   unansweredQs,
+    // },
   };
 }
 
