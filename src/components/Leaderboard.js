@@ -3,24 +3,14 @@ import { connect } from "react-redux";
 
 export class Leaderboard extends Component {
   render() {
-    const {  users, user,  } = this.props;
-    const leaders = Object.keys(users)
-    // const numAnswered = users[answers] && Object.values(users[answers]).length;
-    // const questionsCreated = users[questions] && Object.values(users[questions]).length;
-    const numAnswered =  Object.values(leaders.answers).length
-    const questionsCreated = leaders.questions.length;
-    const score = numAnswered + questionsCreated;
-
-    leaders.sort((a, b) => (b.score - a.score))
-
-
-
+    const {  sortedLeaderData} = this.props;
+  
     return (
       // map over list of users
       <div>
         <ul>
-          {users && Object.keys(users).map((id) => (
-            <li key={id}>
+          {sortedLeaderData.map((user) => (
+            <li key={user.name}>
               <div>
                 <div>
                   <img
@@ -31,12 +21,12 @@ export class Leaderboard extends Component {
                 </div>
                 <div className="question-info">
                   <h2>{user.name} </h2>
-                  <p>Answered Questions: {numAnswered && numAnswered}</p>
-                  <p>Created questions: {questionsCreated && questionsCreated}</p>
+                  <p>Answered Questions: {user.numAnswered}</p>
+                  <p>Created questions: {user.numQsCreated}</p>
                   <div>
                     <p>Score</p>
 
-                    <span>{score}</span>
+                    <span>{user.numAnswered + user.numQsCreated}</span>
                   </div>
                 </div>
               </div>
@@ -48,20 +38,23 @@ export class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps({ users, signedInUser}) {
-  // const sortedLeaders = Object.keys(users).sort((a, b) => {
-  //   return (
-  //     Object.values(b.answers).length +
-  //     b.questions.length -
-  //     (Object.keys(a.answers.length) + a.questions.length)
-  //   );
-  // });
-  // return { 
-  //   users: sortedLeaders };
+function mapStateToProps({ users}) {
+  
+  const sortedLeaderData = Object.values(users).map(user => ({
+    id: user.id,
+    userName: user.name,
+    avatarURL: user.avatarURL,
+    numAnswered: Object.values(user.answers).length,
+    numQsCreated: user.questions.length,
+    score: Object.values(user.answers).length + user.questions.length, 
+  }))
+
+  sortedLeaderData.sort((a, b) => b.score - a.score)
+  console.log(sortedLeaderData)
+
   return {
 
-  users,
-  signedInUser
+  sortedLeaderData
   }
 }
 export default connect(mapStateToProps)(Leaderboard);
