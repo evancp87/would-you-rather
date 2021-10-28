@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -8,9 +7,9 @@ import AnswerQ from "./AnswerQ";
 import QuestionResult from "./QuestionResult";
 
 class Question extends Component {
-  
   render() {
-    const { question, questionState, user } = this.props;
+    const { question, questionState } = this.props;
+    const { optionOne, optionTwo } = question;
 
     if (question === null || undefined) {
       return <p>This question does not exist</p>;
@@ -29,19 +28,19 @@ class Question extends Component {
         <Card style={{ width: "18rem" }}>
           <Card.Body>
             <Card.Text>
-              <b>{user.name} wants to know...</b>
+              <b>{this.props.author} wants to know...</b>
             </Card.Text>
             <Card.Img
               variant="top"
-              src={user.avatarURL}
-              alt={`Avatar of ${user.name}`}
+              src={this.props.avatarURL}
+              alt={this.props.author}
               className="avatar"
             />
             <Card.Title>...Would you rather...</Card.Title>
-            <Card.Text>{this.optionOne.text}</Card.Text>
+            <Card.Text>{optionOne.text}</Card.Text>
 
             <Card.Text>Or...</Card.Text>
-
+            <Card.Text>{optionTwo.text}</Card.Text>
             <Link to="/">
               <Button type="submit">Back</Button>
             </Link>
@@ -52,13 +51,12 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({ signedInUser, users, questions }, { id }) {
+function mapStateToProps({ users, questions }, { id }) {
   const question = questions[id];
 
   return {
-    signedInUser,
-    users,
-    question: formatQuestion(question, users[question.author]),
+    question,
+    users
   };
 }
 export default connect(mapStateToProps)(Question);
