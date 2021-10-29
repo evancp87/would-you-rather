@@ -8,24 +8,11 @@ import { Link } from "react-router-dom";
 export class Dashboard extends Component {
   state = {
     answered: false,
-    // questionState: "unanswered",
   };
 
   render() {
-    const { answeredArr, unansweredQs, user, id, userInfo } = this.props;
-    //     const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
-    //     // const {showUnansweredQs, showAnsweredQs} = this.state
-    // console.log(users)
-    //     const answeredQs = users[signedInUser] && Object.keys(users[signedInUser].answers).map((qid) => questions[qid])
+    const { answeredArr, unansweredQs, id } = this.props;
 
-    //     answeredQs && answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-
-    //     const unansweredQs = questions && Object.keys(questions)
-    //       .filter((question) => !answeredQs(question))
-    //       .includes(qid)
-    //       unansweredQs && unansweredQs.sort(
-    //       (a, b) => questions[b].timestamp - questions[a].timestamp
-    //     )
     return (
       <Tabs className="question-dashboard">
         <TabList>
@@ -35,29 +22,30 @@ export class Dashboard extends Component {
 
         <TabPanel>
           <ul>
-            { unansweredQs && unansweredQs.map((question) => (
-                <li key={question.id}>
+            {unansweredQs &&
+              unansweredQs.map((id) => (
+                <li key={id}>
                   <div>
-                    <p>{user.name} wants to know...</p>
+                    <p>{this.props.author} wants to know...</p>
                     <Question
-                      qid={id}
-                      userAvatar={user.AvatarURL}
+                      id={id}
                       author={
-                        this.props.user[this.props.questions[id].author.name]
+                        this.props.users[this.props.questions[id].author].name
                       }
-                      userName={user.name}
-                      question={question}
+                      authorPic={
+                        this.props.users[this.props.questions[id].author].avatarURL
+                      }
                       questionState="unanswered"
-                      // userQuestion={questions[optionOne.text]}
+                      // answered='false'
                     />
 
-<p>or...</p>
+                    <p>or...</p>
                     <Link
                       to={{
                         pathname: "questions/:question_id",
                         state: { answered: false },
                       }}
-                      >
+                    >
                       <button>Answer Question</button>
                     </Link>
                   </div>
@@ -67,30 +55,33 @@ export class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <ul>
-            {answeredArr && answeredArr.map((question) => (
-                <li key={question.id}>
-                  <div>
-                    <p>{user.name} asks...</p>
-                    <Question
-                      qid={id}
-                      userAvatar={user.AvatarURL}
-                      userName={user.name}
-                      question={question}
-                      questionState="answered"
-                      // userQuestion={questions[optionOne.text]}
-                    />
-                    <p>or...</p>
-                    <Link
-                      to={{
-                        pathname: "questions/:question_id",
-                        state: { answered: true },
-                      }}
-                    >
-                      <button>Results</button>
-                    </Link>
-                  </div>
-                </li>
-              ))}
+            {answeredArr.map((id) => (
+              <li key={id}>
+                <div>
+                  <p>{this.props.author} wants to know...</p>
+                  <Question
+                    id={id}
+                    author={
+                      this.props.users[this.props.questions[id].author].name
+                    }
+                    authorPic={
+                      this.props.user[this.props.questions[id].author].avatarURL
+                    }
+                    questionState="answered"
+                    // answered="true"
+                  />
+                  <p>or...</p>
+                  <Link
+                    to={{
+                      pathname: "questions/:question_id",
+                      state: { answered: true },
+                    }}
+                  >
+                    <button>Results</button>
+                  </Link>
+                </div>
+              </li>
+            ))}
           </ul>
         </TabPanel>
       </Tabs>
@@ -98,57 +89,19 @@ export class Dashboard extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   console.log(state)
-//   return {
-//     users: state.users,
-//     signedInUser: state.signedInUser,
-//     questions: state.questions,
-//   };
-// }
+function mapStateToProps({ users, signedInUser, questions }) {
+  const answeredArr = Object.keys(users[signedInUser].answers).sort(
+    (a, b) => b.timestamp - a.timestamp
+  );
 
-function mapStateToProps({users, signedInUser, questions}) {
-  // const { users, questions, qid, signedInUser, id, optionOne, user} = this.props;
-  // const {showUnansweredQs, showAnsweredQs} = this.state
+  const unansweredQs = Object.values(questions)
+    .filter((question) => !answeredArr.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
 
-  // const answeredQs = () =>
-  //   users[signedInUser] && Object.keys(users[signedInUser].answers);
-  // // .map((qid) => questions[qid]);
-  // const question = questions[question.id];
-  // const user = users[questions.author];
-
-  const answeredArr = Object.keys(users[signedInUser].answers);
-
-  answeredArr.sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-
-  const unansweredQs = Object.keys(questions)
-  .filter((question) => !answeredArr.includes(question.id))
-  
-  unansweredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-
-
-  // const answeredQs = Object.values(questions)
-  //   .filter((question) => !answeredArr.includes(question.id))
-  //   .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-
-  // .map((qid) => questions[qid]);
-
-  // answeredQs &&
-  //   answeredQs.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-
-  // const unansweredQs = Object.values(questions)
-  //   .filter((question) => answeredArr.includes(question.id))
-  //   .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-  // const question = questions[question.id];
-  // const user = users[questions.author];
   return {
-    users,
-    questions,
-    signedInUser,
-    // userInfo: {
-    //   answeredQs,
-    //   unansweredQs,
-    // },
+    answeredArr,
+    unansweredQs,
+    signedInUser
   };
 }
 
