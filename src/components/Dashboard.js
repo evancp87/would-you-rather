@@ -11,7 +11,7 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { answeredArr, unansweredQs, id } = this.props;
+    const { answeredArr, unansweredQs} = this.props;
 
     return (
       <Tabs className="question-dashboard">
@@ -26,14 +26,14 @@ export class Dashboard extends Component {
               unansweredQs.map((id) => (
                 <li key={id}>
                   <div>
-                    <p>{this.props.author} wants to know...</p>
+                    <p>{id.author} wants to know...</p>
                     <Question
                       id={id}
                       author={
-                        this.props.users[this.props.questions[id].author].name
+                       this.props.avatarDetails[id.author].name
                       }
                       authorPic={
-                        this.props.users[this.props.questions[id].author].avatarURL
+                        this.props.avatarDetails[id.author].avatarURL
                       }
                       questionState="unanswered"
                       // answered='false'
@@ -58,15 +58,15 @@ export class Dashboard extends Component {
             {answeredArr.map((id) => (
               <li key={id}>
                 <div>
-                  <p>{this.props.author} wants to know...</p>
-                  <Question
-                    id={id}
-                    author={
-                      this.props.users[this.props.questions[id].author].name
-                    }
-                    authorPic={
-                      this.props.user[this.props.questions[id].author].avatarURL
-                    }
+                <p>{id.author} wants to know...</p>
+                    <Question
+                      id={id}
+                      author={
+                        this.props.avatarDetails[id.author].name
+                       }
+                       authorPic={
+                         this.props.avatarDetails[id.author].avatarURL
+                       }
                     questionState="answered"
                     // answered="true"
                   />
@@ -98,10 +98,12 @@ function mapStateToProps({ users, signedInUser, questions }) {
     .filter((question) => !answeredArr.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
 
+    const avatarDetails = users
   return {
     answeredArr,
     unansweredQs,
-    signedInUser
+    signedInUser,
+    avatarDetails,
   };
 }
 
