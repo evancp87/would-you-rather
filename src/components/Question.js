@@ -8,7 +8,8 @@ import QuestionResult from "./QuestionResult";
 
 class Question extends Component {
   render() {
-    const { question, questionState } = this.props;
+    const { question, questionState, optionOne, optionTwo } = this.props;
+    
     // const { optionOne, optionTwo } = question;
 
     if (question === null || undefined) {
@@ -37,10 +38,10 @@ class Question extends Component {
               className="avatar"
             />
             <Card.Title>...Would you rather...</Card.Title>
-            <Card.Text>{this.props.optionOne}</Card.Text>
+            <Card.Text>{this.props.question.optionOne.text}</Card.Text>
 
             <Card.Text>Or...</Card.Text>
-            <Card.Text>{this.props.optionTwo}</Card.Text>
+            <Card.Text>{this.props.question.optionTwo.text}</Card.Text>
             <Link to="/">
               <Button type="submit">Back</Button>
             </Link>
