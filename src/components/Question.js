@@ -9,7 +9,7 @@ import QuestionResult from "./QuestionResult";
 class Question extends Component {
   render() {
     const { question, questionState } = this.props;
-    const { optionOne, optionTwo } = question;
+    // const { optionOne, optionTwo } = question;
 
     if (question === null || undefined) {
       return <p>This question does not exist</p>;
@@ -37,10 +37,10 @@ class Question extends Component {
               className="avatar"
             />
             <Card.Title>...Would you rather...</Card.Title>
-            <Card.Text>{optionOne.text}</Card.Text>
+            <Card.Text>{this.props.optionOne.text}</Card.Text>
 
             <Card.Text>Or...</Card.Text>
-            <Card.Text>{optionTwo.text}</Card.Text>
+            <Card.Text>{this.props.optionTwo.text}</Card.Text>
             <Link to="/">
               <Button type="submit">Back</Button>
             </Link>
@@ -53,8 +53,11 @@ class Question extends Component {
 
 function mapStateToProps({ users, questions }, { id }) {
   const question = questions[id];
+  // const { optionOne, optionTwo } = question;
+
 
   return {
+    questions,
     question,
     users
   };

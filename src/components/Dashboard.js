@@ -11,10 +11,10 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { answeredArr, unansweredQs} = this.props;
+    const { answeredArr, unansweredQs, id, question } = this.props;
 
     return (
-      <Tabs className="question-dashboard">
+      <Tabs className="center">
         <TabList>
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
@@ -23,17 +23,17 @@ export class Dashboard extends Component {
         <TabPanel>
           <ul>
             {unansweredQs &&
-              unansweredQs.map((id) => (
-                <li key={id}>
+              unansweredQs.map((question) => (
+                <li key={question.id}>
                   <div>
-                    <p>{id.author} wants to know...</p>
+                    <p>{question.author} wants to know...</p>
                     <Question
-                      id={id}
+                      id={question.id}
                       author={
-                       this.props.avatarDetails[id.author].name
+                        this.props.avatarDetails[question.author].name
                       }
                       authorPic={
-                        this.props.avatarDetails[id.author].avatarURL
+                        this.props.avatarDetails[question.author].avatarURL
                       }
                       questionState="unanswered"
                       // answered='false'
@@ -55,21 +55,22 @@ export class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <ul>
-            {answeredArr.map((id) => (
+            {answeredArr && answeredArr.map((id) => (
               <li key={id}>
-                <div>
+              <div>
                 <p>{id.author} wants to know...</p>
-                    <Question
-                      id={id}
-                      author={
-                        this.props.avatarDetails[id.author].name
-                       }
-                       authorPic={
-                         this.props.avatarDetails[id.author].avatarURL
-                       }
+                <Question
+                  id={id}
+                  author={
+                    this.props.avatarDetails[this.props.questions[id].author].name
+                  }
+                  authorPic={
+                    this.props.avatarDetails[this.props.questions[id].author].avatarURL
+                  }    // qText={this.props.avatarDetails}
                     questionState="answered"
                     // answered="true"
-                  />
+                    />
+                    console.log(authorPic)
                   <p>or...</p>
                   <Link
                     to={{
@@ -95,15 +96,23 @@ function mapStateToProps({ users, signedInUser, questions }) {
   );
 
   const unansweredQs = Object.values(questions)
-    .filter((question) => !answeredArr.includes(question.id))
+    .filter((question) => !answeredArr.includes(question))
     .sort((a, b) => b.timestamp - a.timestamp);
 
-    const avatarDetails = users
+   const avatarDetails = users
+   
+  //  const question = questions.id
+
+  //  const id = questions.id
+
   return {
     answeredArr,
     unansweredQs,
     signedInUser,
     avatarDetails,
+  
+    questions,
+  
   };
 }
 

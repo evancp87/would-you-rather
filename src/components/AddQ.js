@@ -46,8 +46,10 @@ export class AddQ extends Component {
     if (this.state.toHome === true) return <Redirect to="/" />;
 
     return (
-      <div>
-        <h2>Add New Question</h2>
+      <div className="center">
+        <div className='addQ'>
+
+        <h2 className="newQ-header">Add a New Question</h2>
         <p>Complete the question</p>
         <h3>Would you rather...</h3>
         <form onSubmit={this.handleSubmit}>
@@ -56,23 +58,25 @@ export class AddQ extends Component {
             placeholder="Enter option one"
             value={optionOne}
             onChange={this.handleOptionOne}
-          />
+            />
           <p>Or</p>
           <input
             type="text"
             placeholder="Enter option two"
             value={optionTwo}
             onChange={this.handleOptionTwo}
-          />
+            />
           <button
+          className='add-btn'
             onClick={this.handleSubmit}
             disabled={
               optionOne === "" || optionTwo === "" || optionOne === optionTwo
             }
-          >
+            >
             Submit
           </button>
         </form>
+            </div>
       </div>
     );
   }

@@ -31,12 +31,10 @@ class SignIn extends Component {
     // this.props.history.push("/")
 
     this.setState(() => ({
-      signedInUser: '',
+      signedInUser: "",
       toHome: true,
       loading: true,
     }));
-
-   
   };
   render() {
     console.log(this.props);
@@ -48,29 +46,35 @@ class SignIn extends Component {
     }
     // let { signedInUser } = this.state;
     return (
-      <div className="signIn">
-        <div>
+      <div className="center">
+        <div className="signIn">
           <div>
             <p>Welcome! Please sign in to your account.</p>
+            <img src="/Cat-paws.jpg" alt="cat paws" className="signin-img" />
           </div>
-          <form>
-            <select onChange={this.handleChange}>
-              <option value="">Select User</option>
-              {(userData || []).map((user) => {
-                return (
-                  <option key={user.id} value={user.id}>
-                    {user.name}
-                  </option>
-                );
-              })}
-            </select>
-            <button
-              type="submit"
-              disabled={!this.state.signedInUser}
-              onClick={this.handleSubmit}
-            >
-              Sign in
-            </button>
+          <form className="signin-form">
+            <div className="dropdown">
+              <select onChange={this.handleChange}>
+                <option value="">Select User</option>
+                {(userData || []).map((user) => {
+                  return (
+                    <option key={user.id} value={user.id}>
+                      {user.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div>
+              <button
+                className="signin-btn"
+                type="submit"
+                disabled={!this.state.signedInUser}
+                onClick={this.handleSubmit}
+              >
+                Sign in
+              </button>
+            </div>
           </form>
         </div>
       </div>

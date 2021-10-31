@@ -18,9 +18,9 @@ class Nav extends Component {
   render() {
     const { avatarURL, name, signedInUser } = this.props;
     return (
-      <div className='navbar'>
-        <nav>
-          <ul>
+      
+        <nav className='navbar'>
+          <ul className='navitems'>
             <li>
               <NavLink to="/" exact className="">
                 Home
@@ -36,15 +36,18 @@ class Nav extends Component {
                 Leaderboard
               </NavLink>
             </li>
-            <li className="loguser">
+            </ul>
+            <ul className="loguser">
+            <li >
               {this.props.signedInUser !== null && (
-                <div>
-                  <img src={avatarURL} alt={name} />
-                 
-              
-                  <div>{`Hello, ${signedInUser.name}`}</div>
+                <div >
+                  <div className="loguserdetails">
 
-                  <NavLink to="/login" exact className="">
+                  <img src={avatarURL} alt={name} className="avatar-pic"/>
+                  <div >{`Hello, ${signedInUser.name}`}</div>
+                  </div>
+
+                  <NavLink to="/login" exact className="signout-btn">
                     <button onClick={this.handleLogOut}>Sign Out</button>
                   </NavLink>
                 </div>
@@ -52,7 +55,7 @@ class Nav extends Component {
             </li>
           </ul>
         </nav>
-      </div>
+      
     );
   }
 }

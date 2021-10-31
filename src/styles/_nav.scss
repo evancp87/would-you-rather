@@ -1,0 +1,58 @@
+@mixin theme($theme: #4d8c57) {
+    background: $theme;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px 0 0 10px;
+    transition: 0.3s;
+    color: grey;
+  }
+  
+
+$green-theme: #4d8c57;
+
+ul {
+    list-style: none;
+    color: rgb(56, 8, 119);
+    text-decoration: none;
+}
+
+Navlink {
+    text-decoration: none;
+    width: 100%;
+    border: 2px solid #000;
+}
+
+navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    border-bottom: 10px;
+
+}
+
+.navbar { 
+    .navitems {
+
+        
+        color: red;
+        text-decoration: none;
+        // margin: 10em;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+    }
+
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: $green-theme;
+    border: 2px solid #000;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    
+
+}

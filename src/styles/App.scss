@@ -1,6 +1,13 @@
+@import 'helpers';
+@import 'nav';
+
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
+
+
 
 body {
     background-color: rgb(153, 19, 19)
@@ -8,41 +15,65 @@ body {
 
 .container {
     width: 1170px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 
-ul {
-    list-style: none;
-    color: rgb(79, 21, 156);
-    text-decoration: none;
-}
-
-Navlink {
-    text-decoration: none;
-    width: 100%;
-    border: 2px solid #000;
-}
-
-navbar {
+.loguser {
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.loguserdetails {
     flex-direction: row;
 }
-
-navbar {
-    ul {
-        color: red;
-        text-decoration: none;
-        margin: 10em;
-    }
+.avatar-pic {
+    border: 3px solid #4d8c57;
+    border-radius: 10px;
 }
 
 
-.signIn {
 
+
+.center {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid #000;
-    max-width: 500px;
-    margin: 10px;
+}
+
+// styles for signin component
+
+
+
+// styles for signin component form
+
+.dropdown {
+    appearance: none;
+
+    position: relative;
+  font-family: Arial;
+  width: 100%;
+
+
+}
+
+
+// AddQ component 
+.newQ-header {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid rgba(23, 42, 67, 0.8);
+        // font-size: 0.8em;
+        padding-left: 50px;
+        height: auto;
+        width: 100%;
+        background-color: #cfd7de;
+}
+
+.ldrboard-img {
+    border: 2px solid green;
+    border-radius: 20px;
+    max-width: 50px;
 }
