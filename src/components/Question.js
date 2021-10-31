@@ -37,10 +37,10 @@ class Question extends Component {
               className="avatar"
             />
             <Card.Title>...Would you rather...</Card.Title>
-            <Card.Text>{this.props.optionOne.text}</Card.Text>
+            <Card.Text>{this.props.optionOne}</Card.Text>
 
             <Card.Text>Or...</Card.Text>
-            <Card.Text>{this.props.optionTwo.text}</Card.Text>
+            <Card.Text>{this.props.optionTwo}</Card.Text>
             <Link to="/">
               <Button type="submit">Back</Button>
             </Link>
