@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
-import Question from "./Question";
+// import Question from "./Question";
 import AddQ from "./AddQ";
 import SignIn from "./SignIn";
 import Nav from "./Nav";
 import Leaderboard from "./Leaderboard";
+import ShowQByState from "./ShowQByState";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 
@@ -17,17 +18,17 @@ class App extends Component {
   }
 
   render() {
-    const {signedInUser} = this.props;
-   
+    const { signedInUser } = this.props;
+
     return (
       <Router>
         <Fragment>
           <div className="container">
             <LoadingBar />
-            <Nav signedInUser={signedInUser}/>
-{/* !signedInUser ? */}
-{/* this.props.loading === true ? */}
-            {!signedInUser ?  (
+            <Nav signedInUser={signedInUser} />
+            {/* !signedInUser ? */}
+            {/* this.props.loading === true ? */}
+            {!signedInUser ? (
               <div>
                 <Switch>
                   <Route component={SignIn} />
@@ -36,9 +37,18 @@ class App extends Component {
             ) : (
               <div>
                 <Switch>
-                  <Route exact path="/" component={Dashboard} signedInUser={signedInUser}/>
-                  <Route path="/question/incorrect_id" component={NotFound} />
-                  <Route path="/question/:id" component={Question} />
+                  <Route
+                    exact
+                    path="/"
+                    component={Dashboard}
+                    signedInUser={signedInUser}
+                  />
+                  <Route
+                    exact
+                    path="/questions/incorrect_id"
+                    component={NotFound}
+                  />
+                  <Route path="/questions/:id" component={ShowQByState} />
                   <Route path="/add" component={AddQ} />
                   <Route path="/leaderboard" component={Leaderboard} />
                   <Route component={NotFound} />
@@ -52,7 +62,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({users, signedInUser}) {
+function mapStateToProps({ users, signedInUser }) {
   return {
     loading: users === null,
     users,

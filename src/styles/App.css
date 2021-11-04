@@ -1,4 +1,4 @@
-.signIn, .addQ, .user-card {
+.ldr-card, .not-found, .question-card, .signIn, .addQ, .user-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
@@ -7,13 +7,15 @@
   flex-direction: column;
   align-items: center;
 }
-.signIn:hover, .addQ:hover, .user-card:hover {
+.ldr-card:hover, .not-found:hover, .question-card:hover, .signIn:hover, .addQ:hover, .user-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.add-btn, .signin-btn {
+.notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
   width: 200px;
   border-radius: 5px;
+  background-color: #4d8c57;
+  color: #fff;
 }
 
 .user-card {
@@ -26,13 +28,11 @@
 
 .addQ {
   max-width: 500px;
-  padding: 5em;
   align-items: center;
 }
 
 .signIn {
   max-width: 500px;
-  padding: 5em;
   border: 1px solid #000;
   margin: 10px;
 }
@@ -44,14 +44,61 @@
 }
 
 .signin-btn {
-  background-color: #4d8c57;
-  color: #fff;
   margin: 20px 0 0 0;
 }
 
-.add-btn {
-  background-color: #4d8c57;
-  color: #fff;
+.question-card {
+  max-width: 18rem;
+  display: inline-block;
+}
+
+.answerQ-header {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  padding-left: 50px;
+  height: auto;
+  width: 100%;
+  background-color: #cfd7de;
+}
+
+.not-found {
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
+}
+
+.ldr-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-basis: 0 0 30%;
+  max-width: 500px;
+  padding: 0 10em 0 10em;
+}
+
+.ldr-info {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 0 0 30%;
+}
+
+.question-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ldr-info {
+  flex-direction: column;
+}
+
+.num-questions {
+  flex-direction: row;
+}
+
+.score {
+  flex-direction: column;
+  border: 2px solid #000;
 }
 
 ul {
@@ -60,18 +107,15 @@ ul {
   text-decoration: none;
 }
 
-Navlink {
-  text-decoration: none;
-  width: 100%;
-  border: 2px solid #000;
-}
-
-navbar {
+.navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  position: fixed;
-  border-bottom: 10px;
+  justify-content: space-evenly;
+  background-color: #1F666A;
+  border-bottom: 2px solid #000;
+  width: 100%;
+  height: 100px;
+  position: relative;
 }
 
 .navbar .navitems {
@@ -79,33 +123,7 @@ navbar {
   text-decoration: none;
   list-style: none;
   display: flex;
-  justify-content: space-around;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  background-color: #4d8c57;
-  border: 2px solid #000;
-  width: 100%;
-  height: auto;
-  position: fixed;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: #991313;
-}
-
-.container {
-  width: 1170px;
-  margin: 0 auto;
-  padding: 10px;
+  justify-content: space-evenly;
 }
 
 .loguser {
@@ -116,17 +134,36 @@ body {
 
 .loguserdetails {
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .avatar-pic {
-  border: 3px solid #4d8c57;
-  border-radius: 10px;
+  max-width: 50px;
+  border: 1px solid #4d8c57;
+  border-radius: 25px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: 1170px;
+  margin: 0;
+  padding: 10px;
 }
 
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 5em;
 }
 
 .dropdown {
@@ -146,10 +183,55 @@ body {
   background-color: #cfd7de;
 }
 
+.newQForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .ldrboard-img {
   border: 2px solid green;
   border-radius: 20px;
   max-width: 50px;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.avatar {
+  max-width: 100%;
+  height: auto;
+}
+
+.tabs {
+  font-size: 32px;
+  background-color: #1F666A;
+}
+
+.paws {
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 150px;
+}
+
+.signin-header {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  width: 100%;
+  background-color: #cfd7de;
+}
+
+.sad-cat {
+  max-width: 500px;
+  padding: 30px;
 }
 
 /*# sourceMappingURL=App.css.map */

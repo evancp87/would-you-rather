@@ -10,29 +10,16 @@
 
 
 body {
-    background-color: rgb(153, 19, 19)
+
+    margin: 0;
 }
 
 .container {
     width: 1170px;
-    margin: 0 auto;
+    margin: 0;
     padding: 10px;
 }
 
-
-.loguser {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.loguserdetails {
-    flex-direction: row;
-}
-.avatar-pic {
-    border: 3px solid #4d8c57;
-    border-radius: 10px;
-}
 
 
 
@@ -41,6 +28,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5em;
+
 }
 
 // styles for signin component
@@ -72,8 +61,57 @@ body {
         background-color: #cfd7de;
 }
 
+.newQForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .ldrboard-img {
     border: 2px solid green;
     border-radius: 20px;
     max-width: 50px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.avatar {
+    max-width: 100%;
+    height: auto;
+
+}
+
+.tabs {
+    font-size: 32px;
+    background-color: $green-theme;
+}
+
+
+// signin image
+
+.paws {
+    max-width: 300px;
+    padding: 30px;
+    border-radius: 150px;
+}
+
+.signin-header {
+    display: flex;
+        flex-direction: row;
+        border: 1px solid rgba(23, 42, 67, 0.8);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        height: auto;
+        width: 100%;
+        background-color: #cfd7de;
+}
+
+.sad-cat {
+    max-width: 500px;
+    padding: 30px;
 }

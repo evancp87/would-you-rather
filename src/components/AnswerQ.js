@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { Redirect } from "react-router-dom";
 import { handleSaveQuestionAnswer } from "../actions/shared";
 
 class AnswerQ extends Component {
@@ -35,58 +33,73 @@ class AnswerQ extends Component {
   };
 
   render() {
+    const { users, signedInUser, id } = this.props;
+    const question = this.props.questions[id];
 
-const {user} = this.props
-     // TODO: add logic to prevent user from voting twice
+    if (!signedInUser) {
+      return <Redirect to="/" />;
+    }
+
+    if (id === null || undefined) {
+      return <Redirect to="/NotFound" />;
+    }
+
+    // TODO: add logic to prevent user from voting twice
     return (
-      <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Text>
-              <b>{user.name} wants to know...</b>
-            </Card.Text>
-            <Card.Img
-              variant="top"
-              src={user.avatarURL}
-              alt={`Avatar of ${user.name}`}
-              className="avatar"
-            />
-            <Card.Text>Complete the question:</Card.Text>
-            <Card.Title>...Would you rather...</Card.Title>
-            <form onSubmit={this.handleVote}>
+      <div className="center">
+        <div className="question-card">
+          <h3>
+            <b>{users[question.author].name} wants to know...</b>
+          </h3>
+          <img
+            src={this.props.question.author.avatarURL}
+            alt={`Avatar of ${this.props.users[id.author].name}`}
+            className="avatar"
+          />
+          <h3 className="answerQ-header">Complete the question:</h3>
+          <p>...Would you rather...</p>
+          <form onSubmit={this.handleVote}>
+            <label>{this.props.question.optionOne.text}
               <input
-                id="optionOneText"
-                value={this.optionOne.text}
+                id="one"
+                value="optionOne"
                 type="radio"
                 name="option"
                 onChange={this.handleChange}
               />
               <div>Or</div>
+            </label>
+
+            <label>{this.props.question.optionTwo.text}
               <input
-                id="optionTwoText"
+                id="two"
                 type="radio"
-                value={this.optionTwo.text}
+                value="optionTwo"
                 name="option"
                 onChange={this.handleChange}
               />
               <Link to="/">
-                <Button type="submit">Submit</Button>
+                <button type="submit" className="answer-btn">
+                  Submit
+                </button>
               </Link>
-            </form>
-          </Card.Body>
-        </Card>
+            </label>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ signedInUser, users, questions }, { id }) {
-  const question = questions[id];
+function mapStateToProps({ signedInUser, users, questions }) {
+  // const question = questions[id];
 
   return {
     signedInUser,
     users,
-    question: formatQuestion(question, users[question.author]),
+    questions,
+    
+    // question: formatQuestion(question, users[this.props.questions.author]),
   };
 }
 

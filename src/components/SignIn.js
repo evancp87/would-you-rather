@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { setSignedInUser } from "../actions/signedInUser";
 import { Redirect } from "react-router-dom";
 
+
 class SignIn extends Component {
   state = {
     signedInUser: null,
@@ -48,9 +49,9 @@ class SignIn extends Component {
     return (
       <div className="center">
         <div className="signIn">
+            <h2 className="signin-header">Welcome! Please sign in to your account.</h2>
           <div>
-            <p>Welcome! Please sign in to your account.</p>
-            <img src="/Cat-paws.jpg" alt="cat paws" className="signin-img" />
+            <img src="/Cat-paws.jpg" alt="cat paws" className="paws" />
           </div>
           <form className="signin-form">
             <div className="dropdown">

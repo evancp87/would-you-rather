@@ -15,34 +15,34 @@ export class Dashboard extends Component {
 
     return (
       <Tabs className="center">
-        <TabList>
+        <TabList className="tabs">
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
         </TabList>
 
         <TabPanel>
-          <ul>
+          <ul className="card-list">
             {unansweredQs &&
               unansweredQs.map((question) => (
                 <li key={question.id}>
                   <div>
-                    <p>{question.author} wants to know...</p>
+                    {/* <p>{question.author} wants to know...</p> */}
                     <Question
                       id={question.id}
-                      author={
-                        this.props.avatarDetails[question.author].name
-                      }
+                      author={this.props.avatarDetails[question.author].name}
                       authorPic={
                         this.props.avatarDetails[question.author].avatarURL
                       }
-                      questionState="unanswered"
+                      answered="false"
                       // answered='false'
                     />
 
                     <p>or...</p>
                     <Link
                       to={{
-                        pathname: "questions/:question_id",
+                        pathname: `questions/${id}`,
+
+                        // pathname: `questions/:question_id`,
                         state: { answered: false },
                       }}
                     >
@@ -54,35 +54,41 @@ export class Dashboard extends Component {
           </ul>
         </TabPanel>
         <TabPanel>
-          <ul>
-            {answeredArr && answeredArr.map((id) => (
-              <li key={id}>
-              <div>
-                <p>{id.author} wants to know...</p>
-                <Question
-                  id={id}
-                  author={
-                    this.props.avatarDetails[this.props.questions[id].author].name
-                  }
-                  authorPic={
-                    this.props.avatarDetails[this.props.questions[id].author].avatarURL
-                  }    // qText={this.props.avatarDetails}
-                    questionState="answered"
-                    // answered="true"
+          <ul className="card-list">
+            {answeredArr &&
+              answeredArr.map((id) => (
+                <li key={id}>
+                  <div>
+                    {/* <p>{id.author} wants to know...</p> */}
+                    <Question
+                      id={id}
+                      author={
+                        this.props.avatarDetails[
+                          this.props.questions[id].author
+                        ].name
+                      }
+                      authorPic={
+                        this.props.avatarDetails[
+                          this.props.questions[id].author
+                        ].avatarURL
+                      } // qText={this.props.avatarDetails}
+                      answered="true"
+                      // answered="true"
                     />
                     console.log(authorPic)
-                  <p>or...</p>
-                  <Link
-                    to={{
-                      pathname: "questions/:question_id",
-                      state: { answered: true },
-                    }}
-                  >
-                    <button>Results</button>
-                  </Link>
-                </div>
-              </li>
-            ))}
+                    <p>or...</p>
+                    <Link
+                      to={{
+                        pathname: `questions/${id}`,
+                        // pathname: "questions/:question_id",
+                        state: { answered: true },
+                      }}
+                    >
+                      <button>Results</button>
+                    </Link>
+                  </div>
+                </li>
+              ))}
           </ul>
         </TabPanel>
       </Tabs>
@@ -99,20 +105,14 @@ function mapStateToProps({ users, signedInUser, questions }) {
     .filter((question) => !answeredArr.includes(question))
     .sort((a, b) => b.timestamp - a.timestamp);
 
-   const avatarDetails = users
-   
-  //  const question = questions.id
-
-  //  const id = questions.id
+  const avatarDetails = users;
 
   return {
     answeredArr,
     unansweredQs,
     signedInUser,
     avatarDetails,
-  
     questions,
-  
   };
 }
 

@@ -15,6 +15,8 @@
 %btn {
   width: 200px;
   border-radius: 5px;
+  background-color: #4d8c57;
+  color: #fff;
 }
 
 .user-card {
@@ -29,7 +31,6 @@
 .addQ {
   @extend %card;
   max-width: 500px;
-  padding: 5em;
   align-items: center;
   
 }
@@ -37,7 +38,6 @@
 .signIn {
   @extend %card;
   max-width: 500px;
-  padding: 5em;
   border: 1px solid #000;
   margin: 10px;
 }
@@ -55,15 +55,90 @@
 
 .signin-btn {
   @extend %btn;
-  background-color: #4d8c57;
-  color: #fff;
   margin: 20px 0 0 0;
 }
 
 
 .add-btn {
     @extend %btn;
-    background-color: #4d8c57;
-    color: #fff
+
+}
+
+.answer-btn {
+  @extend %btn;
+}
+
+.dashbrd-btn {
+  @extend %btn;
+}
+
+.notfound-btn {
+  @extend %btn;
+}
+
+.question-card {
+  @extend %card;
+  max-width: 18rem;
+  display: inline-block;
+
+}
+
+.answerQ-header {
+  display: flex;
+        flex-direction: row;
+        border: 1px solid rgba(23, 42, 67, 0.8);
+        // font-size: 0.8em;
+        padding-left: 50px;
+        height: auto;
+        width: 100%;
+        background-color: #cfd7de;
+}
+
+.not-found {
+  @extend %card;
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
+  
+}
+
+// leaderboard
+
+.ldr-card {
+  @extend %card;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-basis: 0 0 30%;
+  max-width: 500px;
+  padding: 0 10em 0 10em;
+  
+}
+
+.ldr-info {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 0 0 30%;
+}
+
+
+.question-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ldr-info {
+flex-direction: column;
+}
+
+.num-questions {
+flex-direction: row;
+
+}
+
+.score {
+  flex-direction: column;
+  border: 2px solid #000;
 
 }

@@ -1,12 +1,12 @@
-import Fluffy from '../images/Fluffy.jpg';
-import Pumpkin from '../images/Pumpkin.jpg';
-import Scratchy from '../images/Scratchy.jpg';
+// import Fluffy from './images/Fluffy.jpg';
+import Pumpkin from './images/Pumpkin.jpg';
+import Scratchy from './images/Scratchy.jpg';
 
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: Fluffy,
+    avatarURL: '../asset/Fluffy.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',

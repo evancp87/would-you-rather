@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
 import { signOutUser } from "../actions/signedInUser";
 
 class Nav extends Component {
@@ -12,50 +13,46 @@ class Nav extends Component {
     this.setState(() => ({
       signedInUser: null,
     }));
-
   };
 
   render() {
     const { avatarURL, name, signedInUser } = this.props;
     return (
-      
-        <nav className='navbar'>
-          <ul className='navitems'>
-            <li>
-              <NavLink to="/" exact className="">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/add" className="">
-                New Question
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/leaderboard" className="">
-                Leaderboard
-              </NavLink>
-            </li>
-            </ul>
-            <ul className="loguser">
-            <li >
-              {this.props.signedInUser !== null && (
-                <div >
-                  <div className="loguserdetails">
-
-                  <img src={avatarURL} alt={name} className="avatar-pic"/>
-                  <div >{`Hello, ${signedInUser.name}`}</div>
-                  </div>
-
-                  <NavLink to="/login" exact className="signout-btn">
-                    <button onClick={this.handleLogOut}>Sign Out</button>
-                  </NavLink>
+      <nav className="navbar">
+        <ul className="navitems">
+          <li>
+            <NavLink to="/" exact className="navitem">
+              Home
+            </NavLink>
+          </li>
+          <li className="navitem">
+            <NavLink to="/add" className="">
+              New Question
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/leaderboard" className="navitem">
+              Leaderboard
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="loguser">
+          <li>
+            {this.props.signedInUser !== null && (
+              <div>
+                <div className="loguserdetails">
+                  <img src={avatarURL} alt={name} className="avatar-pic" />
+                  <div>{`Hello, ${this.props.users[signedInUser].name}`}</div>
                 </div>
-              )}
-            </li>
-          </ul>
-        </nav>
-      
+
+                <NavLink to="/login" exact className="signout-btn">
+                  <button onClick={this.handleLogOut}>Sign Out</button>
+                </NavLink>
+              </div>
+            )}
+          </li>
+        </ul>
+      </nav>
     );
   }
 }

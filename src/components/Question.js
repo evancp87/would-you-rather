@@ -3,50 +3,38 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import AnswerQ from "./AnswerQ";
-import QuestionResult from "./QuestionResult";
 
 class Question extends Component {
   render() {
-    const { question, questionState, optionOne, optionTwo } = this.props;
-    
+    const { question } = this.props;
+
     // const { optionOne, optionTwo } = question;
 
     if (question === null || undefined) {
       return <p>This question does not exist</p>;
     }
 
-    if (questionState === "answered") {
-      <QuestionResult />;
-    } else if (questionState === "unanswered") {
-      <AnswerQ />;
-    }
-
     // TODO: add redirect/error handling here
 
     return (
-      <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Text>
-              <b>{this.props.author} wants to know...</b>
-            </Card.Text>
-            <Card.Img
+      <div className="card-list">
+          <div className='question-card'>
+            <img
               variant="top"
               src={this.props.avatarURL}
               alt={this.props.author}
               className="avatar"
             />
-            <Card.Title>...Would you rather...</Card.Title>
-            <Card.Text>{this.props.question.optionOne.text}</Card.Text>
+            <h3>
+              <b>{this.props.author} wants to know...</b>
+            </h3>
+            <h3>...Would you rather...</h3>
+            <p>{this.props.question.optionOne.text}</p>
 
-            <Card.Text>Or...</Card.Text>
-            <Card.Text>{this.props.question.optionTwo.text}</Card.Text>
-            <Link to="/">
-              <Button type="submit">Back</Button>
-            </Link>
-          </Card.Body>
-        </Card>
+            <p>Or...</p>
+            {/* <Card.Text>{this.props.question.optionTwo.text}</Card.Text> */}
+            
+          </div>
       </div>
     );
   }
@@ -56,11 +44,10 @@ function mapStateToProps({ users, questions }, { id }) {
   const question = questions[id];
   // const { optionOne, optionTwo } = question;
 
-
   return {
     questions,
     question,
-    users
+    users,
   };
 }
 export default connect(mapStateToProps)(Question);
