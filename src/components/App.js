@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
-// import Question from "./Question";
 import AddQ from "./AddQ";
 import SignIn from "./SignIn";
 import Nav from "./Nav";
@@ -12,6 +11,8 @@ import ShowQByState from "./ShowQByState";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 
+
+// TODO: add check for questions answered by user- Object.keys(users[signedInUser.answers].includes())
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -25,7 +26,6 @@ class App extends Component {
         <Fragment>
           <div className="container">
             <LoadingBar />
-            <Nav signedInUser={signedInUser} />
             {/* !signedInUser ? */}
             {/* this.props.loading === true ? */}
             {!signedInUser ? (
@@ -36,6 +36,7 @@ class App extends Component {
               </div>
             ) : (
               <div>
+                <Nav signedInUser={signedInUser} />
                 <Switch>
                   <Route
                     exact

@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Card from "react-bootstrap/Card";
 import { ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Redirect } from "react-router-dom";
+import {Link} from "react-router-dom"
 
 class QuestionResults extends Component {
   render() {
-    const { optionOne, optionTwo, question, user, signedInUser, id } =
-      this.props;
-    const optionOneVotes = question.optionOne.votes.length;
-    const optionTwoVotes = question.optionTwo.votes.length;
-    const totalVotes = optionOneVotes + optionTwoVotes;
-    const optionOnePercent = (optionOneVotes / totalVotes) * 100;
-    const optionTwoPercent = (optionTwoVotes / totalVotes) * 100;
+    const { users, questions, signedInUser, id } = this.props;
+    const question = questions[id];
+    const optionOne = question.optionOne;
+    const optionTwo = question.optionTwo;
+    const totalVotes = optionOne.votes.length + optionTwo.votes.length;
+    const optionOnePercent = (optionOne.votes.length / totalVotes) * 100;
+    const optionTwoPercent = (optionTwo.votes.length / totalVotes) * 100;
+    // const yourVote = optionOne.votes.includes(signedInUser.name) ? "optionOne" : "optionTwo"
+    
+  //   if (optionOne.votes.includes(signedInUser.name)) {
+  //      "optionOne"
+  // } else {
+  //    "optionTwo"
+  // }
+
+
 
     if (!signedInUser) {
       return <Redirect to="/" />;
@@ -25,58 +34,61 @@ class QuestionResults extends Component {
 
     return (
       <div className="center">
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Text>
-              <b>{user.name} wants to know...</b>
-            </Card.Text>
-            <Card.Img
-              variant="top"
-              src={user.avatarURL}
-              alt={`Avatar of ${user.name}`}
-              className="avatar"
-            />
-            <Card.Text>Results</Card.Text>
-            <Card.Title>...Would you rather...</Card.Title>
-            {user.vote === optionOne && <div>Your vote</div>}
-            <Card.Text>{optionOne.text}</Card.Text>
+        <div className="qResult-card">
+          <h3>
+            <b>{users[question.author].name} wants to know...</b>
+          </h3>
+          <img
+            src={users[question.author].avatarURL}
+            alt={`Avatar of ${users[question.author].name}`}
+            className="avatar-img"
+          />
+          <p>Results</p>
+          <h3>...Would you rather...</h3>
+          {/* TODO: finish logic for the signedInUser's vote  */}
+          {/* {user.vote === optionOne && <div>Your vote</div>} */}
+          <div className="optionResult">
+            <p>{optionOne.text}</p>
             <div>
               <ProgressBar
                 now={optionOnePercent}
                 label={`${optionOnePercent}%`}
               />
-              ;
             </div>
 
             <p>
-              {optionOneVotes} out of {totalVotes} votes
+              {question.optionOne.votes.length} out of {totalVotes} votes
             </p>
-
-            <Card.Text>{optionTwo.text}</Card.Text>
-            {user.vote === optionTwo && <div>Your vote</div>}
+          </div>
+          <div className="optionResult">
+            <p>{question.optionTwo.text}</p>
+            {/* {user.vote === optionTwo && <div>Your vote</div>} */}
 
             <div>
               <ProgressBar
                 now={optionTwoPercent}
                 label={`${optionTwoPercent}%`}
               />
-              ;
             </div>
 
             <p>
-              {optionTwoVotes} out of {totalVotes} votes
+              {question.optionTwo.votes.length} out of {totalVotes} votes
             </p>
-          </Card.Body>
-        </Card>
+          </div>
+          <Link to="/">
+        <button>Back</button>
+          </Link>
+        </div>
+        
       </div>
     );
   }
 }
 
-function mapStateToProps({ users, authedUser, questions }) {
+function mapStateToProps({ users, signedInUser, questions }) {
   return {
     users,
-    authedUser,
+    signedInUser,
     questions,
   };
 }

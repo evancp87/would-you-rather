@@ -1,4 +1,4 @@
-.ldr-card, .not-found, .question-card, .signIn, .addQ, .user-card {
+.ldr-card, .not-found, .qResult-card, .question-card, .signIn, .addQ, .user-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
@@ -7,8 +7,13 @@
   flex-direction: column;
   align-items: center;
 }
-.ldr-card:hover, .not-found:hover, .question-card:hover, .signIn:hover, .addQ:hover, .user-card:hover {
+.ldr-card:hover, .not-found:hover, .qResult-card:hover, .question-card:hover, .signIn:hover, .addQ:hover, .user-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.avatar-img {
+  max-width: 100%;
+  height: auto;
 }
 
 .notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
@@ -50,6 +55,10 @@
 .question-card {
   max-width: 18rem;
   display: inline-block;
+}
+
+.qResult-card {
+  max-width: 500px;
 }
 
 .answerQ-header {
@@ -139,6 +148,7 @@ ul {
 
 .avatar-pic {
   max-width: 50px;
+  height: 50px;
   border: 1px solid #4d8c57;
   border-radius: 25px;
 }
@@ -232,6 +242,11 @@ body {
 .sad-cat {
   max-width: 500px;
   padding: 30px;
+}
+
+.optionResult {
+  border: 1px solid #000;
+  background-color: grey;
 }
 
 /*# sourceMappingURL=App.css.map */

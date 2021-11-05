@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
 import { signOutUser } from "../actions/signedInUser";
 
 class Nav extends Component {
@@ -16,7 +15,7 @@ class Nav extends Component {
   };
 
   render() {
-    const { avatarURL, name, signedInUser } = this.props;
+    const {signedInUser } = this.props;
     return (
       <nav className="navbar">
         <ul className="navitems">
@@ -41,7 +40,7 @@ class Nav extends Component {
             {this.props.signedInUser !== null && (
               <div>
                 <div className="loguserdetails">
-                  <img src={avatarURL} alt={name} className="avatar-pic" />
+                  <img src={this.props.users[signedInUser].avatarURL} alt={this.props.users[signedInUser].name} className="avatar-pic" />
                   <div>{`Hello, ${this.props.users[signedInUser].name}`}</div>
                 </div>
 

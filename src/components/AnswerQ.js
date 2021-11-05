@@ -33,8 +33,8 @@ class AnswerQ extends Component {
   };
 
   render() {
-    const { users, signedInUser, id } = this.props;
-    const question = this.props.questions[id];
+    const { users, signedInUser, id , questions, question} = this.props;
+    // const question = this.props.questions[id];
 
     if (!signedInUser) {
       return <Redirect to="/" />;
@@ -49,10 +49,10 @@ class AnswerQ extends Component {
       <div className="center">
         <div className="question-card">
           <h3>
-            <b>{users[question.author].name} wants to know...</b>
+            <b>{users[questions[id].author].name} wants to know...</b>
           </h3>
           <img
-            src={this.props.question.author.avatarURL}
+            src={users[question.author].avatarURL}
             alt={`Avatar of ${this.props.users[id.author].name}`}
             className="avatar"
           />
@@ -91,13 +91,15 @@ class AnswerQ extends Component {
   }
 }
 
-function mapStateToProps({ signedInUser, users, questions }) {
-  // const question = questions[id];
+function mapStateToProps({ signedInUser, users, questions, id }) {
+  const question = questions[id];
 
   return {
     signedInUser,
     users,
     questions,
+    question,
+    id
     
     // question: formatQuestion(question, users[this.props.questions.author]),
   };

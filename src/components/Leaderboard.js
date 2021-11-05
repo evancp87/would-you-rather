@@ -15,7 +15,7 @@ export class Leaderboard extends Component {
                 <div className="ldr-info">
                   <img
                     className="ldrboard-img"
-                    src={user.avatar}
+                    src={user.avatarURL}
                     alt={`Avatar of ${user.name}`}
                     className="avatar"
                   />

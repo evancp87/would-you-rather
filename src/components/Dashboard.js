@@ -37,7 +37,7 @@ export class Dashboard extends Component {
                       // answered='false'
                     />
 
-                    <p>or...</p>
+                  
                     <Link
                       to={{
                         pathname: `questions/${id}`,
@@ -46,7 +46,7 @@ export class Dashboard extends Component {
                         state: { answered: false },
                       }}
                     >
-                      <button>Answer Question</button>
+                      <button className='dashbrd-btn'>Answer Question</button>
                     </Link>
                   </div>
                 </li>
@@ -71,12 +71,12 @@ export class Dashboard extends Component {
                         this.props.avatarDetails[
                           this.props.questions[id].author
                         ].avatarURL
+                        
                       } // qText={this.props.avatarDetails}
                       answered="true"
                       // answered="true"
                     />
-                    console.log(authorPic)
-                    <p>or...</p>
+                  
                     <Link
                       to={{
                         pathname: `questions/${id}`,
@@ -84,7 +84,7 @@ export class Dashboard extends Component {
                         state: { answered: true },
                       }}
                     >
-                      <button>Results</button>
+                      <button className='dashbrd-btn'>Results</button>
                     </Link>
                   </div>
                 </li>

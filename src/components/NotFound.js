@@ -7,7 +7,7 @@ function NotFound() {
       <div className="not-found">
         <h2>404!</h2>
         <img src='/Sad-cat.jpeg' alt='sad cat' className='sad-cat'/>
-        <p>The cats couldn't locate that particular page</p>
+        <p>The kitties couldn't locate that particular page</p>
         <Link to="/" />
         <button className='notfound-btn'>
           Go Home

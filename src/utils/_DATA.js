@@ -1,12 +1,12 @@
-// import Fluffy from './images/Fluffy.jpg';
-import Pumpkin from './images/Pumpkin.jpg';
 import Scratchy from './images/Scratchy.jpg';
+import Whiskers from './images/Whiskers.jpg';
+import Tabby from './images/Tabby.jpg';
 
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: '../asset/Fluffy.jpg',
+    avatarURL: Tabby,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -18,7 +18,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: Pumpkin,
+    avatarURL: Whiskers,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',

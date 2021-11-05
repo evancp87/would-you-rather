@@ -12,6 +12,12 @@
   }
 }
 
+
+%card_image {
+  max-width: 100%;
+  height: auto;
+}
+
 %btn {
   width: 200px;
   border-radius: 5px;
@@ -83,6 +89,12 @@
 
 }
 
+.qResult-card {
+  @extend %card;
+  max-width: 500px;
+
+}
+
 .answerQ-header {
   display: flex;
         flex-direction: row;
@@ -141,4 +153,8 @@ flex-direction: row;
   flex-direction: column;
   border: 2px solid #000;
 
+}
+
+.avatar-img {
+  @extend %card_image;
 }
