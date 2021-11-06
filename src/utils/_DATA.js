@@ -1,12 +1,12 @@
 import Scratchy from './images/Scratchy.jpg';
 import Whiskers from './images/Whiskers.jpg';
-import Tabby from './images/Tabby.jpg';
+import Tigger from './images/Tigger.jpg';
 
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: Tabby,
+    avatarURL: Tigger,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',

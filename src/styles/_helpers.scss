@@ -82,10 +82,23 @@
   @extend %btn;
 }
 
+.signout-btn {
+@extend %btn;
+background-color: #cfd7de;
+color: #1F666A;
+width: 100px;
+}
+
+.qResult-btn {
+  @extend %btn;
+  width: 100px;
+}
+
 .question-card {
   @extend %card;
   max-width: 18rem;
-  display: inline-block;
+  // display: inline-block;
+  text-align: center;
 
 }
 

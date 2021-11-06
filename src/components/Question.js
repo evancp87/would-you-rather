@@ -15,21 +15,21 @@ class Question extends Component {
     // TODO: add redirect/error handling here
 
     return (
-      <div className="card-list">
-          <div className='question-card'>
+      <div >
+          <div >
             <img
-              variant="top"
+             
               src={this.props.users[question.author].avatarURL}
               alt={this.props.author}
               className="avatar"
             />
-            <h3>
+            <h2 className='author-header'>
               <b>{this.props.author} wants to know...</b>
-            </h3>
+            </h2>
             <h3>...Would you rather...</h3>
             <p>{this.props.question.optionOne.text}</p>
 
-            <p>Or...</p>
+            <p>or...</p>
             {/* <Card.Text>{this.props.question.optionTwo.text}</Card.Text> */}
             
           </div>

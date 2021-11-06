@@ -1,7 +1,6 @@
 import {getInitialData} from "../utils/Api"
-import {saveQuestion} from '../utils/Api'
-// import {_saveQuestion} from '../utils/_DATA'
-import {receiveQuestions, addQuestion, saveQuestionAnswer} from "../actions/questions"
+import {saveQuestion, saveQuestionAnswer} from '../utils/Api'
+import {receiveQuestions, addQuestion, saveAnswer} from "../actions/questions"
 import {receiveUsers, saveUserQuestion, saveUserAnswer} from "../actions/users"
 import {setSignedInUser, signOutUser} from "../actions/signedInUser"
 import {showLoading, hideLoading} from 'react-redux-loading'
@@ -25,13 +24,13 @@ export function handleInitialData () {
 }
 
 
-export function handleSaveQuestionAnswer (answer, qid, authedUser) {
+export function handleSaveQuestionAnswer (authedUser, qid, answer) {
     return (dispatch) => {
         dispatch(showLoading())
-        return saveQuestionAnswer(answer, qid, authedUser)
+        return saveQuestionAnswer(authedUser, qid, answer)
         .then(() => {
-            dispatch(saveQuestionAnswer(answer, qid, authedUser))
-                dispatch(saveUserAnswer(qid, authedUser, answer))
+            dispatch(saveAnswer(authedUser, qid, answer))
+                dispatch(saveUserAnswer(authedUser, qid, answer))
                 dispatch(hideLoading()) 
         })
 
@@ -46,7 +45,6 @@ export function handleNewQuestion (signedInUser, optionOneText, optionTwoText) {
             optionOneText, 
             optionTwoText,
         }
-        // const {signedInUser} = getState()
         dispatch(showLoading())
         return saveQuestion(qData)
         .then(question => {

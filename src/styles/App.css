@@ -16,7 +16,7 @@
   height: auto;
 }
 
-.notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
+.qResult-btn, .signout-btn, .notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
   width: 200px;
   border-radius: 5px;
   background-color: #4d8c57;
@@ -52,9 +52,19 @@
   margin: 20px 0 0 0;
 }
 
+.signout-btn {
+  background-color: #cfd7de;
+  color: #1F666A;
+  width: 100px;
+}
+
+.qResult-btn {
+  width: 100px;
+}
+
 .question-card {
   max-width: 18rem;
-  display: inline-block;
+  text-align: center;
 }
 
 .qResult-card {
@@ -116,7 +126,7 @@ ul {
   text-decoration: none;
 }
 
-.navbar {
+.nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -124,24 +134,21 @@ ul {
   border-bottom: 2px solid #000;
   width: 100%;
   height: 100px;
-  position: relative;
 }
 
-.navbar .navitems {
+.nav-bar .navitems {
   color: red;
   text-decoration: none;
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
-
-.loguser {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.nav-bar .navitem {
+  margin: 10px;
 }
 
 .loguserdetails {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -163,10 +170,13 @@ body {
   margin: 0;
 }
 
+html {
+  font-size: 100%;
+}
+
 .container {
   width: 1170px;
   margin: 0;
-  padding: 10px;
 }
 
 .center {
@@ -202,7 +212,8 @@ body {
 .ldrboard-img {
   border: 2px solid green;
   border-radius: 20px;
-  max-width: 50px;
+  width: 100%;
+  height: auto;
 }
 
 .card-list {
@@ -239,8 +250,20 @@ body {
   background-color: #cfd7de;
 }
 
+.author-header {
+  font-size: 0.8em;
+  background-color: #cfd7de;
+  text-align: center;
+  width: 100%;
+}
+
+.user-select {
+  width: 200px;
+}
+
 .sad-cat {
   max-width: 500px;
+  height: auto;
   padding: 30px;
 }
 

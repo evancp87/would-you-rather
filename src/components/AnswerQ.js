@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { handleSaveQuestionAnswer } from "../actions/shared";
 
 class AnswerQ extends Component {
@@ -23,13 +22,13 @@ class AnswerQ extends Component {
 
     dispatch(
       handleSaveQuestionAnswer({
+        answer: this.state.option,
         qid: qid,
-        answer: this.state.answer,
-        signedInUser,
+        signedInUser: signedInUser,
       })
     );
 
-    this.props.history.push(`/question_result/${id}`);
+    this.props.history.push(`/questions/${id}`);
   };
 
   render() {
@@ -48,18 +47,18 @@ class AnswerQ extends Component {
     return (
       <div className="center">
         <div className="question-card">
-          <h3>
-            <b>{users[questions[id].author].name} wants to know...</b>
-          </h3>
           <img
             src={users[question.author].avatarURL}
-            alt={`Avatar of ${this.props.users[id.author].name}`}
+            // alt={`Avatar of ${this.props.users[id].author].name}`}
             className="avatar"
           />
-          <h3 className="answerQ-header">Complete the question:</h3>
+          <h3 className="answerQ-header">
+            <b>{users[questions[id].author].name} wants to know...</b>
+          </h3>
           <p>...Would you rather...</p>
-          <form onSubmit={this.handleVote}>
-            <label>{this.props.question.optionOne.text}
+          <form>
+            <label>
+              {this.props.question.optionOne.text}
               <input
                 id="one"
                 value="optionOne"
@@ -67,10 +66,11 @@ class AnswerQ extends Component {
                 name="option"
                 onChange={this.handleChange}
               />
-              <div>Or</div>
+              <div>or</div>
             </label>
 
-            <label>{this.props.question.optionTwo.text}
+            <label>
+              {this.props.question.optionTwo.text}
               <input
                 id="two"
                 type="radio"
@@ -78,11 +78,11 @@ class AnswerQ extends Component {
                 name="option"
                 onChange={this.handleChange}
               />
-              <Link to="/">
-                <button type="submit" className="answer-btn">
+              
+                <button type="submit" className="answer-btn" onClick={this.handleVote} disabled={this.props.question.optionOne.text === "" || this.props.question.optionTwo.text === ""}>
                   Submit
                 </button>
-              </Link>
+             
             </label>
           </form>
         </div>
@@ -91,8 +91,9 @@ class AnswerQ extends Component {
   }
 }
 
-function mapStateToProps({ signedInUser, users, questions, id }) {
+function mapStateToProps({ signedInUser, users, questions}, {id }) {
   const question = questions[id];
+ 
 
   return {
     signedInUser,
@@ -105,4 +106,4 @@ function mapStateToProps({ signedInUser, users, questions, id }) {
   };
 }
 
-export default connect(mapStateToProps)(AnswerQ);
+export default withRouter(connect(mapStateToProps)(AnswerQ));

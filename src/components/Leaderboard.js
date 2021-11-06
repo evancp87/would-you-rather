@@ -12,14 +12,14 @@ export class Leaderboard extends Component {
           {sortedLeaderData.map((user) => (
             <li key={user.name}>
               <div className="ldr-card">
-                <div className="ldr-info">
+                {/* <div className="ldr-info"> */}
                   <img
                     className="ldrboard-img"
                     src={user.avatarURL}
                     alt={`Avatar of ${user.name}`}
                     className="avatar"
                   />
-                </div>
+                {/* </div> */}
                 
                   <div className="num-questions">
 

@@ -55,7 +55,7 @@ class SignIn extends Component {
           </div>
           <form className="signin-form">
             <div className="dropdown">
-              <select onChange={this.handleChange}>
+              <select onChange={this.handleChange} className='user-select'>
                 <option value="">Select User</option>
                 {(userData || []).map((user) => {
                   return (

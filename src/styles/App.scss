@@ -14,10 +14,16 @@ body {
     margin: 0;
 }
 
+html {
+    font-size: 100%;
+    // font-family: Roboto Slab', serif;
+
+}
+
 .container {
     width: 1170px;
     margin: 0;
-    padding: 10px;
+    // padding: 10px;
 }
 
 
@@ -70,7 +76,10 @@ body {
 .ldrboard-img {
     border: 2px solid green;
     border-radius: 20px;
-    max-width: 50px;
+    width: 100%;
+    height: auto;
+    // flex-basis: 0 0 40%;
+    
 }
 
 .card-list {
@@ -111,8 +120,19 @@ body {
         background-color: #cfd7de;
 }
 
+.author-header {
+    font-size: 0.8em;
+    background-color: #cfd7de;
+    text-align: center;
+    width: 100%;
+}
+
+.user-select {
+    width: 200px;
+}
 .sad-cat {
     max-width: 500px;
+    height: auto;
     padding: 30px;
 }
 

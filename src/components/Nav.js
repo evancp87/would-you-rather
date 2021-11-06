@@ -17,7 +17,7 @@ class Nav extends Component {
   render() {
     const {signedInUser } = this.props;
     return (
-      <nav className="navbar">
+      <nav className="nav-bar">
         <ul className="navitems">
           <li>
             <NavLink to="/" exact className="navitem">
@@ -25,7 +25,7 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li className="navitem">
-            <NavLink to="/add" className="">
+            <NavLink to="/add" className="navitem">
               New Question
             </NavLink>
           </li>
@@ -43,10 +43,10 @@ class Nav extends Component {
                   <img src={this.props.users[signedInUser].avatarURL} alt={this.props.users[signedInUser].name} className="avatar-pic" />
                   <div>{`Hello, ${this.props.users[signedInUser].name}`}</div>
                 </div>
-
                 <NavLink to="/login" exact className="signout-btn">
-                  <button onClick={this.handleLogOut}>Sign Out</button>
+                  <button onClick={this.handleLogOut} className='signout-btn'>Sign Out</button>
                 </NavLink>
+
               </div>
             )}
           </li>

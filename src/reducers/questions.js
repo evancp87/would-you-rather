@@ -1,7 +1,7 @@
 import {
   RECEIVE_QUESTIONS,
   ADD_QUESTION,
-  SAVE_QUESTION_ANSWER,
+  SAVE_ANSWER,
 } from "../actions/questions";
 
 export default function questions(state = {}, action) {
@@ -18,7 +18,7 @@ export default function questions(state = {}, action) {
       };
 
 //       When a user answers a question it updates the user.answer and concats the answer onto the votes array
-    case SAVE_QUESTION_ANSWER:
+    case SAVE_ANSWER:
       return {
         ...state,
         [action.qid]: {

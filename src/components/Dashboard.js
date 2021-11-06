@@ -24,8 +24,8 @@ export class Dashboard extends Component {
           <ul className="card-list">
             {unansweredQs &&
               unansweredQs.map((question) => (
-                <li key={question.id}>
-                  <div>
+                <li key={question.id} className="card-list">
+                  <div className='question-card'>
                     {/* <p>{question.author} wants to know...</p> */}
                     <Question
                       id={question.id}
@@ -40,7 +40,7 @@ export class Dashboard extends Component {
                   
                     <Link
                       to={{
-                        pathname: `questions/${id}`,
+                        pathname: `questions/${question.id}`,
 
                         // pathname: `questions/:question_id`,
                         state: { answered: false },
@@ -57,8 +57,8 @@ export class Dashboard extends Component {
           <ul className="card-list">
             {answeredArr &&
               answeredArr.map((id) => (
-                <li key={id}>
-                  <div>
+                <li key={id} className="card-list">
+                  <div className='question-card'>
                     {/* <p>{id.author} wants to know...</p> */}
                     <Question
                       id={id}
@@ -80,7 +80,6 @@ export class Dashboard extends Component {
                     <Link
                       to={{
                         pathname: `questions/${id}`,
-                        // pathname: "questions/:question_id",
                         state: { answered: true },
                       }}
                     >
@@ -96,13 +95,13 @@ export class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ users, signedInUser, questions }) {
+function mapStateToProps({ users, signedInUser, questions }, {id}) {
   const answeredArr = Object.keys(users[signedInUser].answers).sort(
     (a, b) => b.timestamp - a.timestamp
   );
 
   const unansweredQs = Object.values(questions)
-    .filter((question) => !answeredArr.includes(question))
+    .filter((question) => !answeredArr.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
 
   const avatarDetails = users;
@@ -113,6 +112,7 @@ function mapStateToProps({ users, signedInUser, questions }) {
     signedInUser,
     avatarDetails,
     questions,
+    id
   };
 }
 

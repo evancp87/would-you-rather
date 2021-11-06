@@ -35,14 +35,14 @@ class QuestionResults extends Component {
     return (
       <div className="center">
         <div className="qResult-card">
-          <h3>
-            <b>{users[question.author].name} wants to know...</b>
-          </h3>
           <img
             src={users[question.author].avatarURL}
             alt={`Avatar of ${users[question.author].name}`}
             className="avatar-img"
-          />
+            />
+            <h3 className='author-header'>
+              <b>{users[question.author].name} wants to know...</b>
+            </h3>
           <p>Results</p>
           <h3>...Would you rather...</h3>
           {/* TODO: finish logic for the signedInUser's vote  */}
@@ -76,7 +76,7 @@ class QuestionResults extends Component {
             </p>
           </div>
           <Link to="/">
-        <button>Back</button>
+        <button className='qResult-btn'>Back</button>
           </Link>
         </div>
         
