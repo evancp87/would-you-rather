@@ -11,7 +11,7 @@ class AnswerQ extends Component {
 
   handleChange = (e) => {
     this.setState(() => ({
-      option: e.target.id,
+      option: e.target.value,
     }));
   };
 
@@ -22,9 +22,9 @@ class AnswerQ extends Component {
 
     dispatch(
       handleSaveQuestionAnswer({
-        answer: this.state.option,
+        authedUser: signedInUser,
         qid: qid,
-        signedInUser: signedInUser,
+        answer: this.state.option,
       })
     );
 
@@ -48,8 +48,8 @@ class AnswerQ extends Component {
       <div className="center">
         <div className="question-card">
           <img
-            src={users[question.author].avatarURL}
-            // alt={`Avatar of ${this.props.users[id].author].name}`}
+            src={users[questions[id].author].avatarURL}
+            alt={`Avatar of ${users[questions[id].author].name}`}
             className="avatar"
           />
           <h3 className="answerQ-header">
@@ -79,7 +79,7 @@ class AnswerQ extends Component {
                 onChange={this.handleChange}
               />
               
-                <button type="submit" className="answer-btn" onClick={this.handleVote} disabled={this.props.question.optionOne.text === "" || this.props.question.optionTwo.text === ""}>
+                <button type="submit" className="answer-btn" onClick={this.handleVote} disabled={this.state.option === "" || this.state.option === ""}>
                   Submit
                 </button>
              

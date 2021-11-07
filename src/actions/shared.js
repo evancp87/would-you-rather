@@ -24,10 +24,10 @@ export function handleInitialData () {
 }
 
 
-export function handleSaveQuestionAnswer (authedUser, qid, answer) {
+export function handleSaveQuestionAnswer ({authedUser, qid, answer}) {
     return (dispatch) => {
         dispatch(showLoading())
-        return saveQuestionAnswer(authedUser, qid, answer)
+        return saveQuestionAnswer({authedUser, qid, answer})
         .then(() => {
             dispatch(saveAnswer(authedUser, qid, answer))
                 dispatch(saveUserAnswer(authedUser, qid, answer))
