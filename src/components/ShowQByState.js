@@ -13,6 +13,7 @@ class ShowQByState extends Component {
     }
 
     return (
+      // logic to render either the answer question page or the results of a question based on the state of the question 
       <div>
         {answered === false && <AnswerQ id={id} />}
         {answered === true && <QuestionResult id={id} />}

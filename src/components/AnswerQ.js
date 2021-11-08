@@ -9,12 +9,15 @@ class AnswerQ extends Component {
     answered: false,
   };
 
+  // handles state of answer question form
+
   handleChange = (e) => {
     this.setState(() => ({
       option: e.target.value,
     }));
   };
 
+  // handles submission of vote option
   handleVote = (e) => {
     e.preventDefault();
     const { dispatch, signedInUser, id, question } = this.props;

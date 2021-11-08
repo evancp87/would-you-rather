@@ -68,14 +68,6 @@ html {
   }
 }
 
-.ldrboard-img {
-  border: 2px solid green;
-  border-radius: 20px;
-  width: 100%;
-  height: auto;
-  // flex-basis: 0 0 40%;
-}
-
 .card-list {
   display: flex;
   flex-direction: row;
@@ -108,8 +100,7 @@ html {
 }
 
 .signin-header {
-  //   display: flex;
-  //   flex-direction: row;
+  text-align: center;
   border: 1px solid rgba(23, 42, 67, 0.8);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   height: auto;
@@ -118,7 +109,7 @@ html {
   border-radius: 10px 0 0 0;
   font-size: 1.5rem;
   padding: 1em;
-  background-color: #cfd7de;
+  background-color: $header-theme;
 }
 
 .author-header {
@@ -159,9 +150,19 @@ html {
 
 .signIn {
   @extend %card;
-  max-width: 500px;
+  max-width: 600px;
+  width: 500px;
   border: 1px solid #000;
   margin: 10px;
+
+  .signIn div {
+
+    & > p {
+      margin-top: 2 em;
+      text-align: center;
+      margin-bottom: 1 em;
+    }
+  }
 }
 
 // .dropdown {
@@ -247,7 +248,6 @@ html {
   text-align: center;
 }
 
-
 .question-info {
   display: flex;
   flex-direction: column;
@@ -262,7 +262,7 @@ html {
   flex-direction: row;
   justify-content: center;
   flex: 0 0 33.3333%;
-  
+
   // width: 50%;
 }
 
@@ -292,5 +292,5 @@ html {
 
 // to mark authedUser's vote
 .your-vote {
-  @extend %flag
+  @extend %flag;
 }

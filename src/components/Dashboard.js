@@ -14,6 +14,7 @@ export class Dashboard extends Component {
     const { answeredArr, unansweredQs } = this.props;
 
     return (
+      // toggable tabs- mapping over list of users by answered or unanswered questions
       <Tabs className="tabs-container">
         <TabList className="tabs">
           <Tab>Unanswered Questions</Tab>

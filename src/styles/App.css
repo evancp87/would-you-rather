@@ -321,13 +321,6 @@ html {
   text-align: center;
 }
 
-.ldrboard-img {
-  border: 2px solid green;
-  border-radius: 20px;
-  width: 100%;
-  height: auto;
-}
-
 .card-list {
   display: flex;
   flex-direction: row;
@@ -356,6 +349,7 @@ html {
 }
 
 .signin-header {
+  text-align: center;
   border: 1px solid rgba(23, 42, 67, 0.8);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   height: auto;
@@ -395,9 +389,15 @@ html {
 }
 
 .signIn {
-  max-width: 500px;
+  max-width: 600px;
+  width: 500px;
   border: 1px solid #000;
   margin: 10px;
+}
+.signIn .signIn div > p {
+  margin-top: 2 em;
+  text-align: center;
+  margin-bottom: 1 em;
 }
 
 .signin-form {

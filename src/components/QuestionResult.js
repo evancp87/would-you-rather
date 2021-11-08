@@ -7,18 +7,23 @@ import { Link } from "react-router-dom";
 
 class QuestionResults extends Component {
   render() {
-    const { users, questions, signedInUser, id} = this.props;
+    // logic  to calculate the number of questions created and answered by each user, and the score based on the sum of the two
+    const { users, questions, signedInUser, id } = this.props;
     const question = questions[id];
     const optionOne = question.optionOne;
     const optionTwo = question.optionTwo;
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
-    const optionOnePercent = Math.floor((optionOne.votes.length / totalVotes) * 100);
-    const optionTwoPercent = Math.floor((optionTwo.votes.length / totalVotes) * 100);
-    const yourVote = users[signedInUser].answers[question.id]
+    const optionOnePercent = Math.floor(
+      (optionOne.votes.length / totalVotes) * 100
+    );
+    const optionTwoPercent = Math.floor(
+      (optionTwo.votes.length / totalVotes) * 100
+    );
+    const yourVote = users[signedInUser].answers[question.id];
 
     if (signedInUser === null) {
       return <Redirect to="/" />;
-    } 
+    }
 
     if (!id) {
       return <Redirect to="/NotFound" />;
@@ -49,7 +54,11 @@ class QuestionResults extends Component {
             <p>
               {question.optionOne.votes.length} out of {totalVotes} votes
             </p>
-            <span>{yourVote === 'optionOne' && <p className="your-vote">Your Vote</p>}</span>
+            <span>
+              {yourVote === "optionOne" && (
+                <p className="your-vote">Your Vote</p>
+              )}
+            </span>
           </div>
           <div className="optionResult">
             <p>{question.optionTwo.text}</p>
@@ -64,8 +73,11 @@ class QuestionResults extends Component {
             <p>
               {question.optionTwo.votes.length} out of {totalVotes} votes
             </p>
-            <span>{yourVote === 'optionTwo' && <p className="your-vote">Your Vote</p>}</span>
-
+            <span>
+              {yourVote === "optionTwo" && (
+                <p className="your-vote">Your Vote</p>
+              )}
+            </span>
           </div>
           <Link to="/">
             <button className="qResult-btn">Back</button>

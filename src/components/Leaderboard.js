@@ -12,14 +12,13 @@ export class Leaderboard extends Component {
     } 
 
     return (
-      // map over list of users
+      // map over list of users, showing questions created/answered and sorted by score
       <div className="center">
         <ul>
           {sortedLeaderData.map((user) => (
             <li key={user.id} className="ldr-card">
               <div>
                 <img
-                  className="ldrboard-img"
                   src={user.avatarURL}
                   alt={`Avatar of ${user.userName}`}
                   className="avatar"
@@ -45,6 +44,7 @@ export class Leaderboard extends Component {
 }
 
 function mapStateToProps({ users }) {
+  // iterating users and mapping into a new object with user info/questions created and answered for use above
   const sortedLeaderData = Object.values(users).map((user) => ({
     id: user.id,
     userName: user.name,

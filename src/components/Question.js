@@ -5,12 +5,6 @@ class Question extends Component {
   render() {
     const { question } = this.props;
 
-    if (question === null || undefined) {
-      return <p>This question does not exist</p>;
-    }
-
-    // TODO: add redirect/error handling here
-
     return (
       <div>
         <div>

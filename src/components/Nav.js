@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { signOutUser } from "../actions/signedInUser";
 
 class Nav extends Component {
+
+  // handling logging out of signed in user
   handleLogOut = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;

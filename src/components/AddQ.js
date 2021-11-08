@@ -10,6 +10,7 @@ export class AddQ extends Component {
     toHome: false,
   };
 
+  // handles state of add question form
   handleOptionOne = (e) => {
     let optionOne = e.target.value;
 
@@ -26,6 +27,7 @@ export class AddQ extends Component {
     }));
   };
 
+  // handles submit button- adds question 
   handleSubmit = (e) => {
     e.preventDefault();
 

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { setSignedInUser } from "../actions/signedInUser";
 import { Redirect } from "react-router-dom";
 
-
 class SignIn extends Component {
   state = {
     signedInUser: null,
@@ -11,6 +10,7 @@ class SignIn extends Component {
     loading: false,
   };
 
+  // handles state change of dropdown menu of users
   handleChange = (e) => {
     const id = e.target.value;
 
@@ -19,9 +19,9 @@ class SignIn extends Component {
       toHome: false,
       loading: false,
     }));
-    // console.log(signedInUser);
   };
 
+  // handles sign in process of user
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -47,14 +47,14 @@ class SignIn extends Component {
     return (
       <div className="center">
         <div className="signIn">
-            <h2 className="signin-header">Would You Rather</h2>
+          <h2 className="signin-header">Would You Rather</h2>
           <div>
             <img src="/Cat-paws.jpg" alt="cat paws" className="paws" />
             <p>Please sign in</p>
           </div>
           <form className="signin-form">
             <div className="dropdown">
-              <select onChange={this.handleChange} className='user-select'>
+              <select onChange={this.handleChange} className="user-select">
                 <option value="">Select User</option>
                 {(userData || []).map((user) => {
                   return (

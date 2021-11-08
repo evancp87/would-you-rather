@@ -11,7 +11,6 @@ import ShowQByState from "./ShowQByState";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 
-// TODO: add check for questions answered by user- Object.keys(users[signedInUser.answers].includes())
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -41,10 +40,7 @@ class App extends Component {
                     component={Dashboard}
                     signedInUser={signedInUser}
                   />
-                  <Route
-                    exact path="/notfound"
-                    component={NotFound}
-                  />
+                  <Route exact path="/notfound" component={NotFound} />
                   <Route path="/questions/:id" component={ShowQByState} />
                   <Route path="/add" component={AddQ} />
                   <Route path="/leaderboard" component={Leaderboard} />

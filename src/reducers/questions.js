@@ -11,22 +11,25 @@ export default function questions(state = {}, action) {
         ...state,
         ...action.questions,
       };
+      // adds question to the questions object 
     case ADD_QUESTION:
       return {
         ...state,
         [action.question.id]: action.question,
       };
 
-//       When a user answers a question it updates the user.answer and concats the answer onto the votes array
+    //       When a user answers a question it concats the answer onto the votes array
     case SAVE_ANSWER:
       return {
         ...state,
         [action.qid]: {
           ...state[action.qid],
-          [action.answer] : {
-                  ...state[action.qid][action.answer],                
-                  votes: state[action.qid][action.answer].votes.concat([action.authedUser]),
-                }
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat([
+              action.authedUser,
+            ]),
+          },
         },
       };
 
