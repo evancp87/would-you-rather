@@ -42,7 +42,6 @@ class App extends Component {
                     signedInUser={signedInUser}
                   />
                   <Route
-                    exact
                     path="/questions/incorrect_id"
                     component={NotFound}
                   />

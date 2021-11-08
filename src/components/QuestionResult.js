@@ -7,20 +7,14 @@ import { Link } from "react-router-dom";
 
 class QuestionResults extends Component {
   render() {
-    const { users, questions, signedInUser, id } = this.props;
+    const { users, questions, signedInUser, id} = this.props;
     const question = questions[id];
     const optionOne = question.optionOne;
     const optionTwo = question.optionTwo;
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
-    const optionOnePercent = (optionOne.votes.length / totalVotes) * 100;
-    const optionTwoPercent = (optionTwo.votes.length / totalVotes) * 100;
-    // const yourVote = optionOne.votes.includes(signedInUser.name) ? "optionOne" : "optionTwo"
-
-    //   if (optionOne.votes.includes(signedInUser.name)) {
-    //      "optionOne"
-    // } else {
-    //    "optionTwo"
-    // }
+    const optionOnePercent = Math.floor((optionOne.votes.length / totalVotes) * 100);
+    const optionTwoPercent = Math.floor((optionTwo.votes.length / totalVotes) * 100);
+    const yourVote = users[signedInUser].answers[question.id]
 
     if (!signedInUser) {
       return <Redirect to="/" />;
@@ -55,6 +49,7 @@ class QuestionResults extends Component {
             <p>
               {question.optionOne.votes.length} out of {totalVotes} votes
             </p>
+            <span>{yourVote === 'optionOne' && <p className="your-vote">Your Vote</p>}</span>
           </div>
           <div className="optionResult">
             <p>{question.optionTwo.text}</p>
@@ -69,6 +64,8 @@ class QuestionResults extends Component {
             <p>
               {question.optionTwo.votes.length} out of {totalVotes} votes
             </p>
+            <span>{yourVote === 'optionTwo' && <p className="your-vote">Your Vote</p>}</span>
+
           </div>
           <Link to="/">
             <button className="qResult-btn">Back</button>

@@ -10,6 +10,61 @@
 $green-theme: #1F666A;
 $header-theme: #cfd7de;
 
+%flag {
+  width: 55px;
+  height: 28px;
+  box-sizing: content-box;
+  padding-top: 15px;
+  position: relative;
+  background: #EA9300;
+  color: $green-theme;
+  margin: 0 auto;
+  font-size: 5.5px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 6.5px solid #fff;
+    border-left: 27.5px solid transparent;
+    border-right: 27.5px solid transparent;
+  }
+}
+
+%star  {
+    background: #32557f;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    text-align: center;
+  
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 80px;
+      width: 80px;
+      background: #32557f;
+    }
+  
+    &::before {
+      transform: rotate(30deg);
+    }
+  
+    &::after {
+      transform: rotate(60deg);
+    }
+  }
+
+
 %card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;

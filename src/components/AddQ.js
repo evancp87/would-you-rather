@@ -41,9 +41,13 @@ export class AddQ extends Component {
     );
   };
   render() {
-    const { optionOne, optionTwo } = this.state;
+    const { optionOne, optionTwo, signedInUser } = this.state;
 
     if (this.state.toHome === true) return <Redirect to="/" />;
+
+    if (!signedInUser || signedInUser === null) {
+      return <Redirect to="/" />;
+    } 
 
     return (
       <div className="center">

@@ -12,9 +12,9 @@ class ShowQByState extends Component {
     //   return <Redirect to="/" />;
     // }
 
-    // if (id === null || undefined) {
-    //   return <Redirect to="/NotFound" />;
-    // }
+    if (!id) {
+      return <Redirect to="/NotFound" />;
+    }
 
     return (
       <div>

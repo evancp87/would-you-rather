@@ -90,7 +90,7 @@ export class Dashboard extends Component {
 
 function mapStateToProps({ users, signedInUser, questions }, { id }) {
   const answeredArr = Object.keys(users[signedInUser].answers).sort(
-    (a, b) => b.timestamp - a.timestamp
+    (a, b) => questions[b].timestamp - questions[a].timestamp
   );
 
   const unansweredQs = Object.values(questions)

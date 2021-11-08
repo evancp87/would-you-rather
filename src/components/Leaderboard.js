@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {Redirect} from "react-router-dom"
 
 export class Leaderboard extends Component {
   render() {
-    const { sortedLeaderData } = this.props;
+    const { sortedLeaderData, signedInUser } = this.props;
+     if (!signedInUser || signedInUser === null) {
+      return <Redirect to="/" />;
+    } 
 
     return (
       // map over list of users

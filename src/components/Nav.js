@@ -53,6 +53,7 @@ class Nav extends Component {
                       <img
                         src={this.props.users[signedInUser].avatarURL}
                         alt={this.props.users[signedInUser].name}
+                        title={this.props.users[signedInUser].name}
                         className="avatar-pic"
                       />
                     </div>
