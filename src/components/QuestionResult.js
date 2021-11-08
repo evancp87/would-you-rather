@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Redirect } from "react-router-dom";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 class QuestionResults extends Component {
   render() {
@@ -15,14 +15,12 @@ class QuestionResults extends Component {
     const optionOnePercent = (optionOne.votes.length / totalVotes) * 100;
     const optionTwoPercent = (optionTwo.votes.length / totalVotes) * 100;
     // const yourVote = optionOne.votes.includes(signedInUser.name) ? "optionOne" : "optionTwo"
-    
-  //   if (optionOne.votes.includes(signedInUser.name)) {
-  //      "optionOne"
-  // } else {
-  //    "optionTwo"
-  // }
 
-
+    //   if (optionOne.votes.includes(signedInUser.name)) {
+    //      "optionOne"
+    // } else {
+    //    "optionTwo"
+    // }
 
     if (!signedInUser) {
       return <Redirect to="/" />;
@@ -39,14 +37,12 @@ class QuestionResults extends Component {
             src={users[question.author].avatarURL}
             alt={`Avatar of ${users[question.author].name}`}
             className="avatar-img"
-            />
-            <h3 className='author-header'>
-              <b>{users[question.author].name} wants to know...</b>
-            </h3>
+          />
+          <h2 className="author-header">
+            <b>{users[question.author].name} wants to know...</b>
+          </h2>
           <p>Results</p>
           <h3>...Would you rather...</h3>
-          {/* TODO: finish logic for the signedInUser's vote  */}
-          {/* {user.vote === optionOne && <div>Your vote</div>} */}
           <div className="optionResult">
             <p>{optionOne.text}</p>
             <div>
@@ -62,7 +58,6 @@ class QuestionResults extends Component {
           </div>
           <div className="optionResult">
             <p>{question.optionTwo.text}</p>
-            {/* {user.vote === optionTwo && <div>Your vote</div>} */}
 
             <div>
               <ProgressBar
@@ -76,10 +71,9 @@ class QuestionResults extends Component {
             </p>
           </div>
           <Link to="/">
-        <button className='qResult-btn'>Back</button>
+            <button className="qResult-btn">Back</button>
           </Link>
         </div>
-        
       </div>
     );
   }

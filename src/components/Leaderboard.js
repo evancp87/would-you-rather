@@ -10,29 +10,25 @@ export class Leaderboard extends Component {
       <div className="center">
         <ul>
           {sortedLeaderData.map((user) => (
-            <li key={user.name}>
-              <div className="ldr-card">
-                {/* <div className="ldr-info"> */}
-                  <img
-                    className="ldrboard-img"
-                    src={user.avatarURL}
-                    alt={`Avatar of ${user.name}`}
-                    className="avatar"
-                  />
-                {/* </div> */}
-                
-                  <div className="num-questions">
+            <li key={user.id} className="ldr-card">
+              <div>
+                <img
+                  className="ldrboard-img"
+                  src={user.avatarURL}
+                  alt={`Avatar of ${user.userName}`}
+                  className="avatar"
+                />
 
-                  <h2>{user.name} </h2>
+                <h2 className="author-header">{user.userName} </h2>
+
+                <div className="num-questions">
                   <p>Answered Questions: {user.numAnswered}</p>
                   <p>Created questions: {user.numQsCreated}</p>
-                  </div>
-                  <div className="score">
-                    <p>Score</p>
 
-                    <span>{user.numAnswered + user.numQsCreated}</span>
-                  </div>
-                
+                  <p className="score">
+                    Score: {user.numAnswered + user.numQsCreated}
+                  </p>
+                </div>
               </div>
             </li>
           ))}

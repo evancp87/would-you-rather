@@ -11,7 +11,6 @@ import ShowQByState from "./ShowQByState";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 
-
 // TODO: add check for questions answered by user- Object.keys(users[signedInUser.answers].includes())
 class App extends Component {
   componentDidMount() {
@@ -24,10 +23,8 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div className="container">
+          <div className="contain">
             <LoadingBar />
-            {/* !signedInUser ? */}
-            {/* this.props.loading === true ? */}
             {!signedInUser ? (
               <div>
                 <Switch>

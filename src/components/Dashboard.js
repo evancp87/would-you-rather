@@ -11,21 +11,21 @@ export class Dashboard extends Component {
   };
 
   render() {
-    const { answeredArr, unansweredQs, id, question } = this.props;
+    const { answeredArr, unansweredQs } = this.props;
 
     return (
-      <Tabs className="center">
+      <Tabs className="tabs-container">
         <TabList className="tabs">
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
         </TabList>
 
-        <TabPanel>
+        <TabPanel className="tabs-body">
           <ul className="card-list">
             {unansweredQs &&
               unansweredQs.map((question) => (
                 <li key={question.id} className="card-list">
-                  <div className='question-card'>
+                  <div className="question-card">
                     {/* <p>{question.author} wants to know...</p> */}
                     <Question
                       id={question.id}
@@ -34,19 +34,15 @@ export class Dashboard extends Component {
                         this.props.avatarDetails[question.author].avatarURL
                       }
                       answered="false"
-                      // answered='false'
                     />
 
-                  
                     <Link
                       to={{
                         pathname: `questions/${question.id}`,
-
-                        // pathname: `questions/:question_id`,
                         state: { answered: false },
                       }}
                     >
-                      <button className='dashbrd-btn'>Answer Question</button>
+                      <button className="dashbrd-btn">Answer Question</button>
                     </Link>
                   </div>
                 </li>
@@ -58,8 +54,7 @@ export class Dashboard extends Component {
             {answeredArr &&
               answeredArr.map((id) => (
                 <li key={id} className="card-list">
-                  <div className='question-card'>
-                    {/* <p>{id.author} wants to know...</p> */}
+                  <div className="question-card">
                     <Question
                       id={id}
                       author={
@@ -71,19 +66,17 @@ export class Dashboard extends Component {
                         this.props.avatarDetails[
                           this.props.questions[id].author
                         ].avatarURL
-                        
-                      } // qText={this.props.avatarDetails}
+                      }
                       answered="true"
-                      // answered="true"
                     />
-                  
+
                     <Link
                       to={{
                         pathname: `questions/${id}`,
                         state: { answered: true },
                       }}
                     >
-                      <button className='dashbrd-btn'>Results</button>
+                      <button className="dashbrd-btn">Results</button>
                     </Link>
                   </div>
                 </li>
@@ -95,7 +88,7 @@ export class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ users, signedInUser, questions }, {id}) {
+function mapStateToProps({ users, signedInUser, questions }, { id }) {
   const answeredArr = Object.keys(users[signedInUser].answers).sort(
     (a, b) => b.timestamp - a.timestamp
   );
@@ -112,7 +105,7 @@ function mapStateToProps({ users, signedInUser, questions }, {id}) {
     signedInUser,
     avatarDetails,
     questions,
-    id
+    id,
   };
 }
 

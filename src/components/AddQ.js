@@ -7,7 +7,6 @@ export class AddQ extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
-    // submittedQuestion: false,
     toHome: false,
   };
 
@@ -52,14 +51,14 @@ export class AddQ extends Component {
           <h2 className="newQ-header">Add a New Question</h2>
           <p>Complete the question</p>
           <h3>Would you rather...</h3>
-          <form onSubmit={this.handleSubmit} className='newQForm'>
+          <form onSubmit={this.handleSubmit} className="newQForm">
             <input
               type="text"
               placeholder="Enter option one"
               value={optionOne}
               onChange={this.handleOptionOne}
             />
-            <p>Or</p>
+            <p>or</p>
             <input
               type="text"
               placeholder="Enter option two"

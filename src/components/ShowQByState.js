@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 class ShowQByState extends Component {
   render() {
     const { answered, id, signedInUser } = this.props;
-  
+
     // if (!signedInUser) {
     //   return <Redirect to="/" />;
     // }

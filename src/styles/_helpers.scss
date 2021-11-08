@@ -1,3 +1,15 @@
+@mixin theme($theme: #1F666A) {
+  background: $theme;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px 0 0 10px;
+  transition: 0.3s;
+  color: grey;
+}
+
+
+$green-theme: #1F666A;
+$header-theme: #cfd7de;
+
 %card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
@@ -12,7 +24,6 @@
   }
 }
 
-
 %card_image {
   max-width: 100%;
   height: auto;
@@ -23,151 +34,149 @@
   border-radius: 5px;
   background-color: #4d8c57;
   color: #fff;
+  box-shadow: 5px 5px 0 rgb(15 15 15 / 50%);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 20px;
+  &:hover {
+    box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
+    background-color: #77b481;
+  }
 }
 
-.user-card {
-  @extend %card;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  max-width: 500px;
-  padding: 0 10em 0 10em;
+
+%card-header {
+  font-size: 1.2em;
+  background-color: $header-theme;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
-.addQ {
-  @extend %card;
-  max-width: 500px;
-  align-items: center;
-  
-}
+// .user-card {
+//   @extend %card;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   max-width: 500px;
+//   padding: 0 10em 0 10em;
+// }
 
-.signIn {
-  @extend %card;
-  max-width: 500px;
-  border: 1px solid #000;
-  margin: 10px;
-}
+// .addQ {
+//   @extend %card;
+//   max-width: 500px;
+//   align-items: center;
+// }
+
+// .signIn {
+//   @extend %card;
+//   max-width: 500px;
+//   border: 1px solid #000;
+//   margin: 10px;
+// }
 
 // .dropdown {
 //     display: block;
 // width: 500px;
 // }
-.signin-form {
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-}
+// .signin-form {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 30px;
+// }
 
+// .signin-btn {
+//   @extend %btn;
+//   margin: 20px 0 0 0;
+// }
 
-.signin-btn {
-  @extend %btn;
-  margin: 20px 0 0 0;
-}
+// .add-btn {
+//   @extend %btn;
+//   margin: 20px;
+// }
 
+// .answer-btn {
+//   @extend %btn;
+// }
 
-.add-btn {
-    @extend %btn;
+// .dashbrd-btn {
+//   @extend %btn;
+// }
 
-}
+// .notfound-btn {
+//   @extend %btn;
+// }
 
-.answer-btn {
-  @extend %btn;
-}
+// .signout-btn {
+//   @extend %btn;
+//   background-color: #cfd7de;
+//   color: #1f666a;
+//   width: 100px;
+// }
 
-.dashbrd-btn {
-  @extend %btn;
-}
+// .qResult-btn {
+//   @extend %btn;
+//   width: 100px;
+// }
 
-.notfound-btn {
-  @extend %btn;
-}
+// .question-card {
+//   @extend %card;
+//   max-width: 18rem;
+//   // display: inline-block;
+//   text-align: center;
+// }
 
-.signout-btn {
-@extend %btn;
-background-color: #cfd7de;
-color: #1F666A;
-width: 100px;
-}
+// .qResult-card {
+//   @extend %card;
+//   max-width: 500px;
+// }
 
-.qResult-btn {
-  @extend %btn;
-  width: 100px;
-}
+// .answerQ-header {
+//   font-size: 1rem;
+//   background-color: #cfd7de;
+//   text-align: center;
+//   width: 100%;
+// }
 
-.question-card {
-  @extend %card;
-  max-width: 18rem;
-  // display: inline-block;
-  text-align: center;
+// .not-found {
+//   @extend %card;
+//   max-width: 500px;
+//   padding: 5em;
+//   align-items: center;
+// }
 
-}
+// // leaderboard
 
-.qResult-card {
-  @extend %card;
-  max-width: 500px;
+// .ldr-card {
+//   @extend %card;
+//   max-width: 18rem;
+//   // display: inline-block;
+//   text-align: center;
+// }
 
-}
+// .ldr-info {
+//   display: flex;
+//   flex-direction: row;
+//   flex-basis: 0 0 30%;
+// }
 
-.answerQ-header {
-  display: flex;
-        flex-direction: row;
-        border: 1px solid rgba(23, 42, 67, 0.8);
-        // font-size: 0.8em;
-        padding-left: 50px;
-        height: auto;
-        width: 100%;
-        background-color: #cfd7de;
-}
+// .question-info {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.not-found {
-  @extend %card;
-  max-width: 500px;
-  padding: 5em;
-  align-items: center;
-  
-}
+// .ldr-info {
+//   flex-direction: column;
+// }
 
-// leaderboard
+// .num-questions {
+//   flex-direction: row;
+// }
 
-.ldr-card {
-  @extend %card;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-basis: 0 0 30%;
-  max-width: 500px;
-  padding: 0 10em 0 10em;
-  
-}
+// .score {
+//   flex-direction: column;
+//   border: 2px solid #000;
+// }
 
-.ldr-info {
-  display: flex;
-  flex-direction: row;
-  flex-basis: 0 0 30%;
-}
-
-
-.question-info {
-  display: flex;
-  flex-direction: column;
-}
-
-
-.ldr-info {
-flex-direction: column;
-}
-
-.num-questions {
-flex-direction: row;
-
-}
-
-.score {
-  flex-direction: column;
-  border: 2px solid #000;
-
-}
-
-.avatar-img {
-  @extend %card_image;
-}
+// .avatar-img {
+//   @extend %card_image;
+// }

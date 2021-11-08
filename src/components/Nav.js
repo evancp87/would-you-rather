@@ -15,41 +15,61 @@ class Nav extends Component {
   };
 
   render() {
-    const {signedInUser } = this.props;
+    const { signedInUser } = this.props;
     return (
       <nav className="nav-bar">
-        <ul className="navitems">
-          <li>
-            <NavLink to="/" exact className="navitem">
-              Home
-            </NavLink>
-          </li>
-          <li className="navitem">
-            <NavLink to="/add" className="navitem">
-              New Question
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/leaderboard" className="navitem">
-              Leaderboard
-            </NavLink>
-          </li>
-        </ul>
-        <ul className="loguser">
-          <li>
-            {this.props.signedInUser !== null && (
-              <div>
-                <div className="loguserdetails">
-                  <img src={this.props.users[signedInUser].avatarURL} alt={this.props.users[signedInUser].name} className="avatar-pic" />
-                  <div>{`Hello, ${this.props.users[signedInUser].name}`}</div>
-                </div>
-                <NavLink to="/login" exact className="signout-btn">
-                  <button onClick={this.handleLogOut} className='signout-btn'>Sign Out</button>
-                </NavLink>
+        <ul className="items">
+          <div className="links">
+            <li className="navitem">
+              <NavLink
+                to="/"
+                exact
+                activeStyle={{ textDecoration: "underline"}}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="navitem">
+              <NavLink to="/add" activeStyle={{ textDecoration: "underline" }}>
+                New Question
+              </NavLink>
+            </li>
+            <li className="navitem">
+              <NavLink
+                to="/leaderboard"
+                activeStyle={{ textDecoration: "underline" }}
+              >
+                Leaderboard
+              </NavLink>
+            </li>
+          </div>
 
-              </div>
-            )}
-          </li>
+          <div>
+            <li className="loguser">
+              {this.props.signedInUser !== null && (
+                <div>
+                  <div className="loguserdetails">
+                    <div>
+                      <img
+                        src={this.props.users[signedInUser].avatarURL}
+                        alt={this.props.users[signedInUser].name}
+                        className="avatar-pic"
+                      />
+                    </div>
+                    <div>{`Hello, ${this.props.users[signedInUser].name}`}</div>
+                    <NavLink to="/login" exact>
+                      <button
+                        onClick={this.handleLogOut}
+                        className="signout-btn"
+                      >
+                        Sign Out
+                      </button>
+                    </NavLink>
+                  </div>
+                </div>
+              )}
+            </li>
+          </div>
         </ul>
       </nav>
     );
@@ -60,8 +80,6 @@ function mapStateToProps({ signedInUser, users }) {
   return {
     signedInUser,
     users,
-    // avatar: signedInUser ? users(signedInUser).avatarURL : null,
-    // name: signedInUser ? users(signedInUser).name : null,
   };
 }
 

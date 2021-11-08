@@ -1,142 +1,292 @@
-@import 'helpers';
-@import 'nav';
+@import "_helpers";
+@import "_nav";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-
-
-body {
-
-    margin: 0;
-}
+// body {
+//   margin: 0;
+// }
 
 html {
-    font-size: 100%;
-    // font-family: Roboto Slab', serif;
-
+  font-size: 100%;
+  font-family: "Roboto Slab", serif;
 }
-
-.container {
-    width: 1170px;
-    margin: 0;
-    // padding: 10px;
-}
-
-
-
-
 
 .center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5em;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
 }
 
 // styles for signin component
 
-
-
 // styles for signin component form
 
 .dropdown {
-    appearance: none;
+  appearance: none;
 
-    position: relative;
+  position: relative;
   font-family: Arial;
   width: 100%;
-
-
 }
 
+.user-card {
+  @extend %card;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 500px;
+  padding: 0 10em 0 10em;
+}
 
-// AddQ component 
+// AddQ component
 .newQ-header {
-        display: flex;
-        flex-direction: row;
-        border: 1px solid rgba(23, 42, 67, 0.8);
-        // font-size: 0.8em;
-        padding-left: 50px;
-        height: auto;
-        width: 100%;
-        background-color: #cfd7de;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  // font-size: 0.8em;
+  padding: 10px;
+  height: auto;
+  width: 100%;
+  background-color: #cfd7de;
 }
 
 .newQForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5em 0 0 0;
+
+  input[type="text"] {
+    text-align: center;
+  }
 }
 
 .ldrboard-img {
-    border: 2px solid green;
-    border-radius: 20px;
-    width: 100%;
-    height: auto;
-    // flex-basis: 0 0 40%;
-    
+  border: 2px solid green;
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  // flex-basis: 0 0 40%;
 }
 
 .card-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 .avatar {
-    max-width: 100%;
-    height: auto;
-
+  max-width: 100%;
+  height: auto;
 }
 
 .tabs {
-    font-size: 32px;
-    background-color: $green-theme;
+  font-size: 2rem;
+  background-color: $green-theme;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  // height: 200px;
+  // margin-top: 0;
 }
-
 
 // signin image
 
 .paws {
-    max-width: 300px;
-    padding: 30px;
-    border-radius: 150px;
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 150px;
 }
 
 .signin-header {
-    display: flex;
-        flex-direction: row;
-        border: 1px solid rgba(23, 42, 67, 0.8);
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        height: auto;
-        width: 100%;
-        background-color: #cfd7de;
+  //   display: flex;
+  //   flex-direction: row;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  width: 100%;
+  font-weight: 600;
+  border-radius: 10px 0 0 0;
+  font-size: 1.5rem;
+  padding: 1em;
+  background-color: #cfd7de;
 }
 
 .author-header {
-    font-size: 0.8em;
-    background-color: #cfd7de;
-    text-align: center;
-    width: 100%;
+  @extend %card-header;
 }
 
+.qResult-author {
+  @extend %card-header;
+}
 .user-select {
-    width: 200px;
+  width: 200px;
 }
 .sad-cat {
-    max-width: 500px;
-    height: auto;
-    padding: 30px;
+  max-width: 500px;
+  height: auto;
+  padding: 30px;
 }
 
 .optionResult {
-    border: 1px solid #000;
-    background-color: grey;
+  display: block;
+  max-width: 300px;
+  padding: 1em;
+  text-align: center;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.optionResult div {
+  + p {
+    margin-top: 1em;
+  }
+}
+
+.addQ {
+  @extend %card;
+  max-width: 500px;
+  align-items: center;
+}
+
+.signIn {
+  @extend %card;
+  max-width: 500px;
+  border: 1px solid #000;
+  margin: 10px;
+}
+
+// .dropdown {
+//     display: block;
+// width: 500px;
+// }
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.signin-btn {
+  @extend %btn;
+  margin: 20px 0 0 0;
+}
+
+.add-btn {
+  @extend %btn;
+  margin: 20px;
+}
+
+.answer-btn {
+  @extend %btn;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.dashbrd-btn {
+  @extend %btn;
+}
+
+.notfound-btn {
+  @extend %btn;
+}
+
+.answer-form {
+  margin: 2em 0 2em 0;
+}
+.radio-btn {
+  margin-left: 1em;
+}
+//   .signout-btn {
+//     @extend %btn;
+//     background-color: #cfd7de;
+//     color: #1f666a;
+//     width: 100px;
+//   }
+
+.qResult-btn {
+  @extend %btn;
+  width: 100px;
+}
+
+.question-card {
+  @extend %card;
+  max-width: 18rem;
+  // display: inline-block;
+  text-align: center;
+}
+
+.qResult-card {
+  @extend %card;
+  max-width: 20rem;
+}
+
+.answerQ-header {
+  @extend %card-header;
+}
+
+.not-found {
+  @extend %card;
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
+}
+
+// leaderboard
+
+.ldr-card {
+  @extend %card;
+  max-width: 25rem;
+  text-align: center;
+}
+
+
+.question-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ldr-info {
+  flex-direction: column;
+}
+
+.num-questions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 0 0 33.3333%;
+  
+  // width: 50%;
+}
+
+.score {
+  border: 2px solid #000;
+  background-color: #cfd7de;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-img {
+  @extend %card_image;
+}
+
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+}
+
+.tabs-body {
+  margin-top: 3em;
 }

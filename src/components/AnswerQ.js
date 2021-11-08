@@ -32,8 +32,7 @@ class AnswerQ extends Component {
   };
 
   render() {
-    const { users, signedInUser, id , questions, question} = this.props;
-    // const question = this.props.questions[id];
+    const { users, signedInUser, id, questions } = this.props;
 
     if (!signedInUser) {
       return <Redirect to="/" />;
@@ -52,11 +51,11 @@ class AnswerQ extends Component {
             alt={`Avatar of ${users[questions[id].author].name}`}
             className="avatar"
           />
-          <h3 className="answerQ-header">
+          <h2 className="answerQ-header">
             <b>{users[questions[id].author].name} wants to know...</b>
-          </h3>
-          <p>...Would you rather...</p>
-          <form>
+          </h2>
+          <h3>...Would you rather...</h3>
+          <form className="answer-form">
             <label>
               {this.props.question.optionOne.text}
               <input
@@ -65,6 +64,7 @@ class AnswerQ extends Component {
                 type="radio"
                 name="option"
                 onChange={this.handleChange}
+                className="radio-btn"
               />
               <div>or</div>
             </label>
@@ -77,12 +77,17 @@ class AnswerQ extends Component {
                 value="optionTwo"
                 name="option"
                 onChange={this.handleChange}
+                className="radio-btn"
               />
-              
-                <button type="submit" className="answer-btn" onClick={this.handleVote} disabled={this.state.option === "" || this.state.option === ""}>
-                  Submit
-                </button>
-             
+
+              <button
+                type="submit"
+                className="answer-btn"
+                onClick={this.handleVote}
+                disabled={this.state.option === "" || this.state.option === ""}
+              >
+                Submit
+              </button>
             </label>
           </form>
         </div>
@@ -91,18 +96,15 @@ class AnswerQ extends Component {
   }
 }
 
-function mapStateToProps({ signedInUser, users, questions}, {id }) {
+function mapStateToProps({ signedInUser, users, questions }, { id }) {
   const question = questions[id];
- 
 
   return {
     signedInUser,
     users,
     questions,
     question,
-    id
-    
-    // question: formatQuestion(question, users[this.props.questions.author]),
+    id,
   };
 }
 

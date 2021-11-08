@@ -39,13 +39,11 @@ class SignIn extends Component {
   };
   render() {
     console.log(this.props);
-    // const {showUsers} = this.props
     const { users } = this.props;
     let userData = Object.values(users);
     if (this.state.toHome === true) {
       <Redirect path="/home" />;
     }
-    // let { signedInUser } = this.state;
     return (
       <div className="center">
         <div className="signIn">
