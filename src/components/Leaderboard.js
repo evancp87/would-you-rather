@@ -5,7 +5,9 @@ import {Redirect} from "react-router-dom"
 export class Leaderboard extends Component {
   render() {
     const { sortedLeaderData, signedInUser } = this.props;
-     if (!signedInUser || signedInUser === null) {
+   
+
+    if (signedInUser === null) {
       return <Redirect to="/" />;
     } 
 

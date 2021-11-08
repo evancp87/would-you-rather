@@ -16,11 +16,11 @@ class QuestionResults extends Component {
     const optionTwoPercent = Math.floor((optionTwo.votes.length / totalVotes) * 100);
     const yourVote = users[signedInUser].answers[question.id]
 
-    if (!signedInUser) {
+    if (signedInUser === null) {
       return <Redirect to="/" />;
-    }
+    } 
 
-    if (id === null || undefined) {
+    if (!id) {
       return <Redirect to="/NotFound" />;
     }
 

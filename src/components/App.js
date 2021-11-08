@@ -42,7 +42,7 @@ class App extends Component {
                     signedInUser={signedInUser}
                   />
                   <Route
-                    path="/questions/incorrect_id"
+                    exact path="/notfound"
                     component={NotFound}
                   />
                   <Route path="/questions/:id" component={ShowQByState} />

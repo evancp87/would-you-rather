@@ -45,7 +45,7 @@ export class AddQ extends Component {
 
     if (this.state.toHome === true) return <Redirect to="/" />;
 
-    if (!signedInUser || signedInUser === null) {
+    if (signedInUser === null) {
       return <Redirect to="/" />;
     } 
 

@@ -32,14 +32,11 @@ class AnswerQ extends Component {
   };
 
   render() {
-    const { users, signedInUser, id, questions } = this.props;
+    const { users, id, questions } = this.props;
     // TODO: add logic to prevent user from voting twice - const alreadyAnswered =
 
-    if (!signedInUser || signedInUser === null) {
-      return <Redirect to="/" />;
-    } 
-
-    if (!id || id === undefined) {
+  
+    if (!id) {
       return <Redirect to="/NotFound" />;
     }
 
