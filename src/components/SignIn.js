@@ -50,10 +50,10 @@ class SignIn extends Component {
           <h2 className="signin-header">Would You Rather</h2>
           <div>
             <img src="/Cat-paws.jpg" alt="cat paws" className="paws" />
-            <p>Please sign in</p>
           </div>
+            <p>Please sign in</p>
           <form className="signin-form">
-            <div className="dropdown">
+            <div>
               <select onChange={this.handleChange} className="user-select">
                 <option value="">Select User</option>
                 {(userData || []).map((user) => {

@@ -25,30 +25,33 @@
   border-right: 27.5px solid transparent;
 }
 
-.score {
-  background: #32557f;
-  width: 80px;
-  height: 80px;
+.star-label {
+  background: #EA9300;
+  width: 50px;
+  height: 50px;
   position: relative;
   text-align: center;
 }
-.score::before, .score::after {
+.star-label::before, .star-label::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  height: 80px;
-  width: 80px;
-  background: #32557f;
+  height: 50px;
+  width: 50px;
+  background: #EA9300;
+  z-index: -1;
 }
-.score::before {
+.star-label::before {
   transform: rotate(30deg);
+  z-index: -1;
 }
-.score::after {
+.star-label::after {
   transform: rotate(60deg);
+  z-index: -1;
 }
 
-.ldr-card, .not-found, .qResult-card, .question-card, .signIn, .addQ, .user-card {
+.ldr-card, .question-card, .qResult-card, .not-found, .addQ, .user-card, .signIn {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
@@ -57,7 +60,7 @@
   flex-direction: column;
   align-items: center;
 }
-.ldr-card:hover, .not-found:hover, .qResult-card:hover, .question-card:hover, .signIn:hover, .addQ:hover, .user-card:hover {
+.ldr-card:hover, .question-card:hover, .qResult-card:hover, .not-found:hover, .addQ:hover, .user-card:hover, .signIn:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -66,7 +69,7 @@
   height: auto;
 }
 
-.qResult-btn, .notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
+.notfound-btn, .dashbrd-btn, .answer-btn, .qResult-btn, .add-btn, .signin-btn {
   width: 200px;
   border-radius: 5px;
   background-color: #4d8c57;
@@ -75,7 +78,7 @@
   transition: all 0.3s ease-in-out;
   margin-bottom: 20px;
 }
-.qResult-btn:hover, .notfound-btn:hover, .dashbrd-btn:hover, .answer-btn:hover, .add-btn:hover, .signin-btn:hover {
+.notfound-btn:hover, .dashbrd-btn:hover, .answer-btn:hover, .qResult-btn:hover, .add-btn:hover, .signin-btn:hover {
   box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
   background-color: #77b481;
 }
@@ -114,30 +117,33 @@
   border-right: 27.5px solid transparent;
 }
 
-.score {
-  background: #32557f;
-  width: 80px;
-  height: 80px;
+.star-label {
+  background: #EA9300;
+  width: 50px;
+  height: 50px;
   position: relative;
   text-align: center;
 }
-.score::before, .score::after {
+.star-label::before, .star-label::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  height: 80px;
-  width: 80px;
-  background: #32557f;
+  height: 50px;
+  width: 50px;
+  background: #EA9300;
+  z-index: -1;
 }
-.score::before {
+.star-label::before {
   transform: rotate(30deg);
+  z-index: -1;
 }
-.score::after {
+.star-label::after {
   transform: rotate(60deg);
+  z-index: -1;
 }
 
-.ldr-card, .not-found, .qResult-card, .question-card, .signIn, .addQ, .user-card {
+.ldr-card, .question-card, .qResult-card, .not-found, .addQ, .user-card, .signIn {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
@@ -146,7 +152,7 @@
   flex-direction: column;
   align-items: center;
 }
-.ldr-card:hover, .not-found:hover, .qResult-card:hover, .question-card:hover, .signIn:hover, .addQ:hover, .user-card:hover {
+.ldr-card:hover, .question-card:hover, .qResult-card:hover, .not-found:hover, .addQ:hover, .user-card:hover, .signIn:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -155,7 +161,7 @@
   height: auto;
 }
 
-.qResult-btn, .notfound-btn, .dashbrd-btn, .answer-btn, .add-btn, .signin-btn {
+.notfound-btn, .dashbrd-btn, .answer-btn, .qResult-btn, .add-btn, .signin-btn {
   width: 200px;
   border-radius: 5px;
   background-color: #4d8c57;
@@ -164,7 +170,7 @@
   transition: all 0.3s ease-in-out;
   margin-bottom: 20px;
 }
-.qResult-btn:hover, .notfound-btn:hover, .dashbrd-btn:hover, .answer-btn:hover, .add-btn:hover, .signin-btn:hover {
+.notfound-btn:hover, .dashbrd-btn:hover, .answer-btn:hover, .qResult-btn:hover, .add-btn:hover, .signin-btn:hover {
   box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
   background-color: #77b481;
 }
@@ -222,10 +228,10 @@
 }
 
 .avatar-pic {
-  max-width: 50px;
-  height: 50px;
+  max-width: 30px;
+  height: 30px;
   border: 1px solid #4d8c57;
-  border-radius: 25px;
+  border-radius: 15px;
   margin-right: 2rem;
   align-items: flex-end;
   transition: all 0.2s ease-in-out;
@@ -261,17 +267,92 @@
 
 @media only screen and (max-width: 700px) {
   .nav-bar .links {
-    display: flex;
-    grid-gap: 40px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    gap: 10px;
+  }
+  .nav-bar .links .navitem {
+    flex: 0 2 25%;
+  }
+
+  .loguser {
     font-size: 0.7em;
-    gap: 20px;
+    flex: 0 2 auto;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .loguserdetails {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+  }
+
+  .avatar-pic {
+    margin-right: 0;
+    width: 20 px;
+    height: 20 px;
+    border-radius: 10 px;
+  }
+  .avatar-pic:hover {
+    transform: scale(1);
+  }
+
+  .signout-btn {
+    padding: 0;
+    margin: 0.1em 0 10em 0;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav-bar .links {
+    flex-wrap: wrap;
+    flex-direction: row;
+    white-space: nowrap;
+    gap: 10px;
     align-items: flex-start;
+  }
+  .nav-bar .links .navitem {
+    flex: 0 3 25%;
+  }
+  .nav-bar .links .navitem .nav-bar .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .nav-bar .links {
+    font-size: 0.5em;
+    flex-wrap: wrap;
+    flex-direction: column;
+    white-space: nowrap;
+    gap: 10px;
+  }
+  .nav-bar .links .navitem {
+    flex: 0 3 25%;
+  }
+  .nav-bar .links .navitem:hover {
+    transform: translateX(5px);
+  }
+  .nav-bar .links .navitem .nav-bar .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .nav-bar .links .loguser {
+    font-size: 0.5em;
   }
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.contain {
+  margin: 0 auto;
+  max-width: 960px;
 }
 
 html {
@@ -286,11 +367,50 @@ html {
   margin-top: 5em;
 }
 
-.dropdown {
-  appearance: none;
-  position: relative;
-  font-family: Arial;
+.signIn {
+  max-width: 600px;
+  width: 500px;
+  border: 1px solid #000;
+  margin: 10px;
+}
+.signIn div.signIn > p {
+  margin-top: 2 em;
+  text-align: center;
+  margin-bottom: 1 em;
+  color: #1F666A;
+}
+
+.signin-header {
+  text-align: center;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
   width: 100%;
+  font-weight: 600;
+  border-radius: 10px 0 0 0;
+  font-size: 1.5rem;
+  padding: 1em;
+  background-color: #cfd7de;
+}
+
+.paws {
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 150px;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.user-select {
+  width: 200px;
+}
+
+.signin-btn {
+  margin: 20px 0 0 0;
 }
 
 .user-card {
@@ -311,6 +431,11 @@ html {
   background-color: #cfd7de;
 }
 
+.addQ {
+  max-width: 500px;
+  align-items: center;
+}
+
 .newQForm {
   display: flex;
   flex-direction: column;
@@ -319,6 +444,10 @@ html {
 }
 .newQForm input[type=text] {
   text-align: center;
+}
+
+.add-btn {
+  margin: 20px;
 }
 
 .card-list {
@@ -334,35 +463,10 @@ html {
   height: auto;
 }
 
-.tabs {
-  font-size: 2rem;
-  background-color: #1F666A;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-
-.paws {
-  max-width: 300px;
-  padding: 30px;
-  border-radius: 150px;
-}
-
-.signin-header {
-  text-align: center;
-  border: 1px solid rgba(23, 42, 67, 0.8);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: auto;
-  width: 100%;
-  font-weight: 600;
-  border-radius: 10px 0 0 0;
-  font-size: 1.5rem;
-  padding: 1em;
-  background-color: #cfd7de;
-}
-
-.user-select {
-  width: 200px;
+.not-found {
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
 }
 
 .sad-cat {
@@ -383,40 +487,22 @@ html {
   margin-top: 1em;
 }
 
-.addQ {
-  max-width: 500px;
-  align-items: center;
+.qResult-btn {
+  width: 100px;
 }
 
-.signIn {
-  max-width: 600px;
-  width: 500px;
-  border: 1px solid #000;
-  margin: 10px;
-}
-.signIn .signIn div > p {
-  margin-top: 2 em;
-  text-align: center;
-  margin-bottom: 1 em;
-}
-
-.signin-form {
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-}
-
-.signin-btn {
-  margin: 20px 0 0 0;
-}
-
-.add-btn {
-  margin: 20px;
+.qResult-card {
+  max-width: 20rem;
 }
 
 .answer-btn {
   margin-top: 1em;
   margin-bottom: 0;
+}
+
+.question-card {
+  max-width: 18rem;
+  text-align: center;
 }
 
 .answer-form {
@@ -425,25 +511,6 @@ html {
 
 .radio-btn {
   margin-left: 1em;
-}
-
-.qResult-btn {
-  width: 100px;
-}
-
-.question-card {
-  max-width: 18rem;
-  text-align: center;
-}
-
-.qResult-card {
-  max-width: 20rem;
-}
-
-.not-found {
-  max-width: 500px;
-  padding: 5em;
-  align-items: center;
 }
 
 .ldr-card {
@@ -462,13 +529,26 @@ html {
 
 .num-questions {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex: 0 0 33.3333%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2em;
+}
+
+.q-container {
+  width: 50%;
+}
+
+.ansQs {
+  flex: 0 1 auto;
+}
+
+.createdQs {
+  flex: 0 1 auto;
 }
 
 .score {
-  width: 50%;
+  display: flex;
+  flex: 0 1 auto;
 }
 
 .tabs-container {
@@ -478,8 +558,85 @@ html {
   margin-top: 0;
 }
 
+.tabs {
+  font-size: 2rem;
+  background-color: #1F666A;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
 .tabs-body {
   margin-top: 3em;
+}
+
+@media only screen and (max-width: 700px) {
+  .tabs {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .tabs {
+    font-size: 1.3rem;
+  }
+
+  .ldr-card {
+    margin-right: 15px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .signIn {
+    width: 300px;
+  }
+
+  .tabs {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .question-card {
+    margin-right: 30px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+
+  .ldr-card {
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .qResult-card {
+    margin-right: 10px;
+    flex: 0 2 auto;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .signIn {
+    margin: 0 auto;
+  }
+
+  .paws {
+    max-width: 150 px;
+    padding: 30 px;
+    border-radius: 75 px;
+  }
+
+  .loguserdetails {
+    font-size: 0.7em;
+  }
+
+  .num-questions {
+    font-size: 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .score {
+    padding: 1.5em;
+    margin-top: 1em;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

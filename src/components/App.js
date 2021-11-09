@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div className="contain">
+          <div >
             <LoadingBar />
             {!signedInUser ? (
               <div>
@@ -33,14 +33,14 @@ class App extends Component {
             ) : (
               <div>
                 <Nav signedInUser={signedInUser} />
-                <Switch>
+                <Switch className="contain">
                   <Route
                     exact
                     path="/"
                     component={Dashboard}
                     signedInUser={signedInUser}
                   />
-                  <Route exact path="/notfound" component={NotFound} />
+                  <Route  path="/questions/incorrect_id" component={NotFound} />
                   <Route path="/questions/:id" component={ShowQByState} />
                   <Route path="/add" component={AddQ} />
                   <Route path="/leaderboard" component={Leaderboard} />

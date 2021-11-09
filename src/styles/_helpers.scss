@@ -1,15 +1,8 @@
-@mixin theme($theme: #1F666A) {
-  background: $theme;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius: 10px 0 0 10px;
-  transition: 0.3s;
-  color: grey;
-}
-
-
+// variables for various themes
 $green-theme: #1F666A;
 $header-theme: #cfd7de;
 
+// flag for scores and votes
 %flag {
   width: 55px;
   height: 28px;
@@ -37,10 +30,11 @@ $header-theme: #cfd7de;
   }
 }
 
+// star for leaderboard score
 %star  {
-    background: #32557f;
-    width: 80px;
-    height: 80px;
+    background: #EA9300;
+    width: 50px;
+    height: 50px;
     position: relative;
     text-align: center;
   
@@ -50,21 +44,24 @@ $header-theme: #cfd7de;
       position: absolute;
       top: 0;
       left: 0;
-      height: 80px;
-      width: 80px;
-      background: #32557f;
+      height: 50px;
+      width: 50px;
+      background: #EA9300;
+      z-index: -1;
     }
   
     &::before {
       transform: rotate(30deg);
+      z-index: -1;
     }
   
     &::after {
       transform: rotate(60deg);
+      z-index: -1;
     }
   }
 
-
+// card styles for various cards used throughout the app
 %card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
@@ -79,11 +76,13 @@ $header-theme: #cfd7de;
   }
 }
 
+// standardised styles for images used in cards
 %card_image {
   max-width: 100%;
   height: auto;
 }
 
+// parent button styles
 %btn {
   width: 200px;
   border-radius: 5px;
@@ -98,7 +97,7 @@ $header-theme: #cfd7de;
   }
 }
 
-
+// parent styles for headers used on cards
 %card-header {
   font-size: 1.2em;
   background-color: $header-theme;
@@ -107,131 +106,4 @@ $header-theme: #cfd7de;
   margin-bottom: 1em;
 }
 
-// .user-card {
-//   @extend %card;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   max-width: 500px;
-//   padding: 0 10em 0 10em;
-// }
 
-// .addQ {
-//   @extend %card;
-//   max-width: 500px;
-//   align-items: center;
-// }
-
-// .signIn {
-//   @extend %card;
-//   max-width: 500px;
-//   border: 1px solid #000;
-//   margin: 10px;
-// }
-
-// .dropdown {
-//     display: block;
-// width: 500px;
-// }
-// .signin-form {
-//   display: flex;
-//   flex-direction: column;
-//   margin: 30px;
-// }
-
-// .signin-btn {
-//   @extend %btn;
-//   margin: 20px 0 0 0;
-// }
-
-// .add-btn {
-//   @extend %btn;
-//   margin: 20px;
-// }
-
-// .answer-btn {
-//   @extend %btn;
-// }
-
-// .dashbrd-btn {
-//   @extend %btn;
-// }
-
-// .notfound-btn {
-//   @extend %btn;
-// }
-
-// .signout-btn {
-//   @extend %btn;
-//   background-color: #cfd7de;
-//   color: #1f666a;
-//   width: 100px;
-// }
-
-// .qResult-btn {
-//   @extend %btn;
-//   width: 100px;
-// }
-
-// .question-card {
-//   @extend %card;
-//   max-width: 18rem;
-//   // display: inline-block;
-//   text-align: center;
-// }
-
-// .qResult-card {
-//   @extend %card;
-//   max-width: 500px;
-// }
-
-// .answerQ-header {
-//   font-size: 1rem;
-//   background-color: #cfd7de;
-//   text-align: center;
-//   width: 100%;
-// }
-
-// .not-found {
-//   @extend %card;
-//   max-width: 500px;
-//   padding: 5em;
-//   align-items: center;
-// }
-
-// // leaderboard
-
-// .ldr-card {
-//   @extend %card;
-//   max-width: 18rem;
-//   // display: inline-block;
-//   text-align: center;
-// }
-
-// .ldr-info {
-//   display: flex;
-//   flex-direction: row;
-//   flex-basis: 0 0 30%;
-// }
-
-// .question-info {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .ldr-info {
-//   flex-direction: column;
-// }
-
-// .num-questions {
-//   flex-direction: row;
-// }
-
-// .score {
-//   flex-direction: column;
-//   border: 2px solid #000;
-// }
-
-// .avatar-img {
-//   @extend %card_image;
-// }

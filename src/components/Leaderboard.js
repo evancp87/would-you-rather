@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 
 export class Leaderboard extends Component {
   render() {
     const { sortedLeaderData, signedInUser } = this.props;
-   
 
     if (signedInUser === null) {
       return <Redirect to="/" />;
-    } 
+    }
 
     return (
       // map over list of users, showing questions created/answered and sorted by score
@@ -27,12 +26,21 @@ export class Leaderboard extends Component {
                 <h2 className="author-header">{user.userName} </h2>
 
                 <div className="num-questions">
-                  <p>Answered Questions: {user.numAnswered}</p>
-                  <p>Created questions: {user.numQsCreated}</p>
+                  <div className='q-container'>
 
-                  <p className="score">
-                    Score: {user.numAnswered + user.numQsCreated}
+                  <p className="ansQs">
+                    
+                    Answered Questions: {user.numAnswered}
                   </p>
+                  <p className="createdQs">
+                    Created questions: {user.numQsCreated}
+                  </p>
+                  </div>
+                  <div className='star-label'>
+                    <p className="score">
+                      Score: {user.numAnswered + user.numQsCreated}
+                    </p>
+                  </div>
                 </div>
               </div>
             </li>

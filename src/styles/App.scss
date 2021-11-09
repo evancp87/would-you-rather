@@ -8,15 +8,17 @@
   margin: 0;
 }
 
-// body {
-//   margin: 0;
-// }
+.contain {
+  margin: 0 auto;
+  max-width: 960px;
+}
 
 html {
   font-size: 100%;
   font-family: "Roboto Slab", serif;
 }
 
+// centers content on page
 .center {
   display: flex;
   flex-direction: column;
@@ -25,15 +27,55 @@ html {
 }
 
 // styles for signin component
+.signIn {
+  @extend %card;
+  max-width: 600px;
+  width: 500px;
+  border: 1px solid #000;
+  margin: 10px;
 
-// styles for signin component form
+  div.signIn {
+    & > p {
+      margin-top: 2 em;
+      text-align: center;
+      margin-bottom: 1 em;
+      color: $green-theme;
+    }
+  }
+}
 
-.dropdown {
-  appearance: none;
-
-  position: relative;
-  font-family: Arial;
+.signin-header {
+  text-align: center;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
   width: 100%;
+  font-weight: 600;
+  border-radius: 10px 0 0 0;
+  font-size: 1.5rem;
+  padding: 1em;
+  background-color: $header-theme;
+}
+
+.paws {
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 150px;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.user-select {
+  width: 200px;
+}
+
+.signin-btn {
+  @extend %btn;
+  margin: 20px 0 0 0;
 }
 
 .user-card {
@@ -50,11 +92,16 @@ html {
   display: flex;
   flex-direction: row;
   border: 1px solid rgba(23, 42, 67, 0.8);
-  // font-size: 0.8em;
   padding: 10px;
   height: auto;
   width: 100%;
   background-color: #cfd7de;
+}
+
+.addQ {
+  @extend %card;
+  max-width: 500px;
+  align-items: center;
 }
 
 .newQForm {
@@ -68,6 +115,12 @@ html {
   }
 }
 
+.add-btn {
+  @extend %btn;
+  margin: 20px;
+}
+
+// styles for Dashboard component list of questions
 .card-list {
   display: flex;
   flex-direction: row;
@@ -81,53 +134,26 @@ html {
   height: auto;
 }
 
-.tabs {
-  font-size: 2rem;
-  background-color: $green-theme;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  // height: 200px;
-  // margin-top: 0;
-}
-
-// signin image
-
-.paws {
-  max-width: 300px;
-  padding: 30px;
-  border-radius: 150px;
-}
-
-.signin-header {
-  text-align: center;
-  border: 1px solid rgba(23, 42, 67, 0.8);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: auto;
-  width: 100%;
-  font-weight: 600;
-  border-radius: 10px 0 0 0;
-  font-size: 1.5rem;
-  padding: 1em;
-  background-color: $header-theme;
-}
-
+// question component author header
 .author-header {
   @extend %card-header;
 }
 
-.qResult-author {
-  @extend %card-header;
+// NotFound styles
+.not-found {
+  @extend %card;
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
 }
-.user-select {
-  width: 200px;
-}
+
 .sad-cat {
   max-width: 500px;
   height: auto;
   padding: 30px;
 }
 
+// QuestionResult styles
 .optionResult {
   display: block;
   max-width: 300px;
@@ -142,48 +168,26 @@ html {
   }
 }
 
-.addQ {
-  @extend %card;
-  max-width: 500px;
-  align-items: center;
+.qResult-author {
+  @extend %card-header;
 }
 
-.signIn {
-  @extend %card;
-  max-width: 600px;
-  width: 500px;
-  border: 1px solid #000;
-  margin: 10px;
-
-  .signIn div {
-
-    & > p {
-      margin-top: 2 em;
-      text-align: center;
-      margin-bottom: 1 em;
-    }
-  }
-}
-
-// .dropdown {
-//     display: block;
-// width: 500px;
-// }
-.signin-form {
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-}
-
-.signin-btn {
+.qResult-btn {
   @extend %btn;
-  margin: 20px 0 0 0;
+  width: 100px;
 }
 
-.add-btn {
-  @extend %btn;
-  margin: 20px;
+.qResult-card {
+  @extend %card;
+  max-width: 20rem;
 }
+
+// to mark authedUser's vote
+.your-vote {
+  @extend %flag;
+}
+
+// buttons
 
 .answer-btn {
   @extend %btn;
@@ -199,45 +203,22 @@ html {
   @extend %btn;
 }
 
-.answer-form {
-  margin: 2em 0 2em 0;
-}
-.radio-btn {
-  margin-left: 1em;
-}
-//   .signout-btn {
-//     @extend %btn;
-//     background-color: #cfd7de;
-//     color: #1f666a;
-//     width: 100px;
-//   }
-
-.qResult-btn {
-  @extend %btn;
-  width: 100px;
-}
-
+// answerQ component
 .question-card {
   @extend %card;
   max-width: 18rem;
-  // display: inline-block;
   text-align: center;
-}
-
-.qResult-card {
-  @extend %card;
-  max-width: 20rem;
 }
 
 .answerQ-header {
   @extend %card-header;
 }
 
-.not-found {
-  @extend %card;
-  max-width: 500px;
-  padding: 5em;
-  align-items: center;
+.answer-form {
+  margin: 2em 0 2em 0;
+}
+.radio-btn {
+  margin-left: 1em;
 }
 
 // leaderboard
@@ -259,26 +240,43 @@ html {
 
 .num-questions {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex: 0 0 33.3333%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2em;
 
-  // width: 50%;
 }
 
+.q-container {
+  width: 50%
+}
+.ansQs {
+  flex: 0 1 auto;
+  // width: 25%;
+  
+}
+
+.createdQs {
+  flex: 0 1 auto;
+  // width: 25%;
+}
+.star-label {
+ @extend %star;
+ 
+ }
+
+ 
 .score {
-  @extend %star;
-  width: 50%;
-  // display: flex;
-  // justify-content: flex-start;
-  // flex-direction: column;
-  // align-items: center;
+
+  display: flex;
+
+  flex: 0 1 auto;
 }
 
 .avatar-img {
   @extend %card_image;
 }
 
+// Dashboard tabs
 .tabs-container {
   display: flex;
   flex-direction: column;
@@ -286,11 +284,89 @@ html {
   margin-top: 0;
 }
 
+.tabs {
+  font-size: 2rem;
+  background-color: $green-theme;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
 .tabs-body {
   margin-top: 3em;
 }
 
-// to mark authedUser's vote
-.your-vote {
-  @extend %flag;
+@media only screen and (max-width: 700px) {
+  .tabs {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .tabs {
+    font-size: 1.3rem;
+  }
+
+  .ldr-card {
+    margin-right: 15px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .signIn {
+    width: 300px;
+  }
+
+  .tabs {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .question-card {
+    margin-right: 30px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+
+  .ldr-card {
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .qResult-card {
+    margin-right: 10px;
+    flex: 0 2 auto;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .signIn {
+    margin: 0 auto;
+  }
+
+  .paws {
+    max-width: 150 px;
+    padding: 30 px;
+    border-radius: 75 px;
+  }
+
+  .loguserdetails {
+    font-size: 0.7em;
+  }
+
+  .num-questions {
+    font-size: 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .score {
+ 
+padding: 1.5em;
+margin-top: 1em;
+  
+  }
+  
 }
