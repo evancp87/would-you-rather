@@ -25,7 +25,7 @@ class QuestionResults extends Component {
       return <Redirect to="/" />;
     }
 
-    if (!id) {
+    if (!questions[id]) {
       return <Redirect to="/NotFound" />;
     }
 

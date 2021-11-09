@@ -38,12 +38,10 @@ class AnswerQ extends Component {
     const { users, id, questions } = this.props;
     // TODO: add logic to prevent user from voting twice - const alreadyAnswered =
 
-  
-    if (!id) {
+    if (!questions[id]) {
       return <Redirect to="/NotFound" />;
     }
 
-    
     return (
       <div className="center">
         <div className="question-card">
@@ -55,32 +53,38 @@ class AnswerQ extends Component {
           <h2 className="answerQ-header">
             <b>{users[questions[id].author].name} wants to know...</b>
           </h2>
+
           <h3>...Would you rather...</h3>
           <form className="answer-form">
-            <label>
-              {this.props.question.optionOne.text}
-              <input
-                id="one"
-                value="optionOne"
-                type="radio"
-                name="option"
-                onChange={this.handleChange}
-                className="radio-btn"
-              />
-              <div>or</div>
-            </label>
+            <div>
+              <label className="answer-labels">
+                {this.props.question.optionOne.text}
+                <input
+                  id="one"
+                  value="optionOne"
+                  type="radio"
+                  name="option"
+                  onChange={this.handleChange}
+                  className="radio-btn"
+                />
+              </label>
+            </div>
+            <p>or</p>
 
-            <label>
-              {this.props.question.optionTwo.text}
-              <input
-                id="two"
-                type="radio"
-                value="optionTwo"
-                name="option"
-                onChange={this.handleChange}
-                className="radio-btn"
-              />
-
+            <div>
+              <label className="answer-labels">
+                {this.props.question.optionTwo.text}
+                <input
+                  id="two"
+                  type="radio"
+                  value="optionTwo"
+                  name="option"
+                  onChange={this.handleChange}
+                  className="radio-btn"
+                />
+              </label>
+            </div>
+            <div>
               <button
                 type="submit"
                 className="answer-btn"
@@ -89,7 +93,7 @@ class AnswerQ extends Component {
               >
                 Submit
               </button>
-            </label>
+            </div>
           </form>
         </div>
       </div>

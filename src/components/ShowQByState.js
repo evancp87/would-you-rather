@@ -6,9 +6,9 @@ import { Redirect } from "react-router-dom";
 
 class ShowQByState extends Component {
   render() {
-    const { answered, id } = this.props;
+    const { answered, id, questions } = this.props;
 
-    if (!id) {
+    if (!questions[id]) {
       return <Redirect to="/NotFound" />;
     }
 
@@ -28,6 +28,7 @@ function mapStateToProps({ signedInUser, questions, users }, props) {
   return {
     id,
     answered,
+    questions
   };
 }
 
