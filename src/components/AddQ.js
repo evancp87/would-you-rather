@@ -52,8 +52,8 @@ export class AddQ extends Component {
     } 
 
     return (
-      <div className="center">
-        <div className="addQ">
+      <section className="center">
+        <article className="addQ">
           <h2 className="newQ-header">Add a New Question</h2>
           <p>Complete the question</p>
           <h3>Would you rather...</h3>
@@ -81,8 +81,8 @@ export class AddQ extends Component {
               Submit
             </button>
           </form>
-        </div>
-      </div>
+        </article>
+      </section>
     );
   }
 }

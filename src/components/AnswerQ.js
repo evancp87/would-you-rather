@@ -43,8 +43,8 @@ class AnswerQ extends Component {
     }
 
     return (
-      <div className="center">
-        <div className="question-card">
+      <section className="center">
+        <article className="question-card">
           <img
             src={users[questions[id].author].avatarURL}
             alt={`Avatar of ${users[questions[id].author].name}`}
@@ -95,8 +95,8 @@ class AnswerQ extends Component {
               </button>
             </div>
           </form>
-        </div>
-      </div>
+        </article>
+      </section>
     );
   }
 }

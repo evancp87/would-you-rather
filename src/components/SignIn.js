@@ -45,13 +45,13 @@ class SignIn extends Component {
       <Redirect path="/home" />;
     }
     return (
-      <div className="center">
-        <div className="signIn">
+      <section className="center">
+        <article className="signIn">
           <h2 className="signin-header">Would You Rather</h2>
           <div>
             <img src="/Cat-paws.jpg" alt="cat paws" className="paws" />
           </div>
-            <p>Please sign in</p>
+          <p>Please sign in</p>
           <form className="signin-form">
             <div>
               <select onChange={this.handleChange} className="user-select">
@@ -76,8 +76,8 @@ class SignIn extends Component {
               </button>
             </div>
           </form>
-        </div>
-      </div>
+        </article>
+      </section>
     );
   }
 }

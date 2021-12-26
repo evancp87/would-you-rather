@@ -6,8 +6,8 @@ class Question extends Component {
     const { question } = this.props;
 
     return (
-      <div>
-        <div>
+      <section>
+        <article>
           <img
             src={this.props.users[question.author].avatarURL}
             alt={this.props.author}
@@ -20,8 +20,8 @@ class Question extends Component {
           <p>{this.props.question.optionOne.text}</p>
 
           <p>or...</p>
-        </div>
-      </div>
+        </article>
+      </section>
     );
   }
 }

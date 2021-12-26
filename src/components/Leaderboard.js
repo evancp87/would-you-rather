@@ -12,7 +12,7 @@ export class Leaderboard extends Component {
 
     return (
       // map over list of users, showing questions created/answered and sorted by score
-      <div className="center">
+      <section className="center">
         <ul>
           {sortedLeaderData.map((user) => (
             <li key={user.id} className="ldr-card">
@@ -26,17 +26,15 @@ export class Leaderboard extends Component {
                 <h2 className="author-header">{user.userName} </h2>
 
                 <div className="num-questions">
-                  <div className='q-container'>
-
-                  <p className="ansQs">
-                    
-                    Answered Questions: {user.numAnswered}
-                  </p>
-                  <p className="createdQs">
-                    Created questions: {user.numQsCreated}
-                  </p>
+                  <div className="q-container">
+                    <p className="ansQs">
+                      Answered Questions: {user.numAnswered}
+                    </p>
+                    <p className="createdQs">
+                      Created questions: {user.numQsCreated}
+                    </p>
                   </div>
-                  <div className='star-label'>
+                  <div className="star-label">
                     <p className="score">
                       Score: {user.numAnswered + user.numQsCreated}
                     </p>
@@ -46,7 +44,7 @@ export class Leaderboard extends Component {
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     );
   }
 }
