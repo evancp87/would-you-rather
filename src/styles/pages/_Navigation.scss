@@ -1,0 +1,152 @@
+@use '../abstracts/' as *;
+
+// login section of navbar
+.loguser {
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+  }
+  
+  .loguserdetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .avatar-pic {
+    max-width: 30px;
+    height: 30px;
+    border: 1px solid $mid-green;
+    border-radius: 15px;
+    margin-right: 2rem;
+    align-items: flex-end;
+    transition: all 0.2s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+  
+  .signout-btn {
+    display: flex;
+    background-color: #cfd7de;
+    font-size: 10px;
+    color: #1f666a;
+    width: 70px;
+    border-radius: 35px;
+    padding: 0.4rem;
+    margin-left: 20px;
+    text-decoration: none;
+    justify-content: center;
+    &:hover {
+      box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
+      background-color: #e8f0f7;
+    }
+  }
+  
+  .nav-bar {
+    a {
+      text-decoration: none;
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: $desktop-breakpoint) {
+    .nav-bar .links {
+      // display: flex;
+      font-size: 0.8em;
+      // flex-wrap: wrap;
+      white-space: nowrap;
+      gap: 10px;
+      // align-items: flex-start;
+      .navitem {
+        flex: 0 2 25%;
+      }
+    }
+  
+    .loguser {
+      font-size: 0.7em;
+      flex: 0 2 auto;
+    }
+  }
+  
+  @media only screen and (max-width: $tablet-breakpoint) {
+    .loguserdetails {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+    }
+  
+    .avatar-pic {
+      margin-right: 0;
+      width: 20 px;
+      height: 20 px;
+      border-radius: 10 px;
+      &:hover {
+        transform: scale(1);
+      }
+    }
+    .signout-btn {
+      padding: 0;
+      margin: 0.1em 0 10em 0;
+    }
+  }
+  
+  @media only screen and (max-width: $xs-tablet-breakpoint) {
+    .nav-bar .links {
+      // display: flex;
+  
+      flex-wrap: wrap;
+      flex-direction: row;
+      white-space: nowrap;
+      gap: 10px;
+      align-items: flex-start;
+      .navitem {
+        flex: 0 3 25%;
+  
+        .nav-bar .items {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: $xs-device-breakpoint) {
+    .nav-bar .links {
+      // display: flex;
+      font-size: 0.5em;
+      flex-wrap: wrap;
+      flex-direction: column;
+      white-space: nowrap;
+      gap: 10px;
+      // align-items: flex-start;
+      .navitem {
+        flex: 0 3 25%;
+        &:hover {
+          transform: translateX(5px);
+        }
+  
+        .nav-bar .items {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 30px;
+        }
+      }
+  
+      .loguser {
+        font-size: 0.5em;
+      }
+
+
+      .loguserdetails {
+        font-size: 0.7em;
+      }
+    }
+  }

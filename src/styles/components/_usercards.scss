@@ -1,0 +1,144 @@
+@use '../abstracts/' as a;
+
+// usercards go here
+%card {
+  box-shadow: 0 4px 8px 0 a.$card-dropshadow;
+  border-radius: 10px 0 0 10px;
+  transition: 0.3s;
+  margin: 0 0 30px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    box-shadow: a.$card-dropshadow;
+  }
+}
+
+// standardised styles for images used in cards
+%card_image {
+  max-width: 100%;
+  height: auto;
+}
+
+// parent button styles
+// %btn {
+//   width: 200px;
+//   border-radius: 5px;
+//   background-color: a.$component-green;
+//   color: a.$white;
+//   box-shadow: a.$btn-dropshadow;
+//   transition: all 0.3s ease-in-out;
+//   margin-bottom: 20px;
+//   &:hover {
+//     box-shadow: 1px 1px 0 a.$btn-dropshadow-hover;
+//     background-color: scale-color(a.$component-green, $lightness: -30%);
+//   }
+// }
+
+// parent styles for headers used on cards
+%card-header {
+  font-size: 1.2em;
+  background-color: a.$header-theme;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+// signin cards
+.signIn {
+    @extend %card;
+    max-width: 600px;
+    width: 500px;
+    border: 1px solid #000;
+    margin: 10px;
+  
+    div.signIn {
+      & > p {
+        margin-top: 2 em;
+        text-align: center;
+        margin-bottom: 1 em;
+        color: a.$green-theme;
+      }
+    }
+  }
+  
+  .signin-header {
+    text-align: center;
+    border: 1px solid rgba(23, 42, 67, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: auto;
+    width: 100%;
+    font-weight: 600;
+    border-radius: 10px 0 0 0;
+    font-size: 1.5rem;
+    padding: 1em;
+    background-color: a.$header-theme;
+  }
+  
+
+  .user-card {
+    @extend %card;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 500px;
+    padding: 0 10em 0 10em;
+  }
+
+  // AddQ component
+.newQ-header {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(23, 42, 67, 0.8);
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    background-color: #cfd7de;
+  }
+  
+  .addQ {
+    @extend %card;
+    max-width: 500px;
+    align-items: center;
+  }
+  
+
+  .author-header {
+    @extend %card-header;
+  }
+
+// not-found style
+  .not-found {
+    @extend %card;
+    max-width: 500px;
+    padding: 5em;
+    align-items: center;
+  }
+
+//   QuestionResult
+
+.qResult-author {
+    @extend %card-header;
+  }
+
+//   answerQ
+
+.question-card {
+    @extend %card;
+    max-width: 18rem;
+    text-align: center;
+  }
+  
+  .answerQ-header {
+    @extend %card-header;
+  }
+
+
+//   leaderboard cards
+
+.ldr-card {
+    @extend %card;
+    max-width: 25rem;
+    text-align: center;
+  }

@@ -1,0 +1,70 @@
+@use '../abstracts' as a;
+@use '../components' as *;
+@use '../layouts' as l;
+
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .avatar {
+    max-width: 100%;
+    height: auto;
+  }  
+
+  .dashbrd-btn {
+    @extend %btn;
+  }
+
+  // Dashboard tabs
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+  
+  .tabs {
+    font-size: 2rem;
+    background-color: a.$green-theme;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tabs-body {
+    margin-top: 3em;
+  }
+  
+  @media only screen and (max-width: a.$desktop-breakpoint) {
+    .tabs {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media only screen and (max-width: a.$md-tablet-breakpoint) {
+    .tabs {
+      font-size: 1.3rem;
+    }
+  
+  }  
+
+
+  @media only screen and (max-width: a.$sm-tablet-breakpoint) {
+    .tabs {
+        font-size: 0.8rem;
+      }
+  
+    
+  }

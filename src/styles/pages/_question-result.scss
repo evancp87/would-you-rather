@@ -1,0 +1,65 @@
+@use '../abstracts' as a;
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+}
+
+
+.optionResult {
+    display: block;
+    max-width: 300px;
+    padding: 1em;
+    text-align: center;
+    margin: 0.5em 0 0.5em 0;
+  }
+  
+  .optionResult div {
+    + p {
+      margin-top: 1em;
+    }
+  }
+  
+  .qResult-author {
+    @extend %card-header;
+  }
+  
+  .qResult-btn {
+    @extend %btn;
+    width: 100px;
+  }
+  
+  .qResult-card {
+    @extend %card;
+    max-width: 20rem;
+  }
+  
+  // to mark authedUser's vote
+  .your-vote {
+    @extend %flag;
+  }
+  
+
+  @media only screen and (max-width: a.$md-mobile-breakpoint) {
+    
+    .qResult-card {
+      margin-right: 10px;
+      flex: 0 2 auto;
+    }
+  }
+
+  @media only screen and (max-width: a.$xs-device-breakpoint) {
+  
+    .num-questions {
+      font-size: 0.5em;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .score {
+      padding: 1.5em;
+      margin-top: 1em;
+    }
+  }
