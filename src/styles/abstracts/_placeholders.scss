@@ -1,5 +1,7 @@
 @use './colors' as c;
 @use './variables' as v;
+@use './functions' as f;
+
 
 // flag for scores and votes
 %flag {
@@ -91,8 +93,8 @@
     transition: all 0.3s ease-in-out;
     margin-bottom: 20px;
     &:hover {
-      box-shadow: 1px 1px 0 v.$btn-dropshadow-hover;
-      background-color: scale-color(v.$component-green, $lightness: -30%);
+      box-shadow: v.$btn-dropshadow-hover;
+      background-color:  f.$hover-dark;
     }
   }
   

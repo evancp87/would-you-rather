@@ -401,8 +401,8 @@ html {
   z-index: -1;
 }
 
-.signIn, .user-card, .qResult-card, .not-found, .addQ, .ldr-card, .question-card {
-  box-shadow: 0 4px 8px 0 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.not-found, .addQ, .signIn, .user-card, .question-card, .qResult-card, .ldr-card {
+  box-shadow: 0 4px 8px 0 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
   margin: 0 0 30px 10px;
@@ -410,8 +410,8 @@ html {
   flex-direction: column;
   align-items: center;
 }
-.signIn:hover, .user-card:hover, .qResult-card:hover, .not-found:hover, .addQ:hover, .ldr-card:hover, .question-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.not-found:hover, .addQ:hover, .signIn:hover, .user-card:hover, .question-card:hover, .qResult-card:hover, .ldr-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .avatar-img {
@@ -419,7 +419,7 @@ html {
   height: auto;
 }
 
-.signin-btn, .qResult-btn, .notfound-btn, .add-btn, .dashbrd-btn, .answer-btn {
+.add-btn, .dashbrd-btn, .signin-btn, .qResult-btn, .notfound-btn, .answer-btn {
   width: 200px;
   border-radius: 5px;
   background-color: #4d8c57;
@@ -428,9 +428,9 @@ html {
   transition: all 0.3s ease-in-out;
   margin-bottom: 20px;
 }
-.signin-btn:hover, .qResult-btn:hover, .notfound-btn:hover, .add-btn:hover, .dashbrd-btn:hover, .answer-btn:hover {
-  box-shadow: 1px 1px 0 1px 1px 0 rgba(15, 15, 15, 0.5);
-  background-color: #36623d;
+.add-btn:hover, .dashbrd-btn:hover, .signin-btn:hover, .qResult-btn:hover, .notfound-btn:hover, .answer-btn:hover {
+  box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
+  background-color: #457e4e;
 }
 
 .qResult-author, .answerQ-header, .author-header {
@@ -441,8 +441,8 @@ html {
   margin-bottom: 1em;
 }
 
-.ldr-card, .question-card, .not-found, .addQ, .user-card, .signIn {
-  box-shadow: 0 4px 8px 0 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.ldr-card, .qResult-card, .question-card, .not-found, .addQ, .user-card, .signIn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
   margin: 0 0 30px 10px;
@@ -450,7 +450,7 @@ html {
   flex-direction: column;
   align-items: center;
 }
-.ldr-card:hover, .question-card:hover, .not-found:hover, .addQ:hover, .user-card:hover, .signIn:hover {
+.ldr-card:hover, .qResult-card:hover, .question-card:hover, .not-found:hover, .addQ:hover, .user-card:hover, .signIn:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -464,6 +464,7 @@ html {
 
 .signIn {
   max-width: 600px;
+  background-color: #f8f8ff;
   width: 500px;
   border: 1px solid #000;
   margin: 10px;
@@ -473,6 +474,14 @@ html {
   text-align: center;
   margin-bottom: 1 em;
   color: #1F666A;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 500px;
+  padding: 0 10em 0 10em;
 }
 
 .signin-header {
@@ -522,12 +531,48 @@ html {
   text-align: center;
 }
 
+.qResult-card {
+  max-width: 20rem;
+}
+
 .ldr-card {
   max-width: 25rem;
   text-align: center;
 }
 
-.answer-btn, .notfound-btn, .dashbrd-btn, .qResult-btn, .add-btn, .signin-btn {
+.signIn {
+  max-width: 600px;
+  width: 500px;
+  border: 1px solid #000;
+  margin: 10px;
+}
+.signIn div.signIn > p {
+  margin-top: 2 em;
+  text-align: center;
+  margin-bottom: 1 em;
+  color: #1F666A;
+}
+
+@media only screen and (max-width: 375px) {
+  .question-card {
+    margin-right: 15px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .ldr-card {
+    margin-right: 15px;
+    text-align: center;
+    flex: 0 2 auto;
+  }
+
+  .qResult-card {
+    margin-right: 10px;
+    flex: 0 2 auto;
+  }
+}
+.answer-btn, .notfound-btn, .qResult-btn, .add-btn, .signin-btn, .dashbrd-btn {
   width: 200px;
   border-radius: 5px;
   background-color: #4d8c57;
@@ -536,7 +581,7 @@ html {
   transition: all 0.3s ease-in-out;
   margin-bottom: 20px;
 }
-.answer-btn:hover, .notfound-btn:hover, .dashbrd-btn:hover, .qResult-btn:hover, .add-btn:hover, .signin-btn:hover {
+.answer-btn:hover, .notfound-btn:hover, .qResult-btn:hover, .add-btn:hover, .signin-btn:hover, .dashbrd-btn:hover {
   box-shadow: 1px 1px 0 1px 1px 0 rgba(15, 15, 15, 0.5);
   background-color: #36623d;
 }
@@ -568,11 +613,6 @@ html {
   margin-top: 5em;
 }
 
-.question-card {
-  max-width: 18rem;
-  text-align: center;
-}
-
 .answer-form {
   display: flex;
   flex-direction: column;
@@ -589,17 +629,6 @@ html {
   margin-left: 1em;
 }
 
-.answer-btn {
-  margin: 1em 0 1em 0;
-}
-
-@media only screen and (max-width: 375px) {
-  .question-card {
-    margin-right: 15px;
-    text-align: center;
-    flex: 0 2 auto;
-  }
-}
 .nav-bar {
   background-color: #1F666A;
   width: 100vw;
@@ -671,7 +700,7 @@ html {
 }
 .signout-btn:hover {
   box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
-  background-color: #e8f0f7;
+  background-color: #dde3e8;
 }
 
 .nav-bar a {
@@ -825,11 +854,6 @@ html {
   margin-top: 5em;
 }
 
-.ldr-card {
-  max-width: 25rem;
-  text-align: center;
-}
-
 .question-info {
   display: flex;
   flex-direction: column;
@@ -863,157 +887,6 @@ html {
   flex: 0 1 auto;
 }
 
-@media only screen and (max-width: 550px) {
-  .ldr-card {
-    margin-right: 15px;
-    text-align: center;
-    flex: 0 2 auto;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .ldr-card {
-    margin-right: 20px;
-    text-align: center;
-  }
-
-  .qResult-card {
-    margin-right: 10px;
-    flex: 0 2 auto;
-  }
-}
-.loguser {
-  display: flex;
-  flex-direction: row;
-  margin-right: 20px;
-}
-
-.loguserdetails {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.avatar-pic {
-  max-width: 30px;
-  height: 30px;
-  border: 1px solid #4d8c57;
-  border-radius: 15px;
-  margin-right: 2rem;
-  align-items: flex-end;
-  transition: all 0.2s ease-in-out;
-}
-.avatar-pic:hover {
-  transform: scale(1.5);
-}
-
-.signout-btn {
-  display: flex;
-  background-color: #cfd7de;
-  font-size: 10px;
-  color: #1f666a;
-  width: 70px;
-  border-radius: 35px;
-  padding: 0.4rem;
-  margin-left: 20px;
-  text-decoration: none;
-  justify-content: center;
-}
-.signout-btn:hover {
-  box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
-  background-color: #e8f0f7;
-}
-
-.nav-bar a {
-  text-decoration: none;
-  color: #fff;
-}
-.nav-bar a:hover {
-  color: #fff;
-}
-
-@media only screen and (max-width: 700px) {
-  .nav-bar .links {
-    font-size: 0.8em;
-    white-space: nowrap;
-    gap: 10px;
-  }
-  .nav-bar .links .navitem {
-    flex: 0 2 25%;
-  }
-
-  .loguser {
-    font-size: 0.7em;
-    flex: 0 2 auto;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .loguserdetails {
-    display: flex;
-    flex-direction: column;
-    white-space: nowrap;
-  }
-
-  .avatar-pic {
-    margin-right: 0;
-    width: 20 px;
-    height: 20 px;
-    border-radius: 10 px;
-  }
-  .avatar-pic:hover {
-    transform: scale(1);
-  }
-
-  .signout-btn {
-    padding: 0;
-    margin: 0.1em 0 10em 0;
-  }
-}
-@media only screen and (max-width: 450px) {
-  .nav-bar .links {
-    flex-wrap: wrap;
-    flex-direction: row;
-    white-space: nowrap;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .nav-bar .links .navitem {
-    flex: 0 3 25%;
-  }
-  .nav-bar .links .navitem .nav-bar .items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-}
-@media only screen and (max-width: 300px) {
-  .nav-bar .links {
-    font-size: 0.5em;
-    flex-wrap: wrap;
-    flex-direction: column;
-    white-space: nowrap;
-    gap: 10px;
-  }
-  .nav-bar .links .navitem {
-    flex: 0 3 25%;
-  }
-  .nav-bar .links .navitem:hover {
-    transform: translateX(5px);
-  }
-  .nav-bar .links .navitem .nav-bar .items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  .nav-bar .links .loguser {
-    font-size: 0.5em;
-  }
-  .nav-bar .links .loguserdetails {
-    font-size: 0.7em;
-  }
-}
 .center {
   display: flex;
   flex-direction: column;
@@ -1088,14 +961,6 @@ html {
   margin-top: 1em;
 }
 
-.qResult-btn {
-  width: 100px;
-}
-
-.qResult-card {
-  max-width: 20rem;
-}
-
 @media only screen and (max-width: 375px) {
   .qResult-card {
     margin-right: 10px;
@@ -1119,19 +984,6 @@ html {
   flex-direction: column;
   align-items: center;
   margin-top: 5em;
-}
-
-.signIn {
-  max-width: 600px;
-  width: 500px;
-  border: 1px solid #000;
-  margin: 10px;
-}
-.signIn div.signIn > p {
-  margin-top: 2 em;
-  text-align: center;
-  margin-bottom: 1 em;
-  color: #1F666A;
 }
 
 .signin-header {
@@ -1161,18 +1013,6 @@ html {
 
 .user-select {
   width: 200px;
-}
-
-.signin-btn {
-  margin: 20px 0 0 0;
-}
-
-.user-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  max-width: 500px;
-  padding: 0 10em 0 10em;
 }
 
 @media only screen and (max-width: 500px) {

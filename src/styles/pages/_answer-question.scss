@@ -10,11 +10,7 @@
   margin-top: 5em;
 }
 
-.question-card {
-    @extend %card;
-    max-width: 18rem;
-    text-align: center;
-  }
+
   
   .answerQ-header {
     @extend %card-header;
@@ -36,18 +32,4 @@
     margin-left: 1em;
   }
   
-  .answer-btn {
-    @extend %btn;
-    margin: 1em 0 1em 0;
-  }
-  
-  @media only screen and (max-width: $md-mobile-breakpoint) {
-    .question-card {
-      margin-right: 15px;
-      text-align: center;
-      flex: 0 2 auto;
-    }
-  
-  }
-
   

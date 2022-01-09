@@ -26,15 +26,7 @@
     @extend %card-header;
   }
   
-  .qResult-btn {
-    @extend %btn;
-    width: 100px;
-  }
-  
-  .qResult-card {
-    @extend %card;
-    max-width: 20rem;
-  }
+
   
   // to mark authedUser's vote
   .your-vote {
