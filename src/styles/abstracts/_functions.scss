@@ -1,0 +1,9 @@
+@use './variables' as v;
+@use './colors' as c;
+
+
+// for primary button styles
+$hover-dark: scale-color(v.$component-green, $lightness: -10%);
+
+// for signout button in navbar
+$hover-light: scale-color(c.$grey, $lightness: +30%);

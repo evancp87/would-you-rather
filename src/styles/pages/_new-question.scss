@@ -1,0 +1,42 @@
+@use '../abstracts' as *;
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+}
+
+// AddQ component
+.newQ-header {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(23, 42, 67, 0.8);
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    background-color: $header-theme;
+  }
+  
+  .addQ {
+    @extend %card;
+    max-width: 500px;
+    align-items: center;
+  }
+  
+  .newQForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5em 0 0 0;
+  
+    input[type="text"] {
+      text-align: center;
+    }
+  }
+  
+  .add-btn {
+    @extend %btn;
+    margin: 20px;
+  }
+  

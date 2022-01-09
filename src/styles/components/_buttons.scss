@@ -1,0 +1,54 @@
+@use '../abstracts' as a;
+
+  // parent button styles
+  %btn {
+    width: 200px;
+    border-radius: 5px;
+    background-color: a.$component-green;
+    color: a.$white;
+    box-shadow: a.$btn-dropshadow;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
+    &:hover {
+      box-shadow: 1px 1px 0 a.$btn-dropshadow-hover;
+      background-color: scale-color(a.$component-green, $lightness: -30%);
+    }
+  }
+
+
+  .dashbrd-btn {
+    @extend %btn;
+  }
+  
+.signin-btn {
+  @extend %btn;
+  margin: 20px 0 0 0;
+}
+
+.add-btn {
+  @extend %btn ;
+  margin: 20px;
+}
+
+.qResult-btn {
+  @extend %btn;
+  width: 100px;
+}
+
+.dashbrd-btn {
+    @extend %btn;
+  }
+  
+  .notfound-btn {
+    @extend %btn;
+  }
+  
+  .radio-btn {
+    margin-left: 1em;
+  }
+
+  .answer-btn {
+    @extend %btn;
+    margin: 1em 0 1em 0;
+  }
+  
