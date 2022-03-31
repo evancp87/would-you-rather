@@ -8,11 +8,6 @@
   margin-top: 5em;
 }
 
-// .ldr-card {
-//     @extend %card;
-//     max-width: 25rem;
-//     text-align: center;
-//   }
   
   .question-info {
     display: flex;
@@ -56,28 +51,3 @@
     @extend %card_image;
   }
   
-
-  // @media only screen and (max-width: $md-tablet-breakpoint) {
-    
-  
-  //   .ldr-card {
-  //     margin-right: 15px;
-  //     text-align: center;
-  //     flex: 0 2 auto;
-  //   }
-  // }
-
-
-  // @media only screen and (max-width: $md-mobile-breakpoint) {
-    
-  //   .ldr-card {
-  //     margin-right: 20px;
-  //     text-align: center;
-  //   }
-  
-  //   .qResult-card {
-  //     margin-right: 10px;
-  //     flex: 0 2 auto;
-  //   }
-  // }
-
