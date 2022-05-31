@@ -1,14 +1,10 @@
 @use '../abstracts' as a;
 
-
 .center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
   margin-top: 5em;
 }
 
 .author-header {
-    @extend %card-header;
-  }
-  
+  @extend %card-header;
+}

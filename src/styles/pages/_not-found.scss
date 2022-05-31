@@ -1,24 +1,20 @@
 @use '../abstracts' as a;
 
 .center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
+
   margin-top: 5em;
 }
 
 .not-found {
-    @extend %card;
-    max-width: 500px;
-    padding: 5em;
-    align-items: center;
-  }
-  
-  .sad-cat {
-    max-width: 500px;
-    height: auto;
-    padding: 30px;
-  }
-  
+  @extend %card;
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
+}
 
-  
+.sad-cat {
+  max-width: 500px;
+  height: auto;
+  padding: 30px;
+}

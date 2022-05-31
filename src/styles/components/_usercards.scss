@@ -6,9 +6,7 @@
   border-radius: 10px 0 0 10px;
   transition: 0.3s;
   margin: 0 0 30px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
 
   &:hover {
     box-shadow: a.$card-hover;
@@ -21,11 +19,10 @@
   height: auto;
 }
 
-
 // parent styles for headers used on cards
 %card-header {
   font-size: 1.2em;
-  background-color: a.$header-theme;
+  @include a.prefix(background-color, a.$header-theme, ms moz webkit);
   text-align: center;
   width: 100%;
   margin-bottom: 1em;
@@ -33,160 +30,145 @@
 
 // signin cards
 .signIn {
-    @extend %card;
-    max-width: 600px;
-    background-color: #f8f8ff;
-    width: 500px;
-    border: 1px solid #000;
-    margin: 10px;
-  
-    div.signIn {
-      & > p {
-        margin-top: 2 em;
-        text-align: center;
-        margin-bottom: 1 em;
-        color: a.$green-theme;
-      }
+  @extend %card;
+  max-width: 600px;
+  @include a.prefix(background-color, #f8f8ff, ms moz webkit);
+  width: 500px;
+  border: 1px solid #000;
+  margin: 10px;
+
+  div.signIn {
+    & > p {
+      margin-top: 2 em;
+      text-align: center;
+      margin-bottom: 1 em;
+      color: a.$green-theme;
     }
   }
+}
 
+.user-card {
+  @extend %card;
+  @include a.flexbox-config($flex-direction: row, $justify-content: center);
+  max-width: 500px;
+  padding: 0 10em 0 10em;
+}
 
-  .user-card {
-    @extend %card;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 500px;
-    padding: 0 10em 0 10em;
-  }
-  
-  .signin-header {
-    text-align: center;
-    border: 1px solid rgba(23, 42, 67, 0.8);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    height: auto;
-    width: 100%;
-    font-weight: 600;
-    border-radius: 10px 0 0 0;
-    font-size: 1.5rem;
-    padding: 1em;
-    background-color: a.$header-theme;
-  }
-  
+.signin-header {
+  text-align: center;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  width: 100%;
+  font-weight: 600;
+  border-radius: 10px 0 0 0;
+  font-size: 1.5rem;
+  padding: 1em;
+  @include a.prefix(background-color, a.$header-theme, ms moz webkit);
+}
 
-  .user-card {
-    @extend %card;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 500px;
-    padding: 0 10em 0 10em;
-  }
+.user-card {
+  @extend %card;
+  @include a.flexbox-config($flex-direction: row, $justify-content: center);
+  max-width: 500px;
+  padding: 0 10em 0 10em;
+}
 
-  // AddQ component
+// AddQ component
 .newQ-header {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid rgba(23, 42, 67, 0.8);
-    padding: 10px;
-    height: auto;
-    width: 100%;
-    background-color: #cfd7de;
-  }
-  
-  .addQ {
-    @extend %card;
-    max-width: 500px;
-    align-items: center;
-  }
-  
+  @include a.flexbox-config($flex-direction: row);
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  padding: 10px;
+  height: auto;
+  width: 100%;
+  @include a.prefix(background-color, #cfd7de, ms moz webkit);
+}
 
-  .author-header {
-    @extend %card-header;
-  }
+.addQ {
+  @extend %card;
+  max-width: 500px;
+  align-items: center;
+}
+
+.author-header {
+  @extend %card-header;
+}
 
 // not-found style
-  .not-found {
-    @extend %card;
-    max-width: 500px;
-    padding: 5em;
-    align-items: center;
-  }
+.not-found {
+  @extend %card;
+  max-width: 500px;
+  padding: 5em;
+  align-items: center;
+}
 
 //   QuestionResult
 
 .qResult-author {
-    @extend %card-header;
-  }
+  @extend %card-header;
+}
 
 //   answerQ
 
 .question-card {
-    @extend %card;
-    max-width: 18rem;
-    text-align: center;
-  }
-  
-  .answerQ-header {
-    @extend %card-header;
-  }
+  @extend %card;
+  max-width: 18rem;
+  text-align: center;
+}
 
-  .qResult-card {
-    @extend %card;
-    max-width: 20rem;
-  }
+.answerQ-header {
+  @extend %card-header;
+}
 
+.qResult-card {
+  @extend %card;
+  max-width: 20rem;
+}
 
 //   leaderboard cards
 
 .ldr-card {
-    @extend %card;
-    max-width: 25rem;
+  @extend %card;
+  max-width: 25rem;
+  text-align: center;
+}
+
+// signin cards
+
+.signIn {
+  @extend %card;
+  max-width: 600px;
+  width: 500px;
+  border: 1px solid a.$black;
+  margin: 10px;
+
+  div.signIn {
+    & > p {
+      margin-top: 2 em;
+      text-align: center;
+      margin-bottom: 1 em;
+      color: a.$green-theme;
+    }
+  }
+}
+
+@media only screen and (max-width: a.$md-mobile-breakpoint) {
+  .question-card {
+    margin-right: 15px;
     text-align: center;
+    flex: 0 2 auto;
+  }
+}
+
+@media only screen and (max-width: a.$md-tablet-breakpoint) {
+  .ldr-card {
+    margin-right: 15px;
+    text-align: center;
+    flex: 0 2 auto;
   }
 
-
-  // signin cards
-
-  .signIn {
-    @extend %card;
-    max-width: 600px;
-    width: 500px;
-    border: 1px solid a.$black;
-    margin: 10px;
-  
-    div.signIn {
-      & > p {
-        margin-top: 2 em;
-        text-align: center;
-        margin-bottom: 1 em;
-        color: a.$green-theme;
-      }
-    }
+  .qResult-card {
+    margin-right: 10px;
+    flex: 0 2 auto;
   }
-
-  @media only screen and (max-width: a.$md-mobile-breakpoint) {
-    .question-card {
-      margin-right: 15px;
-      text-align: center;
-      flex: 0 2 auto;
-    }
-  
-  }
-
-
-  @media only screen and (max-width: a.$md-tablet-breakpoint) {
-    
-  
-    .ldr-card {
-      margin-right: 15px;
-      text-align: center;
-      flex: 0 2 auto;
-    }
-
-    .qResult-card {
-      margin-right: 10px;
-      flex: 0 2 auto;
-    }
-
-  }
+}

@@ -46,7 +46,7 @@ class SignIn extends Component {
     }
     return (
       <section className="center">
-        <article className="signIn">
+        <div className="signIn">
           <h2 className="signin-header">Would You Rather</h2>
           <div>
             <img src="/Cat-paws.jpg" alt="cat paws" className="paws" />
@@ -76,7 +76,7 @@ class SignIn extends Component {
               </button>
             </div>
           </form>
-        </article>
+        </div>
       </section>
     );
   }

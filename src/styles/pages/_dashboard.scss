@@ -2,67 +2,55 @@
 @use '../components' as *;
 @use '../layouts' as l;
 
-
 .center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
+
   margin-top: 5em;
 }
 
 .card-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  
-  .avatar {
-    max-width: 100%;
-    height: auto;
-  }  
+  @include a.flexbox-config($flex-direction: row, $justify-content: center);
+  flex-wrap: wrap;
+  gap: 30px;
+}
 
- 
+.avatar {
+  max-width: 100%;
+  height: auto;
+}
 
-  // Dashboard tabs
+// Dashboard tabs
 .tabs-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0;
-  }
-  
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
+
+  margin-top: 0;
+}
+
+.tabs {
+  font-size: 2rem;
+  background-color: a.$green-theme;
+  width: 100vw;
+  @include a.flexbox-config($justify-content: center);
+}
+
+.tabs-body {
+  margin-top: 3em;
+}
+
+@media only screen and (max-width: a.$desktop-breakpoint) {
   .tabs {
-    font-size: 2rem;
-    background-color: a.$green-theme;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
+    font-size: 1.5rem;
   }
-  
-  .tabs-body {
-    margin-top: 3em;
-  }
-  
-  @media only screen and (max-width: a.$desktop-breakpoint) {
-    .tabs {
-      font-size: 1.5rem;
-    }
-  }
-  
-  @media only screen and (max-width: a.$md-tablet-breakpoint) {
-    .tabs {
-      font-size: 1.3rem;
-    }
-  
-  }  
+}
 
-
-  @media only screen and (max-width: a.$sm-tablet-breakpoint) {
-    .tabs {
-        font-size: 0.8rem;
-      }
-  
-    
+@media only screen and (max-width: a.$md-tablet-breakpoint) {
+  .tabs {
+    font-size: 1.3rem;
   }
+}
+
+@media only screen and (max-width: a.$sm-tablet-breakpoint) {
+  .tabs {
+    font-size: 0.8rem;
+  }
+}

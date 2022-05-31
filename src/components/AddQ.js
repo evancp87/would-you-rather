@@ -27,7 +27,7 @@ export class AddQ extends Component {
     }));
   };
 
-  // handles submit button- adds question 
+  // handles submit button- adds question
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -49,11 +49,11 @@ export class AddQ extends Component {
 
     if (signedInUser === null) {
       return <Redirect to="/" />;
-    } 
+    }
 
     return (
       <section className="center">
-        <article className="addQ">
+        <div className="addQ">
           <h2 className="newQ-header">Add a New Question</h2>
           <p>Complete the question</p>
           <h3>Would you rather...</h3>
@@ -81,7 +81,7 @@ export class AddQ extends Component {
               Submit
             </button>
           </form>
-        </article>
+        </div>
       </section>
     );
   }

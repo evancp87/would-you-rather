@@ -1,67 +1,54 @@
 @use '../abstracts' as a;
 
-
 // TODO: fix .center classes for each component
 .center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: column, $align-items: center);
+
   margin-top: 5em;
 }
 
+.signin-header {
+  text-align: center;
+  border: 1px solid rgba(23, 42, 67, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  width: 100%;
+  font-weight: 600;
+  border-radius: 10px 0 0 0;
+  font-size: 1.5rem;
+  padding: 1em;
+  @include a.prefix(background-color, a.$header-theme, ms moz webkit);
+}
 
-  .signin-header {
-    text-align: center;
-    border: 1px solid rgba(23, 42, 67, 0.8);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    height: auto;
-    width: 100%;
-    font-weight: 600;
-    border-radius: 10px 0 0 0;
-    font-size: 1.5rem;
-    padding: 1em;
-    background-color: a.$header-theme;
+.paws {
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 150px;
+}
+
+.signin-form {
+  @include a.flexbox-config($flex-direction: column);
+  margin: 30px;
+}
+
+.user-select {
+  width: 200px;
+}
+
+@media only screen and (max-width: a.$sm-tablet-breakpoint) {
+  .signIn {
+    width: 300px;
   }
-  
+}
+
+@media only screen and (max-width: a.$xs-device-breakpoint) {
+  .signIn {
+    margin: 0 auto;
+  }
+
   .paws {
-    max-width: 300px;
-    padding: 30px;
-    border-radius: 150px;
+    max-width: 150 px;
+    padding: 30 px;
+    border-radius: 75 px;
   }
-  
-  .signin-form {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-  }
-  
-  .user-select {
-    width: 200px;
-  }
-  
-
-  @media only screen and (max-width: a.$sm-tablet-breakpoint) {
-    .signIn {
-      width: 300px;
-    }
-  
-    
-  }
-
-  @media only screen and (max-width: a.$xs-device-breakpoint) {
-    .signIn {
-      margin: 0 auto;
-    }
-  
-    .paws {
-        max-width: 150 px;
-        padding: 30 px;
-        border-radius: 75 px;
-      }
-
-     
-  }
-  
-
- 
-  
+}

@@ -31,7 +31,7 @@ class QuestionResults extends Component {
 
     return (
       <section className="center">
-        <article className="qResult-card">
+        <div className="qResult-card">
           <img
             src={users[question.author].avatarURL}
             alt={`Avatar of ${users[question.author].name}`}
@@ -82,7 +82,7 @@ class QuestionResults extends Component {
           <Link to="/">
             <button className="qResult-btn">Back</button>
           </Link>
-        </article>
+        </div>
       </section>
     );
   }

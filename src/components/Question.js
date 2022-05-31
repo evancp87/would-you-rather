@@ -7,7 +7,7 @@ class Question extends Component {
 
     return (
       <section>
-        <article>
+        <div>
           <img
             src={this.props.users[question.author].avatarURL}
             alt={this.props.author}
@@ -20,7 +20,7 @@ class Question extends Component {
           <p>{this.props.question.optionOne.text}</p>
 
           <p>or...</p>
-        </article>
+        </div>
       </section>
     );
   }

@@ -2,17 +2,18 @@
 
 // nav bar styles
 .nav-bar {
-  background-color: a.$green-theme;
+  @include a.prefix(background-color, a.$green-theme, ms moz webkit);
   width: 100vw;
   height: 100px;
   .items {
     color: a.$white;
     text-decoration: none;
     list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    @include a.flexbox-config(
+      $flex-direction: row,
+      $justify-content: space-between,
+      $align-items: baseline
+    );
   }
   .links {
     display: flex;
@@ -23,28 +24,23 @@
     text-decoration: none;
     &:hover {
       color: a.$white;
-      transform: translateY(-5px);
+      @include a.prefix(transform, translateY(-5px), ms moz webkit);
     }
-  }
-}
-
-.navitem {
-  &:active {
-    transform: translateY(-5px);
+    &:active {
+      @include a.prefix(transform, translateY(-5px), ms moz webkit);
+    }
   }
 }
 
 // login section of navbar
 .loguser {
-  display: flex;
-  flex-direction: row;
+  @include a.flexbox-config($flex-direction: row);
   margin-right: 20px;
 }
 
 .loguserdetails {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include a.flexbox-config($flex-direction: row, $align-items: center);
+
   margin-top: 20px;
 }
 .avatar-pic {
@@ -74,7 +70,7 @@
   justify-content: center;
   &:hover {
     box-shadow: 1px 1px 0 rgba(15, 15, 15, 0.5);
-    background-color: a.$hover-light;
+    @include a.prefix(background-color, a.$hover-light, ms moz webkit);
   }
 }
 
@@ -106,8 +102,7 @@
 
 @media only screen and (max-width: a.$tablet-breakpoint) {
   .loguserdetails {
-    display: flex;
-    flex-direction: column;
+    @include a.flexbox-config($flex-direction: column);
     white-space: nowrap;
   }
 
@@ -117,7 +112,7 @@
     height: 20 px;
     border-radius: 10 px;
     &:hover {
-      transform: scale(1);
+      @include a.prefix(transform, scale(1), ms moz webkit);
     }
   }
   .signout-btn {
@@ -139,9 +134,11 @@
       flex: 0 3 25%;
 
       .nav-bar .items {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include a.flexbox-config(
+          $flex-direction: column,
+          $align-items: center
+        );
+
         margin-bottom: 30px;
       }
     }
@@ -160,13 +157,15 @@
     .navitem {
       flex: 0 3 25%;
       &:hover {
-        transform: translateX(5px);
+        @include a.prefix(transform, translateX(5px), ms moz webkit);
       }
 
       .nav-bar .items {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include a.flexbox-config(
+          $flex-direction: column,
+          $align-items: center
+        );
+
         margin-bottom: 30px;
       }
     }

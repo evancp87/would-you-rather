@@ -44,7 +44,7 @@ class AnswerQ extends Component {
 
     return (
       <section className="center">
-        <article className="question-card">
+        <div className="question-card">
           <img
             src={users[questions[id].author].avatarURL}
             alt={`Avatar of ${users[questions[id].author].name}`}
@@ -95,7 +95,7 @@ class AnswerQ extends Component {
               </button>
             </div>
           </form>
-        </article>
+        </div>
       </section>
     );
   }
